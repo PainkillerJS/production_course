@@ -1,10 +1,11 @@
 import { Suspense, type FC } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 
-import { MainPageAsync } from './pages/MainPage/MainPageAsync';
-import { AboutPageAsync } from './pages/AboutPage/AboutPageAsync';
-import { useTheme } from './theme/ThemeContext';
-import { classNames } from './helpers/classNames';
+import { AboutPageAsync } from '@/pages/AboutPage';
+import { MainPageAsync } from '@/pages/MainPage';
+
+import { useTheme } from './providers/ThemeProvider';
+import { classNames } from '../shared/lib/helpers/classNames';
 
 const App: FC = () => {
   const { setTheme, theme } = useTheme();
