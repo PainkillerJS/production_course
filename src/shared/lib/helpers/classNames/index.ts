@@ -1,11 +1,11 @@
 type ModeType = Record<string, boolean | string>;
 
-export const classNames = (...params: Array<string | ModeType>): string => {
+export const clsx = (...params: Array<string | ModeType | undefined>): string => {
   const stringsClassNames: string[] = [];
 
   let hashClassNamesObject: ModeType = {};
 
-  params.forEach((elem) => {
+  params.filter(Boolean).forEach((elem) => {
     if (typeof elem === 'string') {
       return stringsClassNames.push(elem);
     }
@@ -17,5 +17,5 @@ export const classNames = (...params: Array<string | ModeType>): string => {
     .filter(([_, value]) => value)
     .map(([cls]) => cls);
 
-  return [...stringsClassNames, ...updateModes].join(' ');
+  return stringsClassNames.concat(updateModes).join(' ');
 };

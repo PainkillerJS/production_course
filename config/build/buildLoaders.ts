@@ -11,6 +11,19 @@ export const buildLoaders = ({ isDev }: Pick<BuildOptionsType, 'isDev'>): RuleSe
   };
 
   const finalStyleLoader = isDev ? 'style-loader' : MiniCssExtractPlugin.loader;
+  const svgLoader = {
+    test: /\.svg$/,
+    use: ['@svgr/webpack'],
+  };
+
+  const fileLoader = {
+    test: /\.(png|jpe?g|gif|woff|wp)$/i,
+    use: [
+      {
+        loader: 'file-loader',
+      },
+    ],
+  };
 
   const scssLoader = {
     test: /\.s[ac]ss$/i,
@@ -29,5 +42,5 @@ export const buildLoaders = ({ isDev }: Pick<BuildOptionsType, 'isDev'>): RuleSe
     ],
   };
 
-  return [typescriptLoader, scssLoader];
+  return [svgLoader, fileLoader, typescriptLoader, scssLoader];
 };

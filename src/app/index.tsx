@@ -1,28 +1,21 @@
-import { Suspense, type FC } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { type FC } from 'react';
 
-import { AboutPageAsync } from '@/pages/AboutPage';
-import { MainPageAsync } from '@/pages/MainPage';
-
-import { useTheme } from './providers/ThemeProvider';
-import { classNames } from '../shared/lib/helpers/classNames';
+import { clsx } from '../shared/lib/helpers/classNames';
+import AppRouter from './providers/router/ui/AppRouter';
+import Navbar from '@/widgets/Navbar/ui/Navbar';
+import { useTheme } from '@/shared/ui/ThemeSwitcher';
+import { Sidebar } from '@/widgets/Sidebar';
 
 const App: FC = () => {
-  const { setTheme, theme } = useTheme();
+  const { theme } = useTheme();
 
   return (
-    <div className={classNames('app', theme)}>
-      <Link to='/'>Главная </Link>
-      <Link to='/about'>О нас </Link>
-
-      <button onClick={setTheme}>Поменять тему</button>
-
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path='/' element={<MainPageAsync />} />
-          <Route path='/about' element={<AboutPageAsync />} />
-        </Routes>
-      </Suspense>
+    <div className={clsx('app', theme)}>
+      <Navbar />
+      <div className='content-page'>
+        <Sidebar />
+        <AppRouter />
+      </div>
     </div>
   );
 };
