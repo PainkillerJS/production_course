@@ -11,6 +11,7 @@ export const buildLoaders = ({ isDev }: Pick<BuildOptionsType, 'isDev'>): RuleSe
   };
 
   const finalStyleLoader = isDev ? 'style-loader' : MiniCssExtractPlugin.loader;
+
   const svgLoader = {
     test: /\.svg$/,
     use: ['@svgr/webpack'],
@@ -23,6 +24,17 @@ export const buildLoaders = ({ isDev }: Pick<BuildOptionsType, 'isDev'>): RuleSe
         loader: 'file-loader',
       },
     ],
+  };
+
+  const babelLoader = {
+    test: /\.(js|ts|jsx|tsx)$/,
+    exclude: /node_modules/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env'],
+      },
+    },
   };
 
   const scssLoader = {
@@ -42,5 +54,5 @@ export const buildLoaders = ({ isDev }: Pick<BuildOptionsType, 'isDev'>): RuleSe
     ],
   };
 
-  return [svgLoader, fileLoader, typescriptLoader, scssLoader];
+  return [svgLoader, fileLoader, babelLoader, typescriptLoader, scssLoader];
 };

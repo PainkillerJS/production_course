@@ -1,6 +1,8 @@
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 
 import type { BuildOptionsType, BuildPaths } from './types/config';
 
@@ -22,5 +24,8 @@ export const buildPlugins = ({ html, isDev }: BuildPluginsParamsType): webpack.W
     new webpack.DefinePlugin({
       __IS_DEV__: isDev,
     }),
+    new webpack.HotModuleReplacementPlugin(),
+    new ReactRefreshWebpackPlugin(),
+    new CleanWebpackPlugin(),
   ];
 };
