@@ -4,7 +4,7 @@ import { type ResolveOptions } from 'webpack';
 
 import type { BuildOptionsType } from './types/config';
 
-const setPathAlias = (...paths: string[]) => path.resolve(...paths);
+const setPathAlias = (...paths: string[]): string => path.resolve(...paths);
 
 export const buildResolvers = ({ paths }: Pick<BuildOptionsType, 'paths'>): ResolveOptions => {
   const srcPath = paths.src;

@@ -16,4 +16,4 @@ export const ThemeContext = createContext<ThemeContextType>({
 
 export const LOCAL_STORAGE_THEME_KEY = 'theme';
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = (): ThemeContextType => useContext(ThemeContext);

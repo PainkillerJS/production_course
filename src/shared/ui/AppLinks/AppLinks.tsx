@@ -1,5 +1,5 @@
 import { clsx } from '@/shared/lib/helpers/classNames';
-import { PropsWithChildren, type FC } from 'react';
+import { type PropsWithChildren, type FC } from 'react';
 import { Link, type LinkProps } from 'react-router-dom';
 
 import style from './appLinks.module.scss';

@@ -6,7 +6,7 @@ const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) ||
 const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(defaultTheme);
 
-  const setThemeAction = () => {
+  const setThemeAction = (): void => {
     const newTheme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
 
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
