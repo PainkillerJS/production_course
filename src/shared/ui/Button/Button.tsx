@@ -19,7 +19,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button: FC<ButtonProps> = ({ className, variant, children, ...props }) => {
   return (
-    <button className={clsx(styles.button, className, styles[variant])} {...props}>
+    <button className={clsx(className, styles[variant], styles.button)} {...props}>
       {children}
     </button>
   );

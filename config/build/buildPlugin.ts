@@ -2,12 +2,14 @@ import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 
-import type { BuildPaths } from './types/config';
+import type { BuildOptionsType, BuildPaths } from './types/config';
 
-export const buildPlugins = (options: Pick<BuildPaths, 'html'>): webpack.WebpackPluginInstance[] => {
+type BuildPluginsParamsType = Pick<BuildPaths, 'html'> & Pick<BuildOptionsType, 'isDev'>;
+
+export const buildPlugins = ({ html, isDev }: BuildPluginsParamsType): webpack.WebpackPluginInstance[] => {
   return [
     new HTMLWebpackPlugin({
-      template: options.html,
+      template: html,
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:8].css',
@@ -16,6 +18,9 @@ export const buildPlugins = (options: Pick<BuildPaths, 'html'>): webpack.Webpack
     new webpack.ProgressPlugin(),
     new webpack.ProvidePlugin({
       React: 'react',
+    }),
+    new webpack.DefinePlugin({
+      __IS_DEV__: isDev,
     }),
   ];
 };
