@@ -1,10 +1,13 @@
 import { AboutPageAsync } from '@/pages/AboutPage';
 import { MainPageAsync } from '@/pages/MainPage';
+import { NotFountPage } from '@/pages/NotFoundPage';
+
 import { type RouteProps } from 'react-router-dom';
 
 export enum AppRoute {
   MAIN = 'main',
   ABOUT = 'about',
+  NOT_FOUND = 'not_found',
 }
 
 interface RouteType {
@@ -21,6 +24,10 @@ export const routePath: Record<AppRoute, RouteType> = {
     path: '/about',
     name: 'О нас',
   },
+  [AppRoute.NOT_FOUND]: {
+    path: '*',
+    name: 'not_found',
+  },
 };
 
 export const routeConfig: RouteProps[] = [
@@ -31,5 +38,9 @@ export const routeConfig: RouteProps[] = [
   {
     path: routePath.about.path,
     element: <AboutPageAsync />,
+  },
+  {
+    path: routePath.not_found.path,
+    element: <NotFountPage />,
   },
 ];

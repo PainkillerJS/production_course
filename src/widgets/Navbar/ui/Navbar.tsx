@@ -10,10 +10,12 @@ interface NavbarProps {
 }
 
 const Navbar: FC<NavbarProps> = ({ className }) => {
+  const navBarSettings = Object.values(routePath).filter(({ path }) => path !== '*');
+
   return (
     <div className={clsx(style.navbar, className)}>
       <div className={style.links}>
-        {Object.values(routePath).map(({ path, name }) => (
+        {navBarSettings.map(({ path, name }) => (
           <AppLinks theme={AppLinkTheme.SECONDARY} key={path} to={path}>
             {name}
           </AppLinks>
