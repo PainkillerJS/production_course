@@ -1,4 +1,4 @@
-import { Suspense, type FC } from 'react';
+import { Suspense, type FC, useEffect } from 'react';
 
 import { clsx } from '../shared/lib/helpers/classNames';
 import AppRouter from './providers/router/ui/AppRouter';
@@ -8,6 +8,10 @@ import { Sidebar } from '@/widgets/Sidebar';
 
 const App: FC = () => {
   const { theme } = useTheme();
+
+  useEffect(() => {
+    throw new Error();
+  });
 
   return (
     <div className={clsx('app', theme)}>

@@ -34,5 +34,6 @@ module.exports = {
     '@typescript-eslint/no-floating-promises': 0,
     '@typescript-eslint/return-await': 0,
     '@typescript-eslint/naming-convention': 0,
+    '@typescript-eslint/space-before-function-paren': 0,
   },
 };
