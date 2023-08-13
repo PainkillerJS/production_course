@@ -1,11 +1,11 @@
 import { type ButtonHTMLAttributes, type FC } from 'react';
 
-import { clsx } from '@/shared/lib/helpers/classNames';
+import { clsx } from '@/shared/lib/classNames';
 
 import styles from './button.module.scss';
 
 export enum ThemeButton {
-  CLEAR = 'clear',
+  CLEAR = 'clear'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -28,7 +28,7 @@ const Button: FC<ButtonProps> = ({ className, variant, children, ...props }) => 
 };
 
 Button.defaultProps = {
-  variant: ThemeButton.CLEAR,
+  variant: ThemeButton.CLEAR
 };
 
 export default Button;

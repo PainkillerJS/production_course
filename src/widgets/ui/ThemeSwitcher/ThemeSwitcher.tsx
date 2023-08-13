@@ -2,7 +2,7 @@ import { type FC } from 'react';
 
 import DarkIcon from '@/shared/assets/icons/theme-dark.svg';
 import LightIcon from '@/shared/assets/icons/theme-light.svg';
-import { clsx } from '@/shared/lib/helpers/classNames';
+import { clsx } from '@/shared/lib/classNames';
 import Button from '@/shared/ui/Button/Button';
 import { Theme, useTheme } from '@/shared/ui/ThemeSwitcher';
 

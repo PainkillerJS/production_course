@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 
 import { routePath } from '@/shared/config/routeConfig/routeConfig';
-import { clsx } from '@/shared/lib/helpers/classNames';
+import { clsx } from '@/shared/lib/classNames';
 import AppLinks, { AppLinkTheme } from '@/shared/ui/AppLinks/AppLinks';
 
 import style from './navbar.module.scss';

@@ -1,8 +1,9 @@
-import { type FC,useState } from 'react';
+import { type FC, useState } from 'react';
 
 import { LanguageSwitcher, ThemeSwitcher } from '@/widgets/ui';
 
-import { clsx } from '@/shared/lib/helpers/classNames';
+import { clsx } from '@/shared/lib/classNames';
+import Button from '@/shared/ui/Button/Button';
 
 import styles from './sidebar.module.scss';
 
@@ -19,11 +20,14 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
 
   return (
     <div
+      data-testid='sidebar'
       className={clsx(styles.sidebar, className, {
-        [styles.collapsed]: collapsed,
+        [styles.collapsed]: collapsed
       })}
     >
-      <button onClick={onToggle}>Toggle</button>
+      <Button data-testid='sidebar-toggle' onClick={onToggle}>
+        Toggle
+      </Button>
 
       <div className={styles.switchers}>
         <ThemeSwitcher />

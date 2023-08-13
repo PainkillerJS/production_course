@@ -24,7 +24,8 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['./tsconfig.json']
+    project: ['./tsconfig.json'],
+    tsconfigRootDir: __dirname
   },
   plugins: ['react', 'simple-import-sort', 'prettier'],
   ignorePatterns: ['*eslint*', '*prettier*'],
@@ -61,7 +62,7 @@ module.exports = {
       {
         groups: [
           // react
-          ['react'],
+          ['^react!'],
           // next
           ['^next'],
 
