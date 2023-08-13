@@ -2,27 +2,32 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    jest: true,
+    jest: true
   },
-  extends: ['standard-with-typescript', 'plugin:react/recommended', 'plugin:i18n-json/recommended'],
+  extends: [
+    'standard-with-typescript',
+    'plugin:react/recommended',
+    'plugin:i18n-json/recommended',
+    'prettier'
+  ],
   overrides: [
     {
       env: {
-        node: true,
+        node: true
       },
       files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
-        sourceType: 'script',
-      },
-    },
+        sourceType: 'script'
+      }
+    }
   ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['./tsconfig.json'],
+    project: ['./tsconfig.json']
   },
-  plugins: ['react'],
-  ignorePatterns: ['*eslint*'],
+  plugins: ['react', 'simple-import-sort', 'prettier'],
+  ignorePatterns: ['*eslint*', '*prettier*'],
   rules: {
     '@typescript-eslint/semi': 0,
     '@typescript-eslint/comma-dangle': 0,
@@ -35,5 +40,54 @@ module.exports = {
     '@typescript-eslint/return-await': 0,
     '@typescript-eslint/naming-convention': 0,
     '@typescript-eslint/space-before-function-paren': 0,
-  },
+    'import/prefer-default-export': 0,
+    'import/no-extraneous-dependencies': [0, { devDependencies: true }],
+    'import/order': 0,
+    'import/no-cycle': 0,
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        '': 'never',
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never'
+      }
+    ],
+    'simple-import-sort/exports': 1,
+    'simple-import-sort/imports': [
+      2,
+      {
+        groups: [
+          // react
+          ['react'],
+          // next
+          ['^next'],
+
+          // External packages.
+          ['^'],
+          // Internal packages.
+          ['^@'],
+
+          // FSD
+          ['^@/app'],
+          ['^@/pages'],
+          ['^@/widgets'],
+          ['^@/features'],
+          ['^@/entities'],
+          ['^@/shared'],
+
+          // Side effect imports.
+          ['^\\u0000'],
+          // Parent imports.
+          ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+          // Other relative imports.
+          ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+          // Style imports.
+          ['^.+\\.s?css$']
+        ]
+      }
+    ]
+  }
 };

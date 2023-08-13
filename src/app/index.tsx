@@ -1,17 +1,16 @@
-import { Suspense, type FC, useEffect } from 'react';
+import { type FC,Suspense } from 'react';
+
+import Navbar from '@/widgets/Navbar/ui/Navbar';
+import { Sidebar } from '@/widgets/Sidebar';
+
+import { useTheme } from '@/shared/ui/ThemeSwitcher';
 
 import { clsx } from '../shared/lib/helpers/classNames';
+
 import AppRouter from './providers/router/ui/AppRouter';
-import Navbar from '@/widgets/Navbar/ui/Navbar';
-import { useTheme } from '@/shared/ui/ThemeSwitcher';
-import { Sidebar } from '@/widgets/Sidebar';
 
 const App: FC = () => {
   const { theme } = useTheme();
-
-  useEffect(() => {
-    throw new Error();
-  });
 
   return (
     <div className={clsx('app', theme)}>

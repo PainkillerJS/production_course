@@ -1,9 +1,10 @@
-import { routePath } from '@/shared/config/routeConfig/routeConfig';
-import { clsx } from '@/shared/lib/helpers/classNames';
 import { type FC } from 'react';
 
-import style from './navbar.module.scss';
+import { routePath } from '@/shared/config/routeConfig/routeConfig';
+import { clsx } from '@/shared/lib/helpers/classNames';
 import AppLinks, { AppLinkTheme } from '@/shared/ui/AppLinks/AppLinks';
+
+import style from './navbar.module.scss';
 
 interface NavbarProps {
   className?: string;

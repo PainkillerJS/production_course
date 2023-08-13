@@ -1,7 +1,9 @@
-import { routeConfig } from '@/shared/config/routeConfig/routeConfig';
-import PageLoader from '@/widgets/PageLoader/PageLoader';
-import { Suspense, type FC } from 'react';
+import { type FC,Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+
+import PageLoader from '@/widgets/PageLoader/PageLoader';
+
+import { routeConfig } from '@/shared/config/routeConfig/routeConfig';
 
 const AppRouter: FC = () => {
   return (

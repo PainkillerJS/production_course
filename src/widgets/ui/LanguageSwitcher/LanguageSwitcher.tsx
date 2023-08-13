@@ -1,7 +1,7 @@
-import { clsx } from '@/shared/lib/helpers/classNames';
 import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { clsx } from '@/shared/lib/helpers/classNames';
 import Button from '@/shared/ui/Button/Button';
 
 interface LanguageSwitcherProps {

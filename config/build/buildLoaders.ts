@@ -1,5 +1,5 @@
-import { type RuleSetRule } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { type RuleSetRule } from 'webpack';
 
 import type { BuildOptionsType } from './types/config';
 

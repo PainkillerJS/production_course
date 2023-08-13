@@ -1,8 +1,8 @@
+import { type RouteProps } from 'react-router-dom';
+
 import { AboutPageAsync } from '@/pages/AboutPage';
 import { MainPageAsync } from '@/pages/MainPage';
 import { NotFountPage } from '@/pages/NotFoundPage';
-
-import { type RouteProps } from 'react-router-dom';
 
 export enum AppRoute {
   MAIN = 'main',

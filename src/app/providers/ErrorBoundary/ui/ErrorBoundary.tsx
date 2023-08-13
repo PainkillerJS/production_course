@@ -1,4 +1,4 @@
-import { Component, type PropsWithChildren, type ErrorInfo, type ReactNode, Suspense } from 'react';
+import { type ErrorInfo, type PropsWithChildren, type ReactNode, Component, Suspense } from 'react';
 
 interface ErrorBoundaryProps extends PropsWithChildren {
   fallback: JSX.Element;

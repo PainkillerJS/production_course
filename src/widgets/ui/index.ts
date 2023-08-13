@@ -1,2 +1,2 @@
-export * from './ThemeSwitcher/ThemeSwitcher';
 export * from './LanguageSwitcher/LanguageSwitcher';
+export * from './ThemeSwitcher/ThemeSwitcher';

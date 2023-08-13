@@ -1,5 +1,6 @@
+import { type FC, type PropsWithChildren,useState } from 'react';
+
 import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '@/shared/ui/ThemeSwitcher';
-import { useState, type FC, type PropsWithChildren } from 'react';
 
 const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
 

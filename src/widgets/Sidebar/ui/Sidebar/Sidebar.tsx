@@ -1,7 +1,10 @@
-import { clsx } from '@/shared/lib/helpers/classNames';
-import { useState, type FC } from 'react';
-import styles from './sidebar.module.scss';
+import { type FC,useState } from 'react';
+
 import { LanguageSwitcher, ThemeSwitcher } from '@/widgets/ui';
+
+import { clsx } from '@/shared/lib/helpers/classNames';
+
+import styles from './sidebar.module.scss';
 
 interface SidebarProps {
   className?: string;
