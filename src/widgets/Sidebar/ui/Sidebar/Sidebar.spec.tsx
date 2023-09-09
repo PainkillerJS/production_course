@@ -1,12 +1,12 @@
 import { fireEvent, screen } from '@testing-library/react';
 
-import { renderWithTranslation } from '@/shared/lib/renderWithTranslation/renderWithTranslation';
+import { renderWithLibs } from '@/shared/lib/renderWithLibs/renderWithLibs';
 
 import { Sidebar } from './Sidebar';
 
 describe('test sidebar', () => {
   beforeEach(() => {
-    renderWithTranslation(<Sidebar />);
+    renderWithLibs(<Sidebar />);
   });
 
   test('The sidebar renders', () => {

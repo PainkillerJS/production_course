@@ -3,7 +3,7 @@ import { type FC, Suspense } from 'react';
 import Navbar from '@/widgets/Navbar/ui/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 
-import { useTheme } from '@/shared/ui/ThemeSwitcher';
+import { useTheme } from '@/shared/config/theme';
 
 import { clsx } from '../shared/lib/classNames';
 

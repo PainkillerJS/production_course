@@ -1,4 +1,5 @@
 import { type FC } from 'react';
+
 import { useTranslation } from 'react-i18next';
 
 import { clsx } from '@/shared/lib/classNames';

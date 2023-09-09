@@ -1,6 +1,7 @@
 import { type FC, useState } from 'react';
 
-import { LanguageSwitcher, ThemeSwitcher } from '@/widgets/ui';
+import { LanguageSwitcher } from '@/features/LanguageSwitcher';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
 import { clsx } from '@/shared/lib/classNames';
 import Button from '@/shared/ui/Button/Button';

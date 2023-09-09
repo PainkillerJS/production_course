@@ -1,6 +1,6 @@
-import { type FC, type PropsWithChildren,useState } from 'react';
+import { type FC, type PropsWithChildren, useState } from 'react';
 
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '@/shared/ui/ThemeSwitcher';
+import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '@/shared/config/theme';
 
 const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
 
@@ -14,7 +14,11 @@ const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
     setTheme(newTheme);
   };
 
-  return <ThemeContext.Provider value={{ theme, setTheme: setThemeAction }}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme: setThemeAction }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
 export default ThemeProvider;

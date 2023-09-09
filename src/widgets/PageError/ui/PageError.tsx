@@ -13,7 +13,7 @@ const PageError: FC = () => {
   };
 
   return (
-    <div className={styles.pageError}>
+    <div data-testid='pageError' className={styles.pageError}>
       <p>{t('pageError')}</p>
       <Button onClick={onReloadPage}> {t('buttonReload')} </Button>
     </div>

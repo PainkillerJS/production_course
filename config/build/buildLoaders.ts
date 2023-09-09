@@ -1,29 +1,26 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { type RuleSetRule } from 'webpack';
 
+import { svgLoader } from '../common/webpack/webpackLoaders';
+
 import type { BuildOptionsType } from './types/config';
 
 export const buildLoaders = ({ isDev }: Pick<BuildOptionsType, 'isDev'>): RuleSetRule[] => {
   const typescriptLoader = {
     test: /\.tsx?$/,
     use: 'ts-loader',
-    exclude: /node_modules/,
+    exclude: /node_modules/
   };
 
   const finalStyleLoader = isDev ? 'style-loader' : MiniCssExtractPlugin.loader;
-
-  const svgLoader = {
-    test: /\.svg$/,
-    use: ['@svgr/webpack'],
-  };
 
   const fileLoader = {
     test: /\.(png|jpe?g|gif|woff|wp)$/i,
     use: [
       {
-        loader: 'file-loader',
-      },
-    ],
+        loader: 'file-loader'
+      }
+    ]
   };
 
   const babelLoader = {
@@ -32,9 +29,9 @@ export const buildLoaders = ({ isDev }: Pick<BuildOptionsType, 'isDev'>): RuleSe
     use: {
       loader: 'babel-loader',
       options: {
-        presets: ['@babel/preset-env'],
-      },
-    },
+        presets: ['@babel/preset-env']
+      }
+    }
   };
 
   const scssLoader = {
@@ -46,12 +43,12 @@ export const buildLoaders = ({ isDev }: Pick<BuildOptionsType, 'isDev'>): RuleSe
         options: {
           modules: {
             auto: (resPath: string) => resPath.includes('.module.'),
-            localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]',
-          },
-        },
+            localIdentName: isDev ? '[path][name]__[local]--[hash:base64:5]' : '[hash:base64:8]'
+          }
+        }
       },
-      'sass-loader',
-    ],
+      'sass-loader'
+    ]
   };
 
   return [svgLoader, fileLoader, babelLoader, typescriptLoader, scssLoader];
