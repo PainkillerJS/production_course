@@ -13,7 +13,7 @@ export const buildPlugins = ({
   html,
   isDev
 }: BuildPluginsParamsType): webpack.WebpackPluginInstance[] => {
-  return [
+  const plugins = [
     new HTMLWebpackPlugin({
       template: html
     }),
@@ -28,11 +28,18 @@ export const buildPlugins = ({
     new webpack.DefinePlugin({
       __IS_DEV__: isDev
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new ReactRefreshWebpackPlugin(),
-    new CleanWebpackPlugin(),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false
-    })
+    new CleanWebpackPlugin()
   ];
+
+  if (isDev) {
+    plugins.push(
+      new webpack.HotModuleReplacementPlugin(),
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false
+      })
+    );
+  }
+
+  return plugins;
 };
