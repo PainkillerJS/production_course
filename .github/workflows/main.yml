@@ -30,3 +30,9 @@ jobs:
 
       - name: unit test
         run: yarn test
+
+      - name: build storybook
+        run: yarn story:build
+
+      - name: ui test
+        run: yarn test:ui:ci

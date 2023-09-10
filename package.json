@@ -15,6 +15,7 @@
     "test": "jest --config ./config/jest/jest.config.ts",
     "test:ui": "yarn loki test",
     "test:ui:ok": "yarn loki approve",
+    "test:ui:ci": "yarn loki --requireReference --reactUri file:./storybook-static",
     "story": "storybook dev -p 6006 -c ./config/storybook",
     "story:build": "storybook build -c ./config/storybook"
   },
@@ -143,14 +144,14 @@
   "loki": {
     "configurations": {
       "chrome.laptop": {
-        "target": "chrome.app",
+        "target": "chrome.docker",
         "width": 1366,
         "height": 768,
         "deviceScaleFactor": 1,
         "mobile": false
       },
       "chrome.iphone7": {
-        "target": "chrome.app",
+        "target": "chrome.docker",
         "preset": "iPhone 7"
       }
     }
