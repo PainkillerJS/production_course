@@ -1,4 +1,4 @@
 {
-  "*.{tsx,ts}": ["yarn lint:fix", "yarn test"],
-  "*.{scss,css}": ["yarn stylelint:fix"]
+  "**/*.{tsx,ts}": ["yarn lint:fix"],
+  "**/*.{scss,css}": ["yarn stylelint:fix"]
 }
