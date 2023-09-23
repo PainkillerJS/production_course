@@ -5,7 +5,7 @@
   "author": "PainkillerJS",
   "main": "src/index.tsx",
   "scripts": {
-    "commit": "git-cz",
+    "prepare": "husky install .config/husky",
     "dev": "npx webpack serve --env port=3000",
     "build:dev": "npx webpack --env mode=development",
     "build:prod": "npx webpack --env mode=production",
@@ -16,27 +16,6 @@
     "test": "jest --config ./config/jest/jest.config.ts",
     "story": "storybook dev -p 6006 -c ./config/storybook",
     "story:build": "storybook build -c ./config/storybook"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged --relative",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,js,tsx,jsx}": [
-      "yarn lint:fix",
-      "git add"
-    ],
-    "*.{scss,css}": [
-      "yarn stylelint:fix",
-      "git add"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
@@ -82,7 +61,6 @@
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.8.1",
     "cypress": "^11.0.0",
-    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.0.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
