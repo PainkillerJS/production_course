@@ -1,6 +1,6 @@
 {
   "name": "course-production",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "PainkillerJS",
   "main": "src/index.tsx",
