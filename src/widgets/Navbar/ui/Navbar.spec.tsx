@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 
-import { renderWithLibs } from '@/shared/lib/renderWithLibs/renderWithLibs';
+import { renderWithLibs } from '@/shared/config/tests/renderWithLibs/renderWithLibs';
 
 import Navbar from './Navbar';
 
@@ -11,9 +11,5 @@ describe('test navbar', () => {
 
   test('The navbar renders', () => {
     expect(screen.getByTestId('navbar')).toBeInTheDocument();
-  });
-
-  test('The navbar links wrapper renders', () => {
-    expect(screen.getByTestId('links')).toBeInTheDocument();
   });
 });

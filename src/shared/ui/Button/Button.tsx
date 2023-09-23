@@ -6,30 +6,80 @@ import styles from './button.module.scss';
 
 export enum ThemeButton {
   CLEAR = 'clear',
-  OUTLINE = 'outline'
+  OUTLINE = 'outline',
+  BACKGROUND = 'background',
+  BACKGROUND_INVERTED = 'backgroundInverted'
+}
+
+export enum SizeFontButton {
+  M = 'size_font_m',
+  L = 'size_font_l',
+  XL = 'size_font_xl'
+}
+
+export enum SizeSquaredButton {
+  M = 'm',
+  L = 'l',
+  XL = 'xl'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * Кастомное имя стилей
+   * @description Кастомное имя стилей
    */
   className?: string;
   /**
-   * Тип кнопки
+   * @default ThemeButton.CLEAR
+   * @description Тип кнопки
    */
   variant?: ThemeButton;
+  /**
+   * @default false
+   * @description Тип кнопки
+   */
+  isSquare?: boolean;
+  /**
+   * @default SizeSquaredButton.M
+   * @description Размер кнопки в связке с isSquare
+   */
+  sizeSquared?: SizeSquaredButton;
+  /**
+   * @default SizeFontButton.M
+   * @description Размер шрифта кнопки
+   */
+  sizeFont?: SizeFontButton;
 }
 
-const Button: FC<ButtonProps> = ({ className, variant, children, ...props }) => {
+const Button: FC<ButtonProps> = ({
+  className,
+  variant,
+  children,
+  isSquare,
+  sizeSquared,
+  sizeFont,
+  ...props
+}) => {
+  const classNames: Array<Record<string, boolean | string>> = [
+    className,
+    styles[variant],
+    styles[sizeSquared],
+    styles[sizeFont],
+    styles.button,
+    { [styles.square]: isSquare }
+  ];
+
   return (
-    <button className={clsx(className, styles[variant], styles.button)} {...props}>
+    <button className={clsx(...classNames)} {...props}>
       {children}
     </button>
   );
 };
 
 Button.defaultProps = {
-  variant: ThemeButton.CLEAR
+  variant: ThemeButton.CLEAR,
+  sizeSquared: SizeSquaredButton.M,
+  isSquare: false,
+  sizeFont: SizeFontButton.M
 };
 
 export default Button;

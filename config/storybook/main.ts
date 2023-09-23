@@ -25,6 +25,9 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag'
   },
-  webpackFinal: webpackConfig
+  webpackFinal: webpackConfig,
+  features: {
+    storyStoreV7: false
+  }
 };
 export default config;

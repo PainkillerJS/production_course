@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 
-import { renderWithLibs } from '@/shared/lib/renderWithLibs/renderWithLibs';
+import { renderWithLibs } from '@/shared/config/tests/renderWithLibs/renderWithLibs';
 
 import Loader from '.';
 
