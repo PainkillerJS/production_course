@@ -5,6 +5,7 @@
   "author": "PainkillerJS",
   "main": "src/index.tsx",
   "scripts": {
+    "commit": "git-cz",
     "dev": "npx webpack serve --env port=3000",
     "build:dev": "npx webpack --env mode=development",
     "build:prod": "npx webpack --env mode=production",
@@ -16,6 +17,27 @@
     "story": "storybook dev -p 6006 -c ./config/storybook",
     "story:build": "storybook build -c ./config/storybook"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --relative",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js,tsx,jsx}": [
+      "yarn lint:fix",
+      "git add"
+    ],
+    "*.{scss,css}": [
+      "yarn stylelint:fix",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.22.9",
     "@babel/plugin-transform-runtime": "^7.18.10",
@@ -23,6 +45,8 @@
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.22.5",
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@storybook/addon-essentials": "7.2.3",
     "@storybook/addon-interactions": "7.2.3",
@@ -58,6 +82,7 @@
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.8.1",
     "cypress": "^11.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.0.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -84,12 +109,11 @@
     "jest-environment-jsdom": "^29.6.2",
     "jest-html-reporters": "^3.0.10",
     "json-server": "^0.17.0",
-    "lint-staged": "^13.0.3",
+    "lint-staged": "^14.0.1",
     "mini-css-extract-plugin": "^2.7.6",
     "module-alias": "^2.2.3",
     "prettier": "2.7.1",
     "react-refresh": "^0.14.0",
-    "reg-cli": "^0.17.6",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.65.1",
     "sass-loader": "^13.3.2",
