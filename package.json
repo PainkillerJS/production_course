@@ -5,7 +5,7 @@
   "author": "PainkillerJS",
   "main": "src/index.tsx",
   "scripts": {
-    "prepare": "husky install .config/husky",
+    "prepare": "husky install",
     "dev": "npx webpack serve --env port=3000",
     "build:dev": "npx webpack --env mode=development",
     "build:prod": "npx webpack --env mode=production",
