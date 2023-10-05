@@ -24,12 +24,12 @@ interface RouteType {
 export const routePath: Record<AppRoute, RouteType> = {
   [AppRoute.MAIN]: {
     path: '/',
-    name: 'Главная',
+    name: 'main',
     Icon: MainIcon
   },
   [AppRoute.ABOUT]: {
     path: '/about',
-    name: 'О нас',
+    name: 'about',
     Icon: AboutIcon
   },
   [AppRoute.NOT_FOUND]: {

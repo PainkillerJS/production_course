@@ -1,4 +1,7 @@
 {
   "lang": "English",
-  "short name": "En"
+  "short name": "En",
+  "login": "Login",
+  "main": "Main",
+  "about": "About"
 }

@@ -4,8 +4,12 @@ import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '@/shared/config/th
 
 const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
 
-const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
+interface ThemeProviderProps extends PropsWithChildren {
+  initialTheme?: Theme;
+}
+
+const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
+  const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);
 
   const setThemeAction = (): void => {
     const newTheme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;

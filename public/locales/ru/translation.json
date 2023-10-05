@@ -1,4 +1,7 @@
 {
   "lang": "Русский",
-  "short name": "Ru"
+  "short name": "Ru",
+  "login": "Войти",
+  "main": "Главная",
+  "about": "О нас"
 }

@@ -1,5 +1,7 @@
 import { type FC, useState } from 'react';
 
+import { useTranslation } from 'react-i18next';
+
 import { LanguageSwitcher } from '@/features/LanguageSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
@@ -16,6 +18,7 @@ interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
+  const { t } = useTranslation();
   const [isCollapsed, setCollapsed] = useState(false);
 
   const navBarSettings = Object.values(routePath).filter(({ path }) => path !== '*');
@@ -59,7 +62,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
                   </div>
                 )}
 
-                <span className={styles.link}>{name}</span>
+                <span className={styles.link}>{t(name)}</span>
               </AppLinks>
             );
           })}
