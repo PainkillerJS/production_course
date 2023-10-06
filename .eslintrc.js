@@ -43,6 +43,7 @@ module.exports = {
     '@typescript-eslint/naming-convention': 0,
     '@typescript-eslint/space-before-function-paren': 0,
     '@typescript-eslint/consistent-type-assertions': 0,
+    '@typescript-eslint/ban-ts-comment': 0,
     'import/prefer-default-export': 0,
     'import/no-extraneous-dependencies': [0, { devDependencies: true }],
     'import/order': 0,

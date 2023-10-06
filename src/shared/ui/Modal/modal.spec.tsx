@@ -1,6 +1,6 @@
 import { fireEvent, screen } from '@testing-library/react';
 
-import { renderWithLibs } from '@/shared/config/tests/renderWithLibs/renderWithLibs';
+import { componentRender } from '@/shared/config/tests/componentRender/ComponentRender';
 
 import { Modal } from '.';
 
@@ -8,7 +8,7 @@ describe('testing Modal component', () => {
   const testingText = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi, deserunt!';
 
   test('Modal open', () => {
-    renderWithLibs(<Modal isOpen>{testingText}</Modal>);
+    componentRender(<Modal isOpen>{testingText}</Modal>);
 
     expect(screen.getByTestId('modal')).toHaveClass('opened');
   });
@@ -16,7 +16,7 @@ describe('testing Modal component', () => {
   test('Modal`s state is change after fn of close', () => {
     const handleClose = jest.fn();
 
-    const { getByTestId } = renderWithLibs(
+    const { getByTestId } = componentRender(
       <Modal isOpen onClose={handleClose}>
         {testingText}
       </Modal>

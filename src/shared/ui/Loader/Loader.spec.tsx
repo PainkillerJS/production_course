@@ -1,12 +1,12 @@
 import { screen } from '@testing-library/react';
 
-import { renderWithLibs } from '@/shared/config/tests/renderWithLibs/renderWithLibs';
+import { componentRender } from '@/shared/config/tests/componentRender/ComponentRender';
 
 import Loader from '.';
 
 describe('test Loader', () => {
   beforeEach(() => {
-    renderWithLibs(<Loader />);
+    componentRender(<Loader />);
   });
 
   test('The Loader renders', () => {

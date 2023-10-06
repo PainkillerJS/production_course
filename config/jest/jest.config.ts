@@ -24,6 +24,9 @@ const config: Config = {
     '@/features/(.*)': '<rootDir>/src/features/$1',
     '@/entities/(.*)': '<rootDir>/src/entities/$1',
     '@/shared/(.*)': '<rootDir>/src/shared/$1'
+  },
+  globals: {
+    __IS_DEV__: true
   }
 };
 

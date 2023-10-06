@@ -1,13 +1,13 @@
 import { fireEvent, screen } from '@testing-library/react';
 
 import { routePath } from '@/shared/config/routeConfig/routeConfig';
-import { renderWithLibs } from '@/shared/config/tests/renderWithLibs/renderWithLibs';
+import { componentRender } from '@/shared/config/tests/componentRender/ComponentRender';
 
 import { Sidebar } from './Sidebar';
 
 describe('test sidebar', () => {
   beforeEach(() => {
-    renderWithLibs(<Sidebar />);
+    componentRender(<Sidebar />);
   });
 
   test('The sidebar renders', () => {

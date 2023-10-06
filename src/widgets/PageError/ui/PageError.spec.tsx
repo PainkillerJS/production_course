@@ -1,12 +1,12 @@
 import { screen } from '@testing-library/react';
 
-import { renderWithLibs } from '@/shared/config/tests/renderWithLibs/renderWithLibs';
+import { componentRender } from '@/shared/config/tests/componentRender/ComponentRender';
 
 import PageError from './PageError';
 
 describe('test PageError', () => {
   beforeEach(() => {
-    renderWithLibs(<PageError />);
+    componentRender(<PageError />);
   });
 
   test('The PageError renders', () => {

@@ -1,12 +1,12 @@
 import { screen } from '@testing-library/react';
 
-import { renderWithLibs } from '@/shared/config/tests/renderWithLibs/renderWithLibs';
+import { componentRender } from '@/shared/config/tests/componentRender/ComponentRender';
 
 import AppLinks from './AppLinks';
 
 describe('test AppLinks', () => {
   beforeEach(() => {
-    renderWithLibs(<AppLinks to='' />);
+    componentRender(<AppLinks to='' />);
   });
 
   test('The AppLinks renders', () => {

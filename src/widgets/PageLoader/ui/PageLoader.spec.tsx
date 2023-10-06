@@ -1,12 +1,12 @@
 import { screen } from '@testing-library/react';
 
-import { renderWithLibs } from '@/shared/config/tests/renderWithLibs/renderWithLibs';
+import { componentRender } from '@/shared/config/tests/componentRender/ComponentRender';
 
 import PageLoader from './PageLoader';
 
 describe('test PageLoader', () => {
   beforeEach(() => {
-    renderWithLibs(<PageLoader />);
+    componentRender(<PageLoader />);
   });
 
   test('The PageLoader renders', () => {

@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from '@/app';
 import { ErrorBoundary } from '@/app/providers/ErrorBoundary';
+import { StoreProvider } from '@/app/providers/StoreProvider';
 import { ThemeProvider } from '@/app/providers/ThemeProvider';
 
 import PageError from '@/widgets/PageError/ui/PageError';
@@ -16,9 +17,11 @@ const root = createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <ErrorBoundary fallback={<PageError />}>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
+      <StoreProvider>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </StoreProvider>
     </ErrorBoundary>
   </BrowserRouter>
 );
