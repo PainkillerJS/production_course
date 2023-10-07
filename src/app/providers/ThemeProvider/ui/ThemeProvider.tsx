@@ -1,4 +1,4 @@
-import { type FC, type PropsWithChildren, useState } from 'react';
+import { type FC, type PropsWithChildren, useEffect, useState } from 'react';
 
 import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '@/shared/config/theme';
 
@@ -17,6 +17,10 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
     setTheme(newTheme);
   };
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme: setThemeAction }}>

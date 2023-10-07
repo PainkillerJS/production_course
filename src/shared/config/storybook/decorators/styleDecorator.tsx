@@ -1,6 +1,6 @@
-import { type Decorator } from '@storybook/react';
+import { useEffect } from 'react';
 
-import { ThemeProvider } from '@/app/providers/ThemeProvider';
+import { type Decorator } from '@storybook/react';
 
 import { Theme } from '../../theme';
 
@@ -9,11 +9,9 @@ import '../../../../app/styles/index.scss';
 export const StyleDecorator: Decorator = (Story, context) => {
   const theme = context.globals.theme || Theme.LIGHT;
 
-  return (
-    <ThemeProvider initialTheme={theme}>
-      <div className={theme}>
-        <Story />
-      </div>
-    </ThemeProvider>
-  );
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
+  return <Story />;
 };
