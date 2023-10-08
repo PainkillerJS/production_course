@@ -30,4 +30,18 @@ describe('testing Modal component', () => {
 
     expect(getByTestId('modal')).toHaveClass('closing');
   });
+
+  test('Modal`s lazy loading', () => {
+    const { rerender, queryByTestId } = componentRender(<Modal isLazyLoading>{testingText}</Modal>);
+
+    expect(queryByTestId('modal')).not.toBeInTheDocument();
+
+    rerender(
+      <Modal isLazyLoading isOpen>
+        {testingText}
+      </Modal>
+    );
+
+    expect(queryByTestId('modal')).toBeInTheDocument();
+  });
 });

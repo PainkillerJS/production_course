@@ -17,25 +17,37 @@ const ANNIMATION_DELAY = 300;
 
 interface ModalProps {
   /**
-   *  Кастомное имя класса
+   * @description Кастомное имя класса
    */
   className?: string;
   /**
-   * Контент внутри компонента
+   * @description Контент внутри компонента
    */
   children?: ReactNode;
   /**
-   * Флаг на открытие модального окна
+   * @description Флаг на открытие модального окна
    */
   isOpen?: boolean;
   /**
-   * Функция на закрытие модального окна
+   * @description Функция на закрытие модального окна
    */
   onClose?: () => void;
+  /**
+   * @description Ленивая загрузка модалки
+   */
+  isLazyLoading?: boolean;
 }
 
-export const Modal = ({ className, children, isOpen, onClose }: ModalProps): JSX.Element => {
+export const Modal = ({
+  className,
+  children,
+  isOpen,
+  onClose,
+  isLazyLoading
+}: ModalProps): JSX.Element => {
   const [isClosing, setIsClosing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
   const timerRef = useRef<NodeJS.Timeout>();
 
   const handleClose = useCallback((): void => {
@@ -77,6 +89,16 @@ export const Modal = ({ className, children, isOpen, onClose }: ModalProps): JSX
       window.removeEventListener('keydown', onKeyDown);
     };
   }, [onKeyDown, isOpen]);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
+    }
+  }, [isOpen]);
+
+  if (isLazyLoading && !isMounted) {
+    return null;
+  }
 
   return (
     <Portal>

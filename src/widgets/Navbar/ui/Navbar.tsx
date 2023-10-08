@@ -2,9 +2,10 @@ import { type FC, useCallback, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
+import { LoginModal } from '@/features/AuthByUsername';
+
 import { clsx } from '@/shared/lib/classNames';
 import Button, { ThemeButton } from '@/shared/ui/Button/Button';
-import { Modal } from '@/shared/ui/Modal';
 
 import style from './navbar.module.scss';
 
@@ -17,25 +18,25 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
 
   const [isAuthModal, setIsAuthModal] = useState(false);
 
-  const onToggleModal = useCallback(() => {
-    setIsAuthModal((prev) => !prev);
+  const onCloseModal = useCallback(() => {
+    setIsAuthModal(false);
+  }, []);
+
+  const onOpenModal = useCallback(() => {
+    setIsAuthModal(true);
   }, []);
 
   return (
     <nav data-testid='navbar' className={clsx(style.navbar, className)}>
       <Button
         variant={ThemeButton.CLEAR_INVERTED}
-        onClick={onToggleModal}
+        onClick={onOpenModal}
         className={clsx(style.login)}
       >
         {t('login')}
       </Button>
 
-      <Modal isOpen={isAuthModal} onClose={onToggleModal}>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non est libero possimus eius quod
-        illum, ipsa perspiciatis dolore laudantium atque expedita vel ratione? Impedit expedita,
-        excepturi accusantium modi cum voluptatibus.
-      </Modal>
+      <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
     </nav>
   );
 };
