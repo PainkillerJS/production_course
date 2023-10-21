@@ -37,11 +37,7 @@ const preview: Preview = {
       }
     }
   },
-  decorators: [
-    StyleDecorator,
-    RouteDecorator,
-    StoreDecorator({ login: { username: 'test', password: '123' } })
-  ]
+  decorators: [StyleDecorator, RouteDecorator, StoreDecorator()]
 };
 
 export default preview;
