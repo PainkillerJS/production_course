@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 
 import { componentRender } from '@/shared/config/tests/componentRender/ComponentRender';
 
@@ -55,5 +55,23 @@ describe('Testing Button', () => {
     );
 
     expect(screen.getByText('TEST')).toHaveClass(`square ${SizeSquaredButton.L}`);
+  });
+
+  test('The button is disabled"', () => {
+    const { rerender } = componentRender(<Button>TEST</Button>);
+
+    expect(screen.getByText('TEST')).not.toHaveClass('disabled');
+
+    const onClickTest = jest.fn();
+
+    rerender(
+      <Button onClick={onClickTest} disabled>
+        TEST
+      </Button>
+    );
+
+    fireEvent.click(screen.getByText('TEST'));
+
+    expect(onClickTest).toHaveBeenCalledTimes(0);
   });
 });

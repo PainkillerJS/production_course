@@ -1,44 +1,22 @@
-import { type FC, useCallback, useState } from 'react';
+import { type FC } from 'react';
 
-import { useTranslation } from 'react-i18next';
+import { getUserAuth } from '@/entities/User';
 
-import { LoginModal } from '@/features/AuthByUsername';
+import { useAppSelector } from '@/shared/providers/StoreProvider';
 
-import { clsx } from '@/shared/lib/classNames';
-import Button, { ThemeButton } from '@/shared/ui/Button/Button';
+import { AuthNavbar } from './AuthNavbar';
+import { NoAuthNavbar } from './NoAuthNavbar';
 
-import style from './navbar.module.scss';
-
-interface NavbarProps {
+export interface NavbarProps {
   className?: string;
 }
 
 const Navbar: FC<NavbarProps> = ({ className }) => {
-  const { t } = useTranslation();
+  const authData = useAppSelector(getUserAuth);
 
-  const [isAuthModal, setIsAuthModal] = useState(false);
+  const NavbarComponent = Object.keys(authData).length ? AuthNavbar : NoAuthNavbar;
 
-  const onCloseModal = useCallback(() => {
-    setIsAuthModal(false);
-  }, []);
-
-  const onOpenModal = useCallback(() => {
-    setIsAuthModal(true);
-  }, []);
-
-  return (
-    <nav data-testid='navbar' className={clsx(style.navbar, className)}>
-      <Button
-        variant={ThemeButton.CLEAR_INVERTED}
-        onClick={onOpenModal}
-        className={clsx(style.login)}
-      >
-        {t('login')}
-      </Button>
-
-      <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
-    </nav>
-  );
+  return <NavbarComponent className={className} />;
 };
 
 export default Navbar;

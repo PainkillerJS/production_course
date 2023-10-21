@@ -1,13 +1,21 @@
-import { type FC, Suspense } from 'react';
+import { type FC, Suspense, useEffect } from 'react';
 
 import Navbar from '@/widgets/Navbar/ui/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 
-import { clsx } from '@/shared/lib/classNames';
+import { userActions } from '@/entities/User';
 
-import AppRouter from './providers/router/ui/AppRouter';
+import { clsx } from '@/shared/lib/classNames';
+import AppRouter from '@/shared/providers/router/ui/AppRouter';
+import { useAppDispatch } from '@/shared/providers/StoreProvider';
 
 const App: FC = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(userActions.initAuthData());
+  }, [dispatch]);
+
   return (
     <div className={clsx('app')}>
       <Suspense fallback=''>

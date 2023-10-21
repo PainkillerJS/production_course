@@ -3,8 +3,8 @@ import { MemoryRouter } from 'react-router-dom';
 import { type DeepPartial } from '@reduxjs/toolkit';
 import { type RenderResult, render } from '@testing-library/react';
 
-import { StoreProvider } from '@/app/providers/StoreProvider';
-import { type StateSchema } from '@/app/providers/StoreProvider/config/stateSchema';
+import { StoreProvider } from '@/shared/providers/StoreProvider';
+import { type StateSchema } from '@/shared/providers/StoreProvider/config/stateSchema';
 
 import i18nForTest from '../../i18n/i18nForTest';
 

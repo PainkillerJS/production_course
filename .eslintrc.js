@@ -37,6 +37,7 @@ module.exports = {
     'react/react-in-jsx-scope': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
+    'react/display-name': 0,
     '@typescript-eslint/member-delimiter-style': 0,
     '@typescript-eslint/no-floating-promises': 0,
     '@typescript-eslint/return-await': 0,

@@ -1,4 +1,4 @@
-import { type Configuration, type RuleSetRule } from 'webpack';
+import { type Configuration, type RuleSetRule, DefinePlugin } from 'webpack';
 
 import { webpackAlias } from '../common/webpack/webpackAlias';
 import { svgLoader } from '../common/webpack/webpackLoaders';
@@ -19,6 +19,12 @@ export const webpackConfig = async (config: Configuration): Promise<Configuratio
     ...config.resolve.alias,
     ...webpackAlias
   };
+
+  config.plugins.push(
+    new DefinePlugin({
+      __IS_DEV__: true
+    })
+  );
 
   return config;
 };

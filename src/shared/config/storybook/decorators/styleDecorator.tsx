@@ -13,5 +13,9 @@ export const StyleDecorator: Decorator = (Story, context) => {
     document.body.className = theme;
   }, [theme]);
 
-  return <Story />;
+  return (
+    <div style={{ padding: '30px' }}>
+      <Story />
+    </div>
+  );
 };

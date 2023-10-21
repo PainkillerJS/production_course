@@ -3,5 +3,6 @@
   "short name": "Ru",
   "login": "Войти",
   "main": "Главная",
-  "about": "О нас"
+  "about": "О нас",
+  "logout": "Выйти"
 }

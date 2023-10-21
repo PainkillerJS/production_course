@@ -35,6 +35,10 @@ export default {
       description: 'Размеры кнопки (для работы поле isSquare должно быть true)',
       options: SizeSquaredButton,
       defaultValue: SizeSquaredButton.M
+    },
+    disabled: {
+      control: 'boolean',
+      defaultValue: false
     }
   }
 } as Meta<typeof Button>;

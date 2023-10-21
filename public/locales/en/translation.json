@@ -3,5 +3,6 @@
   "short name": "En",
   "login": "Login",
   "main": "Main",
-  "about": "About"
+  "about": "About",
+  "logout": "Logout"
 }

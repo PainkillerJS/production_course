@@ -1,8 +1,18 @@
+import { memo, useCallback } from 'react';
+
 import { useTranslation } from 'react-i18next';
+
+import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
 
 import { clsx } from '@/shared/lib/classNames';
 import Button, { ThemeButton } from '@/shared/ui/Button/Button';
+import { Heading } from '@/shared/ui/Heading';
 import { Input } from '@/shared/ui/Input';
+import { Text, TextTheme } from '@/shared/ui/Typography';
+
+import { getLoginState } from '../../model/selectors';
+import { loginByUsername } from '../../model/services/loginByUsername';
+import { loginAction } from '../../model/slice';
 
 import styles from './loginForm.module.scss';
 
@@ -10,16 +20,64 @@ interface LoginFormProps {
   className?: string;
 }
 
-export const LoginForm = ({ className }: LoginFormProps) => {
+export const LoginForm = memo(({ className }: LoginFormProps) => {
   const { t } = useTranslation('login');
+  const dispatch = useAppDispatch();
+  const { password, username, error, isLoading } = useAppSelector(getLoginState);
+
+  const onChangeUsername = useCallback(
+    (value: string) => {
+      dispatch(loginAction.setUsername(value));
+    },
+    [dispatch]
+  );
+
+  const onChangePassword = useCallback(
+    (value: string) => {
+      dispatch(loginAction.setPassword(value));
+    },
+    [dispatch]
+  );
+
+  const onLoginClick = useCallback(() => {
+    dispatch(
+      loginByUsername({
+        password,
+        username
+      })
+    );
+  }, [dispatch, password, username]);
 
   return (
     <div className={clsx(styles.loginForm, className)}>
-      <Input placeholder={t('username')} className={styles.input} autoFocus />
-      <Input placeholder={t('password')} className={styles.input} />
-      <Button className={styles.btn} variant={ThemeButton.OUTLINE}>
+      <Heading className={styles.title}>{t('title')}</Heading>
+
+      <Input
+        placeholder={t('username')}
+        className={styles.input}
+        onChange={onChangeUsername}
+        value={username}
+        autoFocus
+      />
+      <Input
+        placeholder={t('password')}
+        className={styles.input}
+        onChange={onChangePassword}
+        value={password}
+      />
+
+      {error && <Text variant={TextTheme.ERROR}>{error}</Text>}
+
+      <Button
+        className={styles.btn}
+        variant={ThemeButton.OUTLINE}
+        onClick={onLoginClick}
+        disabled={isLoading}
+      >
         {t('login')}
       </Button>
     </div>
   );
-};
+});
+
+LoginForm.displayName = 'loginForm';

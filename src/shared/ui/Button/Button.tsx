@@ -49,6 +49,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    * @description Размер шрифта кнопки
    */
   sizeFont?: SizeFontButton;
+  /**
+   * @description Флаг для блокировки кнопки
+   */
+  disabled?: boolean;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -58,6 +62,7 @@ const Button: FC<ButtonProps> = ({
   isSquare,
   sizeSquared,
   sizeFont,
+  disabled,
   ...props
 }) => {
   const classNames: Array<Record<string, boolean | string>> = [
@@ -66,11 +71,11 @@ const Button: FC<ButtonProps> = ({
     styles[sizeSquared],
     styles[sizeFont],
     styles.button,
-    { [styles.square]: isSquare }
+    { [styles.square]: isSquare, [styles.disabled]: disabled }
   ];
 
   return (
-    <button className={clsx(...classNames)} {...props}>
+    <button className={clsx(...classNames)} disabled={disabled} {...props}>
       {children}
     </button>
   );

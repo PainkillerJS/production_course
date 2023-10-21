@@ -1,5 +1,6 @@
 {
   "login": "Login",
   "username": "Username",
-  "password": "Password"
+  "password": "Password",
+  "title": "Form for auth"
 }
