@@ -2,11 +2,12 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from '@/app';
+
+import PageError from '@/widgets/PageError/ui/PageError';
+
 import { ErrorBoundary } from '@/shared/providers/ErrorBoundary';
 import { StoreProvider } from '@/shared/providers/StoreProvider';
 import { ThemeProvider } from '@/shared/providers/ThemeProvider';
-
-import PageError from '@/widgets/PageError/ui/PageError';
 
 import '@/shared/config/i18n/i18n';
 

@@ -2,9 +2,8 @@ import { memo, useCallback } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
-
 import { clsx } from '@/shared/lib/classNames';
+import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
 import Button, { ThemeButton } from '@/shared/ui/Button/Button';
 import { Heading } from '@/shared/ui/Heading';
 import { Input } from '@/shared/ui/Input';
