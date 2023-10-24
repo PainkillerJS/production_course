@@ -1,38 +1,75 @@
 import axios from 'axios';
-import { configureStore } from '@reduxjs/toolkit';
 
+// import { type Dispatch } from '@reduxjs/toolkit';
+import { userActions } from '@/entities/User';
+
+import { TestAsyncThunk } from '@/shared/config/tests/testAsyncThunk';
+
+// import { type StateSchema } from '@/shared/providers/StoreProvider/config/stateSchema';
 import { loginByUsername } from '.';
 
+jest.mock('axios');
+
+const mockedAxios = jest.mocked(axios);
+
 describe('test asyncThunk - loginByUsername', () => {
-  test('get data', async () => {
-    const returnData = {
-      id: 1,
-      username: 'admin',
-      password: '123'
-    };
+  // let dispatch: Dispatch;
+  // let getState: () => StateSchema;
 
-    const data = {
-      username: 'admin',
-      password: '123'
-    };
+  // beforeEach(() => {
+  //   dispatch = jest.fn();
+  //   getState = jest.fn();
+  // });
 
-    const postSpy = jest.spyOn(axios, 'post').mockResolvedValueOnce({ data: returnData });
+  // test('get user data', async () => {
+  //   const userValue = { username: '123', id: '1' };
 
-    const store = configureStore({
-      reducer: function (state = '', action) {
-        switch (action.type) {
-          case 'login/loginByUsername/fulfilled':
-            return action.payload;
-          default:
-            return state;
-        }
-      }
-    });
+  //   mockedAxios.post.mockReturnValue(Promise.resolve({ data: userValue }));
 
-    await store.dispatch(loginByUsername(data));
+  //   const action = loginByUsername({ username: '123', password: '123' });
+  //   const result = await action(dispatch, getState, undefined);
 
-    expect(postSpy).toBeCalledWith('http://localhost:8000/login', data);
+  //   expect(dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue));
+  //   expect(mockedAxios.post).toHaveBeenCalled();
+  //   expect(dispatch).toHaveBeenCalledTimes(3);
+  //   expect(result.meta.requestStatus).toBe('fulfilled');
+  //   expect(result.payload).toEqual(userValue);
+  // });
 
-    expect(store.getState()).toEqual({ id: 1, password: '123', username: 'admin' });
+  // test('rejected thunk', async () => {
+  //   mockedAxios.post.mockReturnValue(Promise.resolve({ status: 403 }));
+
+  //   const action = loginByUsername({ username: '123', password: '123' });
+  //   const result = await action(dispatch, getState, undefined);
+
+  //   expect(mockedAxios.post).toHaveBeenCalled();
+  //   expect(dispatch).toHaveBeenCalledTimes(2);
+  //   expect(result.meta.requestStatus).toBe('rejected');
+  // });
+
+  test('get user data', async () => {
+    const userValue = { username: '123', id: '1' };
+
+    mockedAxios.post.mockReturnValue(Promise.resolve({ data: userValue }));
+
+    const thunk = new TestAsyncThunk(loginByUsername);
+    const result = await thunk.callThunk({ username: '123', password: '123' });
+
+    expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue));
+    expect(mockedAxios.post).toHaveBeenCalled();
+    expect(thunk.dispatch).toHaveBeenCalledTimes(3);
+    expect(result.meta.requestStatus).toBe('fulfilled');
+    expect(result.payload).toEqual(userValue);
+  });
+
+  test('rejected thunk', async () => {
+    mockedAxios.post.mockReturnValue(Promise.resolve({ status: 403 }));
+
+    const thunk = new TestAsyncThunk(loginByUsername);
+    const result = await thunk.callThunk({ username: '123', password: '123' });
+
+    expect(mockedAxios.post).toHaveBeenCalled();
+    expect(thunk.dispatch).toHaveBeenCalledTimes(2);
+    expect(result.meta.requestStatus).toBe('rejected');
   });
 });
