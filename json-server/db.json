@@ -25,5 +25,14 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "name": "Yuriy",
+    "surname": "Yuriy",
+    "age": 22,
+    "currency": "RUB",
+    "country": "RUSSIA",
+    "city": "Moscow",
+    "username": "admin",
+    "avatar": "https://cdn-icons-png.flaticon.com/512/4333/4333609.png"
+  }
 }

@@ -16,10 +16,11 @@ import { loginAction } from '../../model/slice';
 import styles from './loginForm.module.scss';
 
 interface LoginFormProps {
+  onSuccess?: () => void;
   className?: string;
 }
 
-export const LoginForm = memo(({ className }: LoginFormProps) => {
+export const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
   const { t } = useTranslation('login');
   const dispatch = useAppDispatch();
   const { password, username, error, isLoading } = useAppSelector(getLoginState);
@@ -38,14 +39,18 @@ export const LoginForm = memo(({ className }: LoginFormProps) => {
     [dispatch]
   );
 
-  const onLoginClick = useCallback(() => {
-    dispatch(
+  const onLoginClick = useCallback(async () => {
+    const result = await dispatch(
       loginByUsername({
         password,
         username
       })
     );
-  }, [dispatch, password, username]);
+
+    if (result.meta.requestStatus === 'rejected') {
+      onSuccess?.();
+    }
+  }, [dispatch, onSuccess, password, username]);
 
   return (
     <div className={clsx(styles.loginForm, className)}>

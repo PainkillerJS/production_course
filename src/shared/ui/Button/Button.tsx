@@ -1,4 +1,4 @@
-import { type ButtonHTMLAttributes, type FC } from 'react';
+import { type ButtonHTMLAttributes, memo } from 'react';
 
 import { clsx } from '@/shared/lib/classNames';
 
@@ -55,37 +55,32 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
 }
 
-const Button: FC<ButtonProps> = ({
-  className,
-  variant,
-  children,
-  isSquare,
-  sizeSquared,
-  sizeFont,
-  disabled,
-  ...props
-}) => {
-  const classNames: Array<Record<string, boolean | string>> = [
+const Button = memo(
+  ({
     className,
-    styles[variant],
-    styles[sizeSquared],
-    styles[sizeFont],
-    styles.button,
-    { [styles.square]: isSquare, [styles.disabled]: disabled }
-  ];
+    variant = ThemeButton.CLEAR,
+    children,
+    isSquare,
+    sizeSquared = SizeSquaredButton.M,
+    sizeFont = SizeFontButton.M,
+    disabled,
+    ...props
+  }: ButtonProps) => {
+    const classNames: Array<Record<string, boolean | string>> = [
+      className,
+      styles[variant],
+      styles[sizeSquared],
+      styles[sizeFont],
+      styles.button,
+      { [styles.square]: isSquare, [styles.disabled]: disabled }
+    ];
 
-  return (
-    <button className={clsx(...classNames)} disabled={disabled} {...props}>
-      {children}
-    </button>
-  );
-};
-
-Button.defaultProps = {
-  variant: ThemeButton.CLEAR,
-  sizeSquared: SizeSquaredButton.M,
-  isSquare: false,
-  sizeFont: SizeFontButton.M
-};
+    return (
+      <button className={clsx(...classNames)} disabled={disabled} {...props}>
+        {children}
+      </button>
+    );
+  }
+);
 
 export default Button;

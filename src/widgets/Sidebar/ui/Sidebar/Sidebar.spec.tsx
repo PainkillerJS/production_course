@@ -1,6 +1,6 @@
 import { fireEvent, screen } from '@testing-library/react';
 
-import { routePath } from '@/shared/config/routeConfig/routeConfig';
+import { routePathNavigation } from '@/shared/config/routeConfig/routeConfig';
 import { componentRender } from '@/shared/config/tests/componentRender/ComponentRender';
 
 import { Sidebar } from './Sidebar';
@@ -27,8 +27,6 @@ describe('test sidebar', () => {
   });
 
   test('The sidebar link items renders', () => {
-    const navBarSettings = Object.values(routePath).filter(({ path }) => path !== '*');
-
-    expect(screen.getAllByTestId('link').length).toBe(navBarSettings.length);
+    expect(screen.getAllByTestId('link').length).toBe(Object.keys(routePathNavigation).length);
   });
 });

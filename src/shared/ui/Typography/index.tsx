@@ -1,4 +1,4 @@
-import { type HTMLAttributes, type ReactNode } from 'react';
+import { type HTMLAttributes, type ReactNode, memo } from 'react';
 
 import { clsx } from '@/shared/lib/classNames';
 
@@ -25,10 +25,12 @@ interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
   variant?: TextTheme;
 }
 
-export const Text = ({ className, children, variant = TextTheme.PRIMARY, ...props }: TextProps) => {
-  return (
-    <p className={clsx(className, styles.text, styles[variant])} {...props}>
-      {children}
-    </p>
-  );
-};
+export const Text = memo(
+  ({ className, children, variant = TextTheme.PRIMARY, ...props }: TextProps) => {
+    return (
+      <p className={clsx(className, styles.text, styles[variant])} {...props}>
+        {children}
+      </p>
+    );
+  }
+);

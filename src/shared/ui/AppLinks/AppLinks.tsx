@@ -1,4 +1,4 @@
-import { type FC, type PropsWithChildren } from 'react';
+import { type PropsWithChildren, memo } from 'react';
 
 import { type LinkProps, Link } from 'react-router-dom';
 
@@ -16,16 +16,14 @@ interface AppLinksProps extends PropsWithChildren, LinkProps {
   variants?: AppLinkVariants;
 }
 
-const AppLinks: FC<AppLinksProps> = ({ className, children, variants, ...otherProps }) => {
-  return (
-    <Link data-testid='appLinks' className={clsx(className, style[variants])} {...otherProps}>
-      {children}
-    </Link>
-  );
-};
-
-AppLinks.defaultProps = {
-  variants: AppLinkVariants.PRIMARY
-};
+const AppLinks = memo(
+  ({ className, children, variants = AppLinkVariants.PRIMARY, ...otherProps }: AppLinksProps) => {
+    return (
+      <Link data-testid='appLinks' className={clsx(className, style[variants])} {...otherProps}>
+        {children}
+      </Link>
+    );
+  }
+);
 
 export default AppLinks;

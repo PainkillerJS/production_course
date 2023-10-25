@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { loginReducer } from '@/features/AuthByUsername/model/slice';
 
+import { profileReducer } from '@/entities/Profile';
 import { userReducer } from '@/entities/User';
 
 import { type StateSchema } from './stateSchema';
@@ -11,7 +12,8 @@ export const createReduxStore = (initialState?: StateSchema) => {
   return configureStore<StateSchema>({
     reducer: {
       user: userReducer,
-      login: loginReducer
+      login: loginReducer,
+      profile: profileReducer
     },
     devTools: __IS_DEV__,
     preloadedState: initialState

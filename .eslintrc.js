@@ -42,6 +42,7 @@ module.exports = {
     '@typescript-eslint/no-floating-promises': 0,
     '@typescript-eslint/return-await': 0,
     '@typescript-eslint/naming-convention': 0,
+    '@typescript-eslint/no-misused-promises': ['error', { checksVoidReturn: false }],
     '@typescript-eslint/space-before-function-paren': 0,
     '@typescript-eslint/consistent-type-assertions': 0,
     '@typescript-eslint/ban-ts-comment': 0,

@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { memo } from 'react';
 
 import { getUserAuth } from '@/entities/User';
 
@@ -11,12 +11,12 @@ export interface NavbarProps {
   className?: string;
 }
 
-const Navbar: FC<NavbarProps> = ({ className }) => {
+const Navbar = memo(({ className }: NavbarProps) => {
   const authData = useAppSelector(getUserAuth);
 
   const NavbarComponent = Object.keys(authData).length ? AuthNavbar : NoAuthNavbar;
 
   return <NavbarComponent className={className} />;
-};
+});
 
 export default Navbar;

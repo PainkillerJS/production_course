@@ -4,5 +4,6 @@
   "login": "Login",
   "main": "Main",
   "about": "About",
+  "profile": "Profile",
   "logout": "Logout"
 }
