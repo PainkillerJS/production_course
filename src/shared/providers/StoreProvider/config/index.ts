@@ -1,23 +1,32 @@
 import { type TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
+import { type ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 
-import { loginReducer } from '@/features/AuthByUsername/model/slice';
-
-import { profileReducer } from '@/entities/Profile';
 import { userReducer } from '@/entities/User';
 
+import { createReducerManager } from './reducerManager';
 import { type StateSchema } from './stateSchema';
 
-export const createReduxStore = (initialState?: StateSchema) => {
-  return configureStore<StateSchema>({
-    reducer: {
-      user: userReducer,
-      login: loginReducer,
-      profile: profileReducer
-    },
+export const createReduxStore = (
+  initialState?: StateSchema,
+  asyncReducers?: ReducersMapObject<StateSchema>
+) => {
+  const rootReducer: ReducersMapObject<StateSchema> = {
+    ...asyncReducers,
+    user: userReducer
+  };
+
+  const reducerManager = createReducerManager(rootReducer);
+
+  const store = configureStore<StateSchema>({
+    reducer: reducerManager.reduce,
     devTools: __IS_DEV__,
     preloadedState: initialState
   });
+
+  // @ts-expect-error
+  store.reducerManager = reducerManager;
+
+  return store;
 };
 
 type StoreType = ReturnType<typeof createReduxStore>;

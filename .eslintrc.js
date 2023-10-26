@@ -46,6 +46,7 @@ module.exports = {
     '@typescript-eslint/space-before-function-paren': 0,
     '@typescript-eslint/consistent-type-assertions': 0,
     '@typescript-eslint/ban-ts-comment': 0,
+    '@typescript-eslint/no-dynamic-delete': 0,
     'import/prefer-default-export': 0,
     'import/no-extraneous-dependencies': [0, { devDependencies: true }],
     'import/order': 0,
