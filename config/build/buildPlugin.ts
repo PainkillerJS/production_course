@@ -1,4 +1,5 @@
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
@@ -29,7 +30,10 @@ export const buildPlugins = ({
       __IS_DEV__: isDev
     }),
     new ReactRefreshWebpackPlugin(),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new Dotenv({
+      path: isDev ? '.env.dev' : '.env.prod'
+    })
   ];
 
   if (isDev) {

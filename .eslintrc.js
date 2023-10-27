@@ -48,7 +48,10 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/no-dynamic-delete': 0,
     'import/prefer-default-export': 0,
+    '@typescript-eslint/explicit-function-return-type': 0,
     'import/no-extraneous-dependencies': [0, { devDependencies: true }],
+    '@typescript-eslint/no-non-null-assertion': 0,
+    '@typescript-eslint/no-invalid-void-type': 0,
     'import/order': 0,
     'import/no-cycle': 0,
     'import/extensions': [

@@ -38,13 +38,7 @@ interface ModalProps {
   isLazyLoading?: boolean;
 }
 
-export const Modal = ({
-  className,
-  children,
-  isOpen,
-  onClose,
-  isLazyLoading
-}: ModalProps): JSX.Element => {
+export const Modal = ({ className, children, isOpen, onClose, isLazyLoading }: ModalProps) => {
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 

@@ -18,14 +18,19 @@ const asyncRedusers = { login: loginReducer };
 
 export const LoginFormStory: StoryLoginFormType = {
   render: (props) => <LoginForm {...props} />,
-  decorators: [StoreDecorator({ login: { username: 'test', password: '123' } }, asyncRedusers)]
+  decorators: [
+    StoreDecorator(
+      { login: { username: 'test', password: '123', isLoading: false } },
+      asyncRedusers
+    )
+  ]
 };
 
 export const LoginFormErrorStory: StoryLoginFormType = {
   render: (props) => <LoginForm {...props} />,
   decorators: [
     StoreDecorator(
-      { login: { username: 'test', password: '123', error: 'test error' } },
+      { login: { username: 'test', password: '123', error: 'test error', isLoading: false } },
       asyncRedusers
     )
   ]

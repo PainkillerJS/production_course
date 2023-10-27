@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { type Profile } from '../types';
+import { profileDataThunk } from '../services/profileData';
+import { type ProfileType } from '../types';
 
 export interface ProfileSchema {
-  data?: Profile;
+  data?: ProfileType;
   isLoading: boolean;
   isReadonly: boolean;
   error?: string;
@@ -19,7 +20,21 @@ const initialState: ProfileSchema = {
 const proflleSlice = createSlice({
   name: 'profile',
   initialState,
-  reducers: {}
+  reducers: {},
+  extraReducers: (builder) =>
+    builder
+      .addCase(profileDataThunk.pending, (state) => {
+        state.isLoading = true;
+        state.error = undefined;
+      })
+      .addCase(profileDataThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.data = action.payload;
+      })
+      .addCase(profileDataThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload?.response?.data.message;
+      })
 });
 
 export const { actions: profileActions, reducer: profileReducer } = proflleSlice;

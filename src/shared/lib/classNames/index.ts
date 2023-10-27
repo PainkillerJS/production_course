@@ -1,4 +1,4 @@
-type ModeType = Record<string, boolean | string>;
+type ModeType = Record<string, boolean | string | undefined>;
 
 export const clsx = (...params: Array<string | ModeType | undefined>): string => {
   const stringsClassNames: string[] = [];
