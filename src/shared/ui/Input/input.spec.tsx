@@ -42,4 +42,16 @@ describe('testing input', () => {
 
     expect(getByTestId('input')).toHaveFocus();
   });
+
+  test('test readonly', () => {
+    const { getByTestId, rerender } = componentRender(<Input />);
+
+    expect(getByTestId('input')).not.toHaveAttribute('readonly');
+    expect(getByTestId('input').parentNode?.parentNode).not.toHaveClass('readonly');
+
+    rerender(<Input isReadonly />);
+
+    expect(getByTestId('input')).toHaveAttribute('readonly');
+    expect(getByTestId('input').parentNode?.parentNode).toHaveClass('readonly');
+  });
 });

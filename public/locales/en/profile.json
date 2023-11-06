@@ -2,5 +2,13 @@
   "title": "Profile",
   "changed": "Change data",
   "name": "Name",
-  "surname": "Surname"
+  "surname": "Surname",
+  "cancel": "Cancel",
+  "save": "Save",
+  "age": "Age",
+  "city": "City",
+  "username": "Username",
+  "avatar": "Avatar (url)",
+  "currency": "Currency",
+  "contry": "Contry"
 }

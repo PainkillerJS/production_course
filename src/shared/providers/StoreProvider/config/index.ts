@@ -1,5 +1,4 @@
 import { type TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { type NavigateOptions, type To } from 'react-router-dom';
 import {
   type CombinedState,
   type Reducer,
@@ -16,8 +15,7 @@ import { type StateSchema, type ThunkExtraArg } from './stateSchema';
 
 export const createReduxStore = (
   initialState?: StateSchema,
-  asyncReducers?: ReducersMapObject<StateSchema>,
-  navigate?: (to: To, options?: NavigateOptions) => void
+  asyncReducers?: ReducersMapObject<StateSchema>
 ) => {
   const rootReducer: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
@@ -27,8 +25,7 @@ export const createReduxStore = (
   const reducerManager = createReducerManager(rootReducer);
 
   const extraArgs: ThunkExtraArg = {
-    api: $api,
-    navigate
+    api: $api
   };
 
   const store = configureStore({

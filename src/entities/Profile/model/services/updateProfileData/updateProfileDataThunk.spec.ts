@@ -5,10 +5,10 @@ import { TestAsyncThunk } from '@/shared/config/tests/testAsyncThunk';
 
 import { type ProfileType } from '../../types';
 
-import { profileDataThunk } from '.';
+import { updateProfileDataThunk } from '.';
 
-describe('test asyncThunk - profileDataThunk', () => {
-  test('get profile data', async () => {
+describe('test asyncThunk - updateProfileDataThunk', () => {
+  test('update profile data', async () => {
     const profileData: ProfileType = {
       name: 'Yuriy',
       surname: 'Yuriy',
@@ -20,15 +20,17 @@ describe('test asyncThunk - profileDataThunk', () => {
       avatar: ''
     };
 
-    const thunk = new TestAsyncThunk(profileDataThunk);
+    const thunk = new TestAsyncThunk(updateProfileDataThunk);
 
-    thunk.api.get.mockReturnValue(Promise.resolve({ data: profileData }));
+    thunk.api.put.mockReturnValue(
+      Promise.resolve({ data: { ...profileData, name: 'new Yuriy', surname: 'new Yuriy' } })
+    );
 
     const result = await thunk.callThunk(undefined);
 
-    expect(thunk.api.get).toHaveBeenCalled();
+    expect(thunk.api.put).toHaveBeenCalled();
     expect(thunk.dispatch).toHaveBeenCalledTimes(2);
     expect(result.meta.requestStatus).toBe('fulfilled');
-    expect(result.payload).toEqual(profileData);
+    expect(result.payload).toEqual({ ...profileData, name: 'new Yuriy', surname: 'new Yuriy' });
   });
 });

@@ -5,10 +5,10 @@ import { CurrencyEnum } from '@/entities/Currency';
 
 import { type StateSchema } from '@/shared/providers/StoreProvider/config/stateSchema';
 
-import { getProfileLoading } from '.';
+import { getProfileReadonly } from '.';
 
-describe('test selector = getProfileLoading', () => {
-  test('selector should return profile loading', () => {
+describe('test selector = getProfleReadonly', () => {
+  test('selector should return profile readonly flag', () => {
     const state: DeepPartial<StateSchema> = {
       profile: {
         data: {
@@ -26,6 +26,6 @@ describe('test selector = getProfileLoading', () => {
       }
     };
 
-    expect(getProfileLoading(state as StateSchema)).toBe(false);
+    expect(getProfileReadonly(state as StateSchema)).toBe(true);
   });
 });

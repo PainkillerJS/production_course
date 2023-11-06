@@ -1,6 +1,8 @@
 import { type DeepPartial } from '@reduxjs/toolkit';
 
-import { CountryEnum, CurrencyEnum } from '@/shared/constants/profile';
+import { CountryEnum } from '@/entities/Contries';
+import { CurrencyEnum } from '@/entities/Currency';
+
 import { type StateSchema } from '@/shared/providers/StoreProvider/config/stateSchema';
 
 import { getProfileData } from '.';
