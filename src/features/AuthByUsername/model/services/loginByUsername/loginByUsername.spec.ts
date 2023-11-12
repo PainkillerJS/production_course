@@ -1,6 +1,6 @@
 // import { type Dispatch } from '@reduxjs/toolkit';
 
-import { userActions } from '@/entities/User';
+import { type UserState, userActions } from '@/entities/User';
 
 import { TestAsyncThunk } from '@/shared/config/tests/testAsyncThunk';
 
@@ -43,7 +43,7 @@ describe('test asyncThunk - loginByUsername', () => {
   // });
 
   test('get user data', async () => {
-    const userValue = { username: '123', id: '1' };
+    const userValue: UserState = { username: '123', id: '1', _initied: false };
 
     const thunk = new TestAsyncThunk(loginByUsername);
 
