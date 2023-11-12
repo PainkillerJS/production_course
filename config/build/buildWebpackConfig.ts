@@ -6,21 +6,27 @@ import { buildLoaders } from './buildLoaders';
 import { buildPlugins } from './buildPlugin';
 import { buildResolvers } from './buildResolvers';
 
-export const buildWebpackConfig = ({ mode, paths, port, isDev }: BuildOptionsType): Configuration => {
+export const buildWebpackConfig = ({
+  mode,
+  paths,
+  port,
+  isDev,
+  project
+}: BuildOptionsType): Configuration => {
   return {
     mode,
     entry: paths.entry,
     output: {
       filename: '[name].[contenthash].js',
       path: paths.build,
-      clean: true,
+      clean: true
     },
-    plugins: buildPlugins({ html: paths.html, isDev }),
+    plugins: buildPlugins({ html: paths.html, isDev, project }),
     module: {
-      rules: buildLoaders({ isDev }),
+      rules: buildLoaders({ isDev })
     },
     resolve: buildResolvers({ paths }),
     devtool: isDev ? 'inline-source-map' : false,
-    devServer: isDev ? buildDevServer({ port }) : undefined,
+    devServer: isDev ? buildDevServer({ port }) : undefined
   };
 };
