@@ -23,6 +23,10 @@ export interface RouteType {
   Icon?: VFC<SVGProps<SVGSVGElement>>;
 }
 
+export interface RouteConfigType extends Pick<RouteProps, 'element' | 'path'> {
+  isAuthOnly?: boolean;
+}
+
 const routePath: Record<AppRoute, string> = {
   [AppRoute.MAIN]: '/',
   [AppRoute.ABOUT]: '/about',
@@ -48,7 +52,7 @@ export const routePathNavigation: Partial<Record<keyof typeof routePath, RouteTy
   }
 };
 
-export const routeConfig: RouteProps[] = [
+export const routeConfig: RouteConfigType[] = [
   {
     path: routePath[AppRoute.MAIN],
     element: <MainPageAsync />
@@ -63,6 +67,7 @@ export const routeConfig: RouteProps[] = [
   },
   {
     path: routePath[AppRoute.PROFILE],
-    element: <PageProfileAsync />
+    element: <PageProfileAsync />,
+    isAuthOnly: true
   }
 ];

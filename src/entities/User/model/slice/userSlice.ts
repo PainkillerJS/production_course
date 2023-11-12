@@ -5,9 +5,12 @@ import { getUsetFromLocalStorage, removeUserFromLocalStorage } from '@/shared/li
 export interface UserState {
   id?: string | number;
   username?: string;
+  _initied: boolean;
 }
 
-const initialState: UserState = {};
+const initialState: UserState = {
+  _initied: false
+};
 
 export const userSlice = createSlice({
   name: 'user',
@@ -22,9 +25,10 @@ export const userSlice = createSlice({
       if (user) {
         Object.assign(state, user);
       }
+      state._initied = true;
     },
     logout: (state) => {
-      state = {};
+      state = { _initied: state._initied };
       removeUserFromLocalStorage();
 
       return state;
