@@ -32,7 +32,6 @@ export const buildPlugins = ({
       __IS_DEV__: isDev,
       __PROJECT__: project
     }),
-    new ReactRefreshWebpackPlugin(),
     new CleanWebpackPlugin(),
     new Dotenv({
       path: isDev ? '.env.dev' : '.env.prod'
@@ -44,7 +43,8 @@ export const buildPlugins = ({
       new webpack.HotModuleReplacementPlugin(),
       new BundleAnalyzerPlugin({
         openAnalyzer: false
-      })
+      }),
+      new ReactRefreshWebpackPlugin()
     );
   }
 
