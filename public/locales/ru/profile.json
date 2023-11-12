@@ -10,5 +10,10 @@
   "username": "Имя пользователя",
   "avatar": "Аватар (ссылка)",
   "currency": "Валюта",
-  "contry": "Страна"
+  "contry": "Страна",
+  "incorrect_age": "Некорректный возраст",
+  "incorrect_contry": "Некорректная страна",
+  "incorrect_user_data": "Некорректные данные профиля",
+  "no_data": "Нет данных",
+  "server_error": "Ошибка сервера"
 }

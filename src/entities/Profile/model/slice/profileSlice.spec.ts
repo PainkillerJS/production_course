@@ -1,7 +1,7 @@
 import { CountryEnum } from '@/entities/Contries';
 import { CurrencyEnum } from '@/entities/Currency';
 
-import { type ProfileType } from '../types';
+import { type ProfileType, ValidateProfileError } from '../types';
 
 import { type ProfileSchema, profileActions, profileReducer } from '.';
 
@@ -91,14 +91,16 @@ describe('test slice = profileSlice', () => {
         currency: CurrencyEnum.RUB
       },
       isLoading: false,
-      isReadonly: false
+      isReadonly: false,
+      validateErrors: [ValidateProfileError.NO_DATA]
     };
 
     expect(profileReducer(state, profileActions.cancelEdit())).toEqual({
       data,
       editedData: data,
       isLoading: false,
-      isReadonly: true
+      isReadonly: true,
+      validateErrors: []
     });
   });
 });

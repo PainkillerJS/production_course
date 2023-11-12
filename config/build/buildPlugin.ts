@@ -8,11 +8,13 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 import type { BuildOptionsType, BuildPaths } from './types/config';
 
-type BuildPluginsParamsType = Pick<BuildPaths, 'html'> & Pick<BuildOptionsType, 'isDev'>;
+type BuildPluginsParamsType = Pick<BuildPaths, 'html'> &
+  Pick<BuildOptionsType, 'isDev' | 'project'>;
 
 export const buildPlugins = ({
   html,
-  isDev
+  isDev,
+  project
 }: BuildPluginsParamsType): webpack.WebpackPluginInstance[] => {
   const plugins = [
     new HTMLWebpackPlugin({
@@ -27,7 +29,8 @@ export const buildPlugins = ({
       React: 'react'
     }),
     new webpack.DefinePlugin({
-      __IS_DEV__: isDev
+      __IS_DEV__: isDev,
+      __PROJECT__: project
     }),
     new ReactRefreshWebpackPlugin(),
     new CleanWebpackPlugin(),

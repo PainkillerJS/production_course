@@ -9,7 +9,7 @@ export default (env: BuildEnvType): Configuration => {
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
     build: path.resolve(__dirname, 'dist'),
     html: path.resolve(__dirname, 'public', 'index.html'),
-    src: path.resolve(__dirname, 'src'),
+    src: path.resolve(__dirname, 'src')
   };
 
   const mode = env.mode || 'development';
@@ -21,5 +21,6 @@ export default (env: BuildEnvType): Configuration => {
     paths,
     isDev,
     port: PORT,
+    project: 'frontend'
   });
 };

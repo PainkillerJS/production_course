@@ -1,5 +1,5 @@
 import axios, { type AxiosStatic } from 'axios';
-import { type AsyncThunkAction } from '@reduxjs/toolkit';
+import { type AsyncThunkAction, type DeepPartial } from '@reduxjs/toolkit';
 
 import { type StateSchema } from '@/shared/providers/StoreProvider/config/stateSchema';
 
@@ -17,9 +17,12 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
   public readonly api: jest.MockedFunctionDeep<AxiosStatic>;
   public readonly navigate: jest.MockedFn<any>;
 
-  constructor(public readonly actionCreator: ActionCreatorType<Return, Arg, RejectedValue>) {
+  constructor(
+    public readonly actionCreator: ActionCreatorType<Return, Arg, RejectedValue>,
+    state?: DeepPartial<StateSchema>
+  ) {
     this.dispatch = jest.fn();
-    this.getState = jest.fn();
+    this.getState = jest.fn(() => state as StateSchema);
     this.api = mockedAxios;
     this.navigate = jest.fn();
   }

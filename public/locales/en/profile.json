@@ -10,5 +10,10 @@
   "username": "Username",
   "avatar": "Avatar (url)",
   "currency": "Currency",
-  "contry": "Contry"
+  "contry": "Contry",
+  "incorrect_age": "Incorrect age",
+  "incorrect_contry": "Incorrect contry",
+  "incorrect_user_data": "Incorrect user data",
+  "no_data": "No data",
+  "server_error": "Server error"
 }

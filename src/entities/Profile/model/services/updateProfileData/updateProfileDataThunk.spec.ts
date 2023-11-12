@@ -20,7 +20,13 @@ describe('test asyncThunk - updateProfileDataThunk', () => {
       avatar: ''
     };
 
-    const thunk = new TestAsyncThunk(updateProfileDataThunk);
+    const thunk = new TestAsyncThunk(updateProfileDataThunk, {
+      profile: {
+        editedData: profileData,
+        isReadonly: true,
+        isLoading: false
+      }
+    });
 
     thunk.api.put.mockReturnValue(
       Promise.resolve({ data: { ...profileData, name: 'new Yuriy', surname: 'new Yuriy' } })

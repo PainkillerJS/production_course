@@ -2,6 +2,7 @@ export * from './model/selectors/getProfileData';
 export * from './model/selectors/getProfileEditedData';
 export * from './model/selectors/getProfileError';
 export * from './model/selectors/getProfileLoading';
+export * from './model/selectors/getProfileValidateErrors';
 export * from './model/selectors/getProfleReadonly';
 export * from './model/services/profileData';
 export * from './model/services/updateProfileData';

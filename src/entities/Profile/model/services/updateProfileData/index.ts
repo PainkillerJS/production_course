@@ -1,23 +1,29 @@
-import { type AxiosError } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { type ThunkConfig } from '@/shared/providers/StoreProvider/config/stateSchema';
 
 import { getProfileEditedData } from '../../selectors/getProfileEditedData';
-import { type ProfileType } from '../../types';
+import { type ProfileType, ValidateProfileError } from '../../types';
+import { validateProfileData } from '../validateProfileData/validateProfileData';
 
 export const updateProfileDataThunk = createAsyncThunk<
   ProfileType,
   undefined,
-  ThunkConfig<AxiosError>
+  ThunkConfig<ValidateProfileError[]>
 >('profile/updateProfileData', async (_, { rejectWithValue, extra, getState }) => {
-  try {
-    const formData = getProfileEditedData(getState());
+  const formData = getProfileEditedData(getState());
 
+  const errors = validateProfileData(formData);
+
+  if (errors.length) {
+    return rejectWithValue(errors);
+  }
+
+  try {
     const response = await extra.api.put<ProfileType>('/profile', formData);
 
     return response.data;
   } catch (e) {
-    return rejectWithValue(e as AxiosError);
+    return rejectWithValue([ValidateProfileError.SERVER_ERROR]);
   }
 });
