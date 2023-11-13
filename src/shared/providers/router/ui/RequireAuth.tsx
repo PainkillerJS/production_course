@@ -2,9 +2,9 @@ import { type ReactNode } from 'react';
 
 import { Navigate, useLocation } from 'react-router-dom';
 
-import { getUserAuth } from '@/entities/User';
+import { getUserAuthUsername } from '@/entities/User';
 
-import { AppRoute } from '@/shared/config/routeConfig/routeConfig';
+import { AppRoute, routePath } from '@/shared/config/routeConfig/routeConfig';
 
 import { useAppSelector } from '../../StoreProvider';
 
@@ -13,11 +13,11 @@ interface RequireAuthProps {
 }
 
 export const RequireAuth = ({ children }: RequireAuthProps) => {
-  const auth = useAppSelector(getUserAuth);
+  const auth = useAppSelector(getUserAuthUsername);
   const location = useLocation();
 
   if (!auth) {
-    return <Navigate to={AppRoute.MAIN} state={{ from: location }} replace />;
+    return <Navigate to={routePath[AppRoute.MAIN]} state={{ from: location }} replace />;
   }
 
   return children;

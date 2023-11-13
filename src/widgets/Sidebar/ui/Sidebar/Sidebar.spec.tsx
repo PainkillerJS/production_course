@@ -27,6 +27,8 @@ describe('test sidebar', () => {
   });
 
   test('The sidebar link items renders', () => {
-    expect(screen.getAllByTestId('link').length).toBe(Object.keys(routePathNavigation).length);
+    expect(screen.getAllByTestId('link').length).toBe(
+      Object.values(routePathNavigation).filter(({ isAuthOnly }) => !isAuthOnly).length
+    );
   });
 });

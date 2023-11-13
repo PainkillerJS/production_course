@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { getUserAuth } from '@/entities/User';
+import { getUserAuthUsername } from '@/entities/User';
 
 import { useAppSelector } from '@/shared/providers/StoreProvider';
 
@@ -12,9 +12,9 @@ export interface NavbarProps {
 }
 
 const Navbar = memo(({ className }: NavbarProps) => {
-  const authData = useAppSelector(getUserAuth);
+  const username = useAppSelector(getUserAuthUsername);
 
-  const NavbarComponent = Object.keys(authData).length ? AuthNavbar : NoAuthNavbar;
+  const NavbarComponent = username ? AuthNavbar : NoAuthNavbar;
 
   return <NavbarComponent className={className} />;
 });

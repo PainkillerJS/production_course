@@ -30,7 +30,7 @@ export const ProfilePageHeader = () => {
   }, [dispatch]);
 
   return (
-    <div className={styles.header}>
+    <section className={styles.header}>
       <Text>{t('title')}</Text>
 
       {isReadonly ? (
@@ -48,6 +48,6 @@ export const ProfilePageHeader = () => {
           </Button>
         </>
       )}
-    </div>
+    </section>
   );
 };

@@ -5,8 +5,11 @@ import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '@/features/LanguageSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
+import { getUserAuthUsername } from '@/entities/User';
+
 import { routePathNavigation } from '@/shared/config/routeConfig/routeConfig';
 import { clsx } from '@/shared/lib/classNames';
+import { useAppSelector } from '@/shared/providers/StoreProvider';
 import Button, { SizeSquaredButton, ThemeButton } from '@/shared/ui/Button/Button';
 
 import { SidebarItem } from '../SidebarItem';
@@ -20,8 +23,11 @@ interface SidebarProps {
 export const Sidebar = memo(({ className }: SidebarProps) => {
   const { t } = useTranslation();
   const [isCollapsed, setCollapsed] = useState(false);
+  const username = useAppSelector(getUserAuthUsername);
 
-  const navBarSettings = Object.values(routePathNavigation);
+  const navBarSettings = Object.values(routePathNavigation).filter(
+    ({ isAuthOnly }) => !isAuthOnly || username
+  );
 
   const onToggle = (): void => {
     setCollapsed(!isCollapsed);

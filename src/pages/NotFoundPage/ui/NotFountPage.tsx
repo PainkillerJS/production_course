@@ -6,7 +6,7 @@ import styles from './notFoundPage.module.scss';
 const NotFountPage: FC = () => {
   const { t } = useTranslation('notFound');
 
-  return <div className={styles.notFoundPage}>{t('page is not found')}</div>;
+  return <section className={styles.notFoundPage}>{t('page is not found')}</section>;
 };
 
 export default NotFountPage;

@@ -50,16 +50,23 @@ const ProfilePage = () => {
 
   return (
     <DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
-      <ProfilePageHeader />
+      <section>
+        <ProfilePageHeader />
 
-      {validateErrors?.length &&
-        validateErrors.map((err) => (
-          <Text key={err} variant={TextTheme.ERROR}>
-            {validateErrorTranslates[err]}
-          </Text>
-        ))}
+        {validateErrors?.length &&
+          validateErrors.map((err) => (
+            <Text key={err} variant={TextTheme.ERROR}>
+              {validateErrorTranslates[err]}
+            </Text>
+          ))}
 
-      <ProfileCard data={editedData} isLoading={isLoading} error={error} isReadonly={isReadonly} />
+        <ProfileCard
+          data={editedData}
+          isLoading={isLoading}
+          error={error}
+          isReadonly={isReadonly}
+        />
+      </section>
     </DynamicModuleLoader>
   );
 };
