@@ -1,5 +1,4 @@
 import { type AxiosInstance } from 'axios';
-import { type NavigateOptions, type To } from 'react-router-dom';
 import {
   type AnyAction,
   type CombinedState,
@@ -10,6 +9,7 @@ import {
 
 import { type LoginSchema } from '@/features/AuthByUsername/model/slice';
 
+import { type ArticleDetailsSchema } from '@/entities/Article';
 import { type ProfileSchema } from '@/entities/Profile';
 import { type UserState } from '@/entities/User';
 
@@ -19,6 +19,7 @@ export interface StateSchema {
   // Асинхроные редюсеры
   login?: LoginSchema;
   profile?: ProfileSchema;
+  articles?: ArticleDetailsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
@@ -36,7 +37,6 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 
 export interface ThunkExtraArg {
   api: AxiosInstance;
-  navigate?: (to: To, options?: NavigateOptions) => void;
 }
 
 export interface ThunkConfig<T> {
