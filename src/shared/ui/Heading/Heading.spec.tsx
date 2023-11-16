@@ -1,6 +1,6 @@
 import { componentRender } from '@/shared/config/tests/componentRender/ComponentRender';
 
-import { Heading, TextHeadingTheme } from '.';
+import { Heading, HeadingSize, TextHeadingTheme } from '.';
 
 describe('The test heading component', () => {
   test('The heading is rendering', () => {
@@ -25,5 +25,15 @@ describe('The test heading component', () => {
     rerender(<Heading variant={TextHeadingTheme.ERROR}>Lorem ipsum dolor sit amet.</Heading>);
 
     expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass('error');
+  });
+
+  test('The heading is change size', () => {
+    const { rerender, getByText } = componentRender(<Heading>Lorem ipsum dolor sit amet.</Heading>);
+
+    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass('size_m');
+
+    rerender(<Heading size={HeadingSize.L}>Lorem ipsum dolor sit amet.</Heading>);
+
+    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass('size_l');
   });
 });

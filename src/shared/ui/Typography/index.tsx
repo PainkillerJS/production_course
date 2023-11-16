@@ -9,6 +9,11 @@ export enum TextTheme {
   ERROR = 'error'
 }
 
+export enum TextSize {
+  M = 'size_m',
+  L = 'size_l'
+}
+
 interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
   /**
    * @description Кастомный className
@@ -23,12 +28,23 @@ interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
    * @description Тип текста
    */
   variant?: TextTheme;
+  /**
+   * @default TextSize.M
+   * @description  Размер текста
+   */
+  size?: TextSize;
 }
 
 export const Text = memo(
-  ({ className, children, variant = TextTheme.PRIMARY, ...props }: TextProps) => {
+  ({
+    className,
+    children,
+    variant = TextTheme.PRIMARY,
+    size = TextSize.M,
+    ...props
+  }: TextProps) => {
     return (
-      <p className={clsx(className, styles.text, styles[variant])} {...props}>
+      <p className={clsx(className, styles.text, styles[variant], styles[size])} {...props}>
         {children}
       </p>
     );

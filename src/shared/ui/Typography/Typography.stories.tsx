@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 
-import { Text, TextTheme } from '.';
+import { Text, TextSize, TextTheme } from '.';
 
 export default {
   title: 'ui/Text',
@@ -10,7 +10,8 @@ export default {
       control: 'text',
       description: 'Текст кнопки'
     },
-    variant: { control: 'select', options: TextTheme }
+    variant: { control: 'select', options: TextTheme, defaultValue: TextTheme.PRIMARY },
+    size: { control: 'select', options: TextSize, defaultValue: TextSize.M }
   },
   args: {
     variant: TextTheme.PRIMARY,

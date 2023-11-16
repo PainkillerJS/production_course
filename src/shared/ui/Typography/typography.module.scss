@@ -1,11 +1,15 @@
-.text {
-  font: var(--font-m);
-}
-
 .primary {
   color: var(--secondary-color);
 }
 
 .error {
   color: var(--error-dark);
+}
+
+.size_m {
+  font: var(--font-m);
+}
+
+.size_l {
+  font: var(--font-l);
 }

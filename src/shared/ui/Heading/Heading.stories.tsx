@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 
-import { Heading, TextHeadingTheme } from '.';
+import { Heading, HeadingSize, TextHeadingTheme } from '.';
 
 export default {
   title: 'ui/Heading',
@@ -10,7 +10,12 @@ export default {
       control: 'text',
       description: 'Текст кнопки'
     },
-    variant: { control: 'select', options: TextHeadingTheme.PRIMARY }
+    variant: {
+      control: 'select',
+      options: TextHeadingTheme,
+      defaultValue: TextHeadingTheme.PRIMARY
+    },
+    size: { control: 'select', options: HeadingSize, defaultValue: HeadingSize.L }
   },
   args: {
     children: 'Heading',
