@@ -13,9 +13,16 @@
   ],
   "comments": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": "1",
+      "text": "some comment",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "text": "some comment 2",
+      "articleId": "1",
+      "userId": "1"
     }
   ],
   "articles": [
@@ -93,7 +100,8 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "123"
+      "password": "123",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/4333/4333609.png"
     }
   ],
   "profile": {

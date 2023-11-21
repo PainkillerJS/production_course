@@ -1,4 +1,5 @@
 {
   "not_found": "Article isn`t found",
-  "error": "Error after load the article"
+  "error": "Error after load the article",
+  "comments": "Comments"
 }

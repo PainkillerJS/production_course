@@ -5,6 +5,7 @@ import { getUsetFromLocalStorage, removeUserFromLocalStorage } from '@/shared/li
 export interface UserState {
   id?: string | number;
   username?: string;
+  avatar?: string;
   _initied: boolean;
 }
 

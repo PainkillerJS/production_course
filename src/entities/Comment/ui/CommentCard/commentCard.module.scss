@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  margin-top: 10px;
+}
+
+.username {
+  margin-left: 10px;
+}
+
+.avatarSkeleton {
+  margin: 0 auto;
+}
+
+.commentCard {
+  border: 1px solid var(--primary-color);
+  margin-top: 10px;
+  padding: 10px;
+}
