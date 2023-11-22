@@ -1,9 +1,17 @@
 import { fireEvent, screen } from '@testing-library/react';
 
-import { routePathNavigation } from '@/shared/config/routeConfig/routeConfig';
 import { componentRender } from '@/shared/config/tests/componentRender/ComponentRender';
 
 import { Sidebar } from './Sidebar';
+
+jest.mock('../../model/selectors/getItemsSidebar', () => {
+  return {
+    getItemsSidebar: () => [
+      { path: 'test path', name: 'test name' },
+      { path: 'test path 2', name: 'test name 2' }
+    ]
+  };
+});
 
 describe('test sidebar', () => {
   beforeEach(() => {
@@ -27,8 +35,6 @@ describe('test sidebar', () => {
   });
 
   test('The sidebar link items renders', () => {
-    expect(screen.getAllByTestId('link').length).toBe(
-      Object.values(routePathNavigation).filter(({ isAuthOnly }) => !isAuthOnly).length
-    );
+    expect(screen.getAllByTestId('link').length).toBe(2);
   });
 });

@@ -5,13 +5,11 @@ import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from '@/features/LanguageSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
-import { getUserAuthUsername } from '@/entities/User';
-
-import { routePathNavigation } from '@/shared/config/routeConfig/routeConfig';
 import { clsx } from '@/shared/lib/classNames';
 import { useAppSelector } from '@/shared/providers/StoreProvider';
 import Button, { SizeSquaredButton, ThemeButton } from '@/shared/ui/Button/Button';
 
+import { getItemsSidebar } from '../../model/selectors/getItemsSidebar';
 import { SidebarItem } from '../SidebarItem';
 
 import styles from './sidebar.module.scss';
@@ -23,11 +21,8 @@ interface SidebarProps {
 export const Sidebar = memo(({ className }: SidebarProps) => {
   const { t } = useTranslation();
   const [isCollapsed, setCollapsed] = useState(false);
-  const username = useAppSelector(getUserAuthUsername);
 
-  const navBarSettings = Object.values(routePathNavigation).filter(
-    ({ isAuthOnly }) => !isAuthOnly || username
-  );
+  const itemsSidebar = useAppSelector(getItemsSidebar);
 
   const onToggle = (): void => {
     setCollapsed(!isCollapsed);
@@ -52,7 +47,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
       </Button>
 
       <div data-testid='links' className={styles.links}>
-        {navBarSettings.map((item) => (
+        {itemsSidebar.map((item) => (
           <SidebarItem key={item.name} {...item} t={t} isCollapsed={isCollapsed} />
         ))}
       </div>

@@ -9,11 +9,6 @@ import { MainPageAsync } from '@/pages/MainPage';
 import { NotFountPage } from '@/pages/NotFoundPage';
 import { PageProfileAsync } from '@/pages/ProfilePage';
 
-import AboutIcon from '@/shared/assets/icons/about-20-20.svg';
-import ArticlesIcon from '@/shared/assets/icons/article-20-20.svg';
-import MainIcon from '@/shared/assets/icons/main-20-20.svg';
-import ProfileIcon from '@/shared/assets/icons/profile-20-20.svg';
-
 export enum AppRoute {
   MAIN = 'main',
   ABOUT = 'about',
@@ -40,31 +35,6 @@ export const routePath: Record<AppRoute, string> = {
   [AppRoute.PROFILE]: '/profile',
   [AppRoute.ARTICLES]: '/articles',
   [AppRoute.NOT_FOUND]: '*'
-};
-
-export const routePathNavigation: Partial<Record<keyof typeof routePath, RouteType>> = {
-  [AppRoute.MAIN]: {
-    path: routePath[AppRoute.MAIN],
-    name: 'main',
-    Icon: MainIcon
-  },
-  [AppRoute.ABOUT]: {
-    path: routePath[AppRoute.ABOUT],
-    name: 'about',
-    Icon: AboutIcon
-  },
-  [AppRoute.PROFILE]: {
-    path: routePath[AppRoute.PROFILE],
-    name: 'profile',
-    Icon: ProfileIcon,
-    isAuthOnly: true
-  },
-  [AppRoute.ARTICLES]: {
-    path: routePath[AppRoute.ARTICLES],
-    name: 'articles',
-    Icon: ArticlesIcon,
-    isAuthOnly: true
-  }
 };
 
 export const routeConfig: RouteConfigType[] = [
