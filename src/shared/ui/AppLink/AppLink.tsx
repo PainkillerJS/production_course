@@ -4,26 +4,26 @@ import { type LinkProps, Link } from 'react-router-dom';
 
 import { clsx } from '@/shared/lib/classNames';
 
-import style from './appLinks.module.scss';
+import style from './appLink.module.scss';
 
 export enum AppLinkVariants {
   PRIMARY = 'primary',
   SECONDARY = 'secondary'
 }
 
-interface AppLinksProps extends PropsWithChildren, LinkProps {
+interface AppLinkProps extends PropsWithChildren, LinkProps {
   className?: string;
   variants?: AppLinkVariants;
 }
 
-const AppLinks = memo(
-  ({ className, children, variants = AppLinkVariants.PRIMARY, ...otherProps }: AppLinksProps) => {
+const AppLink = memo(
+  ({ className, children, variants = AppLinkVariants.PRIMARY, ...otherProps }: AppLinkProps) => {
     return (
-      <Link data-testid='appLinks' className={clsx(className, style[variants])} {...otherProps}>
+      <Link data-testid='appLink' className={clsx(className, style[variants])} {...otherProps}>
         {children}
       </Link>
     );
   }
 );
 
-export default AppLinks;
+export default AppLink;

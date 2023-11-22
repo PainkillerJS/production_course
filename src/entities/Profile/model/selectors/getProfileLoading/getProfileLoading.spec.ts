@@ -12,6 +12,7 @@ describe('test selector = getProfileLoading', () => {
     const state: DeepPartial<StateSchema> = {
       profile: {
         data: {
+          id: '1',
           username: 'username',
           name: 'name',
           surname: 'surname',

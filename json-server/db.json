@@ -104,14 +104,28 @@
       "avatar": "https://cdn-icons-png.flaticon.com/512/4333/4333609.png"
     }
   ],
-  "profile": {
-    "name": "Yuriy",
-    "surname": "Yuriy",
-    "age": 22,
-    "currency": "RUB",
-    "country": "RUSSIA",
-    "city": "Moscow",
-    "username": "admin",
-    "avatar": "https://cdn-icons-png.flaticon.com/512/4333/4333609.png"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "name": "Yuriy",
+      "surname": "Yuriy",
+      "age": 22,
+      "currency": "RUB",
+      "country": "RUSSIA",
+      "city": "Moscow",
+      "username": "admin",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/4333/4333609.png"
+    },
+    {
+      "id": "2",
+      "name": "Jonh",
+      "surname": "Doe",
+      "age": 25,
+      "currency": "RUB",
+      "country": "RUSSIA",
+      "city": "Kazan",
+      "username": "jonh228",
+      "avatar": "https://cdn-icons-png.flaticon.com/512/4333/4333609.png"
+    }
+  ]
 }

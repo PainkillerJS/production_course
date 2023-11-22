@@ -12,6 +12,7 @@ import { getProfileEditedData } from '.';
 describe('test selector = getProfileEditedData', () => {
   test('selector should return profile edited data', () => {
     const data: ProfileType = {
+      id: '1',
       username: 'username',
       name: 'name',
       surname: 'surname',

@@ -10,6 +10,7 @@ import { updateProfileDataThunk } from '.';
 describe('test asyncThunk - updateProfileDataThunk', () => {
   test('update profile data', async () => {
     const profileData: ProfileType = {
+      id: '1',
       name: 'Yuriy',
       surname: 'Yuriy',
       age: 22,

@@ -11,7 +11,10 @@ describe('test asyncThunk - getCommentsByArticleIdThunk', () => {
         id: '1',
         text: 'test message',
         user: {
-          _initied: true
+          _initied: true,
+          id: '1',
+          username: 'test username',
+          avatar: 'test avatar'
         }
       }
     ];

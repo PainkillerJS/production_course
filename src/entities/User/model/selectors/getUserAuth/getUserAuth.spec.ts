@@ -9,13 +9,13 @@ describe('test selector = getUserAuth', () => {
     const state: DeepPartial<StateSchema> = {
       user: {
         username: 'test name',
-        id: 1
+        id: '1'
       }
     };
 
     expect(getUserAuth(state as StateSchema)).toEqual({
       username: 'test name',
-      id: 1
+      id: '1'
     });
   });
 });

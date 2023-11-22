@@ -3,21 +3,24 @@ import { type UserState, userActions, userReducer } from './userSlice';
 describe('test slice = userSlice', () => {
   test('test without state', () => {
     expect(
-      userReducer(undefined, userActions.setAuthData({ id: 1, username: 'test', _initied: false }))
+      userReducer(
+        undefined,
+        userActions.setAuthData({ id: '1', username: 'test', _initied: false })
+      )
     ).toEqual({
-      id: 1,
+      id: '1',
       username: 'test',
       _initied: false
     });
   });
 
   test('test change user data', () => {
-    const state: UserState = { id: 10, username: 'test', _initied: false };
+    const state: UserState = { id: '10', username: 'test', _initied: false };
 
     expect(
-      userReducer(state, userActions.setAuthData({ id: 20, username: 'test', _initied: false }))
+      userReducer(state, userActions.setAuthData({ id: '20', username: 'test', _initied: false }))
     ).toEqual({
-      id: 20,
+      id: '20',
       username: 'test',
       _initied: false
     });
@@ -32,7 +35,7 @@ describe('test slice = userSlice', () => {
   test('test logout', () => {
     const state: UserState = {
       username: 'test name',
-      id: 1,
+      id: '1',
       _initied: false
     };
 

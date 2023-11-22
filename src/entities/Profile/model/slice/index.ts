@@ -7,7 +7,7 @@ import { type ProfileType, type ValidateProfileError } from '../types';
 
 export interface ProfileSchema {
   data?: ProfileType;
-  editedData?: ProfileType;
+  editedData?: Partial<ProfileType>;
   isLoading: boolean;
   isReadonly: boolean;
   error?: string;

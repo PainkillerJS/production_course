@@ -3,7 +3,7 @@ import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { getUsetFromLocalStorage, removeUserFromLocalStorage } from '@/shared/lib/storage/user';
 
 export interface UserState {
-  id?: string | number;
+  id?: string;
   username?: string;
   avatar?: string;
   _initied: boolean;

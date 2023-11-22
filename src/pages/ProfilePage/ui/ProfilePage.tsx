@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 
 import {
   getProfileEditedData,
@@ -27,6 +28,7 @@ const reducers: ReducersList = {
 const ProfilePage = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation('profile');
+  const { id } = useParams<{ id: string }>();
 
   const editedData = useAppSelector(getProfileEditedData);
   const isLoading = useAppSelector(getProfileLoading);
@@ -43,22 +45,21 @@ const ProfilePage = () => {
   };
 
   useEffect(() => {
-    if (__PROJECT__ !== 'storybook') {
-      dispatch(profileDataThunk());
+    if (id) {
+      dispatch(profileDataThunk(id));
     }
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   return (
     <DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
       <section>
         <ProfilePageHeader />
 
-        {validateErrors?.length &&
-          validateErrors.map((err) => (
-            <Text key={err} variant={TextTheme.ERROR}>
-              {validateErrorTranslates[err]}
-            </Text>
-          ))}
+        {validateErrors?.map((err) => (
+          <Text key={err} variant={TextTheme.ERROR}>
+            {validateErrorTranslates[err]}
+          </Text>
+        ))}
 
         <ProfileCard
           data={editedData}

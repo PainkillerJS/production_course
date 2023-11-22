@@ -9,6 +9,7 @@ import {
 
 import { type ArticleDetailsCommentsSchema } from '@/pages/ArticlesDetailsPage';
 
+import { type AddCommentFormSchema } from '@/features/AddCommentForm';
 import { type LoginSchema } from '@/features/AuthByUsername/model/slice';
 
 import { type ArticleDetailsSchema } from '@/entities/Article';
@@ -23,6 +24,7 @@ export interface StateSchema {
   profile?: ProfileSchema;
   articles?: ArticleDetailsSchema;
   articleDetailsComments?: ArticleDetailsCommentsSchema;
+  addCommentForm?: AddCommentFormSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

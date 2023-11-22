@@ -19,7 +19,6 @@ export enum AppRoute {
   ABOUT = 'about',
   PROFILE = 'profile',
   ARTICLES = 'articles',
-  ARTICLES_DETAILS = 'articles_details',
   NOT_FOUND = 'not_found'
 }
 
@@ -40,8 +39,6 @@ export const routePath: Record<AppRoute, string> = {
   [AppRoute.ABOUT]: '/about',
   [AppRoute.PROFILE]: '/profile',
   [AppRoute.ARTICLES]: '/articles',
-  [AppRoute.ARTICLES_DETAILS]: '/articles/',
-
   [AppRoute.NOT_FOUND]: '*'
 };
 
@@ -84,7 +81,7 @@ export const routeConfig: RouteConfigType[] = [
     element: <NotFountPage />
   },
   {
-    path: routePath[AppRoute.PROFILE],
+    path: `${routePath[AppRoute.PROFILE]}/:id`,
     element: <PageProfileAsync />,
     isAuthOnly: true
   },
@@ -94,7 +91,7 @@ export const routeConfig: RouteConfigType[] = [
     isAuthOnly: true
   },
   {
-    path: `${routePath[AppRoute.ARTICLES_DETAILS]}:id`,
+    path: `${routePath[AppRoute.ARTICLES]}/:id`,
     element: <ArticlesDetailsPage />,
     isAuthOnly: true
   }

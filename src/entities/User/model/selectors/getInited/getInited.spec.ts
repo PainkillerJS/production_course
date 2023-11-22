@@ -9,7 +9,7 @@ describe('test selector = getUserAuth', () => {
     const state: DeepPartial<StateSchema> = {
       user: {
         username: 'test name',
-        id: 1,
+        id: '1',
         _initied: true
       }
     };

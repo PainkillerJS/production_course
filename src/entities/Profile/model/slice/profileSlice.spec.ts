@@ -8,6 +8,7 @@ import { type ProfileSchema, profileActions, profileReducer } from '.';
 describe('test slice = profileSlice', () => {
   test('test change profile data - updateIsReadonly', () => {
     const data: ProfileType = {
+      id: '1',
       username: 'username',
       name: 'name',
       surname: 'surname',
@@ -33,6 +34,7 @@ describe('test slice = profileSlice', () => {
 
   test('test change profile data - updateProfile', () => {
     const data: ProfileType = {
+      id: '1',
       username: 'username',
       name: 'name',
       surname: 'surname',
@@ -53,11 +55,12 @@ describe('test slice = profileSlice', () => {
     expect(
       profileReducer(
         state,
-        profileActions.updateProfile({ name: 'new name', surname: 'new surname' })
+        profileActions.updateProfile({ name: 'new name', surname: 'new surname', id: '1' })
       )
     ).toEqual({
       data,
       editedData: {
+        id: '1',
         name: 'new name',
         surname: 'new surname'
       },
@@ -68,6 +71,7 @@ describe('test slice = profileSlice', () => {
 
   test('test change profile data - cancelEdit', () => {
     const data: ProfileType = {
+      id: '1',
       username: 'username',
       name: 'name',
       surname: 'surname',

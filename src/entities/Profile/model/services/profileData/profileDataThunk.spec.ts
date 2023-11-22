@@ -24,7 +24,7 @@ describe('test asyncThunk - profileDataThunk', () => {
 
     thunk.api.get.mockReturnValue(Promise.resolve({ data: profileData }));
 
-    const result = await thunk.callThunk(undefined);
+    const result = await thunk.callThunk('1');
 
     expect(thunk.api.get).toHaveBeenCalled();
     expect(thunk.dispatch).toHaveBeenCalledTimes(2);

@@ -4,7 +4,7 @@ import { type TFunction } from 'i18next';
 
 import { type RouteType } from '@/shared/config/routeConfig/routeConfig';
 import { clsx } from '@/shared/lib/classNames';
-import { AppLinks, AppLinkVariants } from '@/shared/ui/AppLinks';
+import { AppLink, AppLinkVariants } from '@/shared/ui/AppLink';
 
 import styles from './sidebar.module.scss';
 
@@ -15,7 +15,7 @@ interface SidebarItemProps extends RouteType {
 
 export const SidebarItem = memo(({ path, Icon, name, t, isCollapsed }: SidebarItemProps) => {
   return (
-    <AppLinks
+    <AppLink
       className={styles.item}
       data-testid='link'
       variants={AppLinkVariants.SECONDARY}
@@ -35,6 +35,6 @@ export const SidebarItem = memo(({ path, Icon, name, t, isCollapsed }: SidebarIt
       >
         {t(name)}
       </span>
-    </AppLinks>
+    </AppLink>
   );
 });

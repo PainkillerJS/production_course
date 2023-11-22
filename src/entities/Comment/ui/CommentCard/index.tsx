@@ -1,6 +1,8 @@
 import { memo } from 'react';
 
+import { routePath } from '@/shared/config/routeConfig/routeConfig';
 import { clsx } from '@/shared/lib/classNames';
+import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Text } from '@/shared/ui/Typography';
 
@@ -25,13 +27,13 @@ export const CommentCard = memo(({ className, comment, isLoading }: CommentCardP
 
   return (
     <div className={clsx(className, styles.commentCard)}>
-      <div className={styles.header}>
+      <AppLink to={`${routePath.profile}/${comment.user.id}`} className={styles.header}>
         {user.avatar && (
           <Avatar srcImg={user.avatar} size={30} alt={`${user.username ?? ''} avatar`} />
         )}
 
         <Text className={styles.username}>{user.username}</Text>
-      </div>
+      </AppLink>
 
       <Text className={styles.text}>{text}</Text>
     </div>

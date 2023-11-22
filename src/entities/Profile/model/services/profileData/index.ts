@@ -5,11 +5,11 @@ import { type ThunkConfig } from '@/shared/providers/StoreProvider/config/stateS
 
 import { type ProfileType } from '../../types';
 
-export const profileDataThunk = createAsyncThunk<ProfileType, undefined, ThunkConfig<AxiosError>>(
+export const profileDataThunk = createAsyncThunk<ProfileType, string, ThunkConfig<AxiosError>>(
   'profile/getProfileData',
-  async (_, { rejectWithValue, extra }) => {
+  async (profileId, { rejectWithValue, extra }) => {
     try {
-      const response = await extra.api.get<ProfileType>('/profile');
+      const response = await extra.api.get<ProfileType>(`/profile/${profileId}`);
 
       return response.data;
     } catch (e) {

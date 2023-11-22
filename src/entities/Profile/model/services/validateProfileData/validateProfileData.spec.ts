@@ -12,6 +12,7 @@ describe('test validate function - validateProfileData', () => {
 
   test('user error', async () => {
     const profile: ProfileType = {
+      id: '1',
       age: 1,
       avatar: '',
       city: 'test city',
@@ -25,6 +26,7 @@ describe('test validate function - validateProfileData', () => {
 
   test('age error', async () => {
     const profile = {
+      id: '1',
       age: '1',
       avatar: '',
       city: 'test city',

@@ -14,13 +14,17 @@ export type ReducersList = {
 
 interface DynamicModuleLoaderProps extends PropsWithChildren {
   reducers: ReducersList;
+  /**
+   * @default true
+   * @description Удалять редюсеры после размонитрования компонента
+   */
   isRemoveAfterUnmount?: boolean;
 }
 
 export const DynamicModuleLoader = ({
   children,
   reducers,
-  isRemoveAfterUnmount
+  isRemoveAfterUnmount = true
 }: DynamicModuleLoaderProps) => {
   const store = useStore() as ReduxStoreWithManager;
 
