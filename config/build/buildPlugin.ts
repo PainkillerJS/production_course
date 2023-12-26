@@ -1,5 +1,6 @@
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import Dotenv from 'dotenv-webpack';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
@@ -44,7 +45,8 @@ export const buildPlugins = ({
       new BundleAnalyzerPlugin({
         openAnalyzer: false
       }),
-      new ReactRefreshWebpackPlugin()
+      new ReactRefreshWebpackPlugin(),
+      new ForkTsCheckerWebpackPlugin()
     );
   }
 
