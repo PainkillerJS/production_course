@@ -18,6 +18,7 @@ describe('test selector = getArticleDetailsData', () => {
           views: 1022,
           createdAt: '26.02.2022',
           type: [ArticleEnumType.IT],
+          user: { _initied: true },
           blocks: [
             {
               id: '1',
@@ -43,6 +44,7 @@ describe('test selector = getArticleDetailsData', () => {
       views: 1022,
       createdAt: '26.02.2022',
       type: [ArticleEnumType.IT],
+      user: { _initied: true },
       blocks: [
         {
           id: '1',

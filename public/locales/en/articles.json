@@ -1,5 +1,7 @@
 {
   "not_found": "Article isn`t found",
   "error": "Error after load the article",
-  "comments": "Comments"
+  "comments": "Comments",
+  "read_next": "Read next...",
+  "back_to_lists": "Back to lists"
 }

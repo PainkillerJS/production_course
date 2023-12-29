@@ -1,3 +1,5 @@
+import { type UserState } from '@/entities/User';
+
 export enum ArticleBlockEnumType {
   CODE = 'CODE',
   IMAGE = 'IMAGE',
@@ -33,10 +35,16 @@ export enum ArticleEnumType {
   ECONOMIC = 'ECONOMIC'
 }
 
+export enum ArticleListView {
+  BIG = 'BIG',
+  SMALL = 'SMALL'
+}
+
 export interface ArticleModel {
   id: string;
   title: string;
   subtitle: string;
+  user: UserState;
   img: string;
   views: number;
   createdAt: string;

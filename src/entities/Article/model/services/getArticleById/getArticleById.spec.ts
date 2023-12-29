@@ -14,6 +14,9 @@ describe('test asyncThunk - getArticleByIdThunk', () => {
       views: 1022,
       createdAt: '26.02.2022',
       type: [ArticleEnumType.IT],
+      user: {
+        _initied: true
+      },
       blocks: [
         {
           id: '1',

@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { AddCommentForm } from '@/features/AddCommentForm';
 
@@ -9,8 +9,10 @@ import { ArticleDetails } from '@/entities/Article';
 import { CommentsList } from '@/entities/Comment';
 import { getUserAuthUsername } from '@/entities/User';
 
+import { AppRoute, routePath } from '@/shared/config/routeConfig/routeConfig';
 import { type ReducersList, DynamicModuleLoader } from '@/shared/lib/DynamicModuleLoader';
 import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
+import Button, { ThemeButton } from '@/shared/ui/Button/Button';
 import { Heading } from '@/shared/ui/Heading';
 
 import { getArticleDetailsCommentsIsLoading } from '../../model/selectors/getArticleDetailsCommentsIsLoading';
@@ -28,6 +30,7 @@ const ArticleDetailsPage = () => {
   const { t } = useTranslation('articles');
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const username = useAppSelector(getUserAuthUsername);
   const comments = useAppSelector(getArticleComments.selectAll);
@@ -40,6 +43,10 @@ const ArticleDetailsPage = () => {
     [dispatch]
   );
 
+  const onBackToList = useCallback(() => {
+    navigate(routePath[AppRoute.ARTICLES]);
+  }, [navigate]);
+
   useEffect(() => {
     dispatch(getCommentsByArticleIdThunk(id));
   }, [dispatch, id]);
@@ -51,6 +58,10 @@ const ArticleDetailsPage = () => {
   return (
     <DynamicModuleLoader reducers={initialReducers}>
       <section className={styles.articleDetailsPage}>
+        <Button onClick={onBackToList} variant={ThemeButton.OUTLINE}>
+          {t('back_to_lists')}
+        </Button>
+
         <ArticleDetails id={id} />
 
         <Heading className={styles.commentTitle}>{t('comments')}</Heading>
