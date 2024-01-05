@@ -14,7 +14,9 @@ describe('test selector = getArticlesPageView', () => {
         ids: [],
         entities: {},
         view: ArticleListView.BIG,
-        error: 'test error'
+        error: 'test error',
+        isHasMore: true,
+        page: 1
       }
     };
 

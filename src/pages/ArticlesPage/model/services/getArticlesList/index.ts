@@ -5,13 +5,27 @@ import { type ArticleModel } from '@/entities/Article';
 
 import { type ThunkConfig } from '@/shared/providers/StoreProvider/config/stateSchema';
 
-export const getArticlesListThunk = createAsyncThunk<ArticleModel[], void, ThunkConfig<AxiosError>>(
+import { getArticlesPageLimit } from '../../selectors/getArticlesPageLimit';
+
+interface GetArticlesListThunkParams {
+  page?: number;
+}
+
+export const getArticlesListThunk = createAsyncThunk<
+  ArticleModel[],
+  GetArticlesListThunkParams,
+  ThunkConfig<AxiosError>
+>(
   'articlesPageSlice/getArticlesListThunk',
-  async (articleId, { rejectWithValue, extra }) => {
+  async ({ page }, { rejectWithValue, extra, getState }) => {
+    const limit = getArticlesPageLimit(getState());
+
     try {
       const response = await extra.api.get<ArticleModel[]>('/articles', {
         params: {
-          _expand: 'user'
+          _expand: 'user',
+          _limit: limit,
+          _page: page
         }
       });
 

@@ -1,11 +1,11 @@
-import { type FC } from 'react';
-
 import { useTranslation } from 'react-i18next';
 
-const MainPage: FC = () => {
+import { PageWrapper } from '@/shared/ui/PageWrapper';
+
+const MainPage = () => {
   const { t } = useTranslation('main');
 
-  return <section>{t('main page')}</section>;
+  return <PageWrapper>{t('main page')}</PageWrapper>;
 };
 
 export default MainPage;

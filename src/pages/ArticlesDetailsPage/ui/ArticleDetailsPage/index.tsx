@@ -14,6 +14,7 @@ import { type ReducersList, DynamicModuleLoader } from '@/shared/lib/DynamicModu
 import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
 import Button, { ThemeButton } from '@/shared/ui/Button/Button';
 import { Heading } from '@/shared/ui/Heading';
+import { PageWrapper } from '@/shared/ui/PageWrapper';
 
 import { getArticleDetailsCommentsIsLoading } from '../../model/selectors/getArticleDetailsCommentsIsLoading';
 import { getCommentsByArticleIdThunk } from '../../model/services/getCommentsByArticleId';
@@ -52,7 +53,7 @@ const ArticleDetailsPage = () => {
   }, [dispatch, id]);
 
   if (!id) {
-    return <section>{t('not_found')}</section>;
+    return <PageWrapper>{t('not_found')}</PageWrapper>;
   }
 
   return (

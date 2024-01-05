@@ -6,11 +6,14 @@ import { type ArticleListView } from '@/entities/Article';
 import { ArticleList } from '@/entities/Article/ui/ArticleList';
 
 import { type ReducersList, DynamicModuleLoader } from '@/shared/lib/DynamicModuleLoader';
+import { setViewFromLocalStorage } from '@/shared/lib/storage/view';
 import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
+import { PageWrapper } from '@/shared/ui/PageWrapper';
 
 import { getArticlesPageIsLoading } from '../../model/selectors/getArticlesPageIsLoading';
 import { getArticlesPageView } from '../../model/selectors/getArticlesPageView';
 import { getArticlesListThunk } from '../../model/services/getArticlesList';
+import { getNextArticlesListThunk } from '../../model/services/getNextArticlesList';
 import { articlesPageAction, articlesPageReducer, getArticlesAdapter } from '../../model/slices';
 
 const reducers: ReducersList = {
@@ -26,22 +29,32 @@ const ArticlesPage = () => {
 
   const onChangeView = useCallback(
     (view: ArticleListView) => {
+      setViewFromLocalStorage(view);
       dispatch(articlesPageAction.setView(view));
     },
     [dispatch]
   );
 
+  const onLoadNextPart = useCallback(() => {
+    dispatch(getNextArticlesListThunk());
+  }, [dispatch]);
+
   useEffect(() => {
-    dispatch(getArticlesListThunk());
+    dispatch(articlesPageAction.initState());
+    dispatch(
+      getArticlesListThunk({
+        page: 1
+      })
+    );
   }, [dispatch]);
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <section>
+      <PageWrapper onScrollEnd={onLoadNextPart}>
         <ArticlesViewSwitcher view={view} onViewClick={onChangeView} />
 
         <ArticleList articles={articles} view={view} isLoading={isLoading} />
-      </section>
+      </PageWrapper>
     </DynamicModuleLoader>
   );
 };

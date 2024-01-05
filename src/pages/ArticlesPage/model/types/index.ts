@@ -4,6 +4,9 @@ import { type ArticleListView, type ArticleModel } from '@/entities/Article';
 
 export interface ArticlesPageSchema extends EntityState<ArticleModel> {
   view: ArticleListView;
+  page: number;
+  isHasMore: boolean;
+  limit?: number;
   isLoading?: boolean;
   error?: string;
 }

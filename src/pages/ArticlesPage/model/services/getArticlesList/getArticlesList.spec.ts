@@ -1,4 +1,4 @@
-import { type ArticleModel, ArticleEnumType } from '@/entities/Article';
+import { type ArticleModel, ArticleEnumType, ArticleListView } from '@/entities/Article';
 
 import { TestAsyncThunk } from '@/shared/config/tests/testAsyncThunk';
 
@@ -22,11 +22,23 @@ describe('test asyncThunk - getArticlesListThunk', () => {
       }
     ];
 
-    const thunk = new TestAsyncThunk(getArticlesListThunk);
+    const thunk = new TestAsyncThunk(getArticlesListThunk, {
+      articlesPage: {
+        page: 2,
+        ids: [],
+        entities: {},
+        limit: 5,
+        isLoading: false,
+        isHasMore: false,
+        view: ArticleListView.SMALL
+      }
+    });
 
     thunk.api.get.mockReturnValue(Promise.resolve({ data: articleData }));
 
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk({
+      page: 1
+    });
 
     expect(thunk.api.get).toHaveBeenCalled();
     expect(thunk.dispatch).toHaveBeenCalledTimes(2);

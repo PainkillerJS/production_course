@@ -4,21 +4,21 @@ import { ArticleListView } from '@/entities/Article';
 
 import { type StateSchema } from '@/shared/providers/StoreProvider/config/stateSchema';
 
-import { getArticlesPageView } from '.';
+import { getArticlesPageNum } from '.';
 
-describe('test selector = getArticlesPageView', () => {
-  test('selector should return view status', () => {
+describe('test selector = getArticlesPageNum', () => {
+  test('selector should return page`s number', () => {
     const state: DeepPartial<StateSchema> = {
       articlesPage: {
         isLoading: false,
         ids: [],
         entities: {},
         view: ArticleListView.BIG,
-        isHasMore: true,
-        page: 1
+        page: 1,
+        isHasMore: true
       }
     };
 
-    expect(getArticlesPageView(state as StateSchema)).toBe(ArticleListView.BIG);
+    expect(getArticlesPageNum(state as StateSchema)).toBe(1);
   });
 });

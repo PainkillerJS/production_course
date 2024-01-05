@@ -1,10 +1,11 @@
-import type { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const AboutPage: FC = () => {
+import { PageWrapper } from '@/shared/ui/PageWrapper';
+
+const AboutPage = () => {
   const { t } = useTranslation('about');
 
-  return <div>{t('about page')}</div>;
+  return <PageWrapper>{t('about page')}</PageWrapper>;
 };
 
 export default AboutPage;

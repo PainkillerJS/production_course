@@ -11,7 +11,9 @@ describe('test slice = articlesPageSlice', () => {
       view: ArticleListView.SMALL,
       entities: {},
       error: undefined,
-      isLoading: false
+      isLoading: false,
+      page: 1,
+      isHasMore: true
     };
 
     expect(articlesPageReducer(state, articlesPageAction.setView(ArticleListView.BIG))).toEqual({
@@ -22,6 +24,23 @@ describe('test slice = articlesPageSlice', () => {
     expect(articlesPageReducer(state, articlesPageAction.setView(ArticleListView.SMALL))).toEqual({
       ...state,
       view: ArticleListView.SMALL
+    });
+  });
+
+  test('test change profile data - setPage', () => {
+    const state: ArticlesPageSchema = {
+      ids: [],
+      view: ArticleListView.SMALL,
+      entities: {},
+      error: undefined,
+      isLoading: false,
+      page: 1,
+      isHasMore: true
+    };
+
+    expect(articlesPageReducer(state, articlesPageAction.setPage(2))).toEqual({
+      ...state,
+      page: 2
     });
   });
 });

@@ -2,6 +2,7 @@ import { type PayloadAction, createEntityAdapter, createSlice } from '@reduxjs/t
 
 import { type ArticleModel, ArticleListView } from '@/entities/Article';
 
+import { getViewFromLocalStorage } from '@/shared/lib/storage/view';
 import { type StateSchema } from '@/shared/providers/StoreProvider/config/stateSchema';
 
 import { getArticlesListThunk } from '../services/getArticlesList';
@@ -22,11 +23,21 @@ const articlesPageSlice = createSlice({
     error: undefined,
     view: ArticleListView.SMALL,
     ids: [],
-    entities: {}
+    entities: {},
+    page: 1,
+    isHasMore: true
   }),
   reducers: {
     setView: (state, action: PayloadAction<ArticleListView>) => {
       state.view = action.payload;
+    },
+    setPage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload;
+    },
+    initState: (state) => {
+      const view = getViewFromLocalStorage() ?? ArticleListView.SMALL;
+      state.view = view;
+      state.limit = view === ArticleListView.BIG ? 4 : 9;
     }
   },
   extraReducers: (buider) =>
@@ -34,12 +45,11 @@ const articlesPageSlice = createSlice({
       .addCase(getArticlesListThunk.pending, (state) => {
         state.isLoading = true;
         state.error = undefined;
-        state.ids = [];
-        state.entities = {};
       })
       .addCase(getArticlesListThunk.fulfilled, (state, { payload }) => {
-        articlesAdapter.setAll(state, payload);
+        articlesAdapter.addMany(state, payload);
         state.isLoading = false;
+        state.isHasMore = payload.length > 0;
       })
       .addCase(getArticlesListThunk.rejected, (state, { payload }) => {
         state.error = payload?.message;
