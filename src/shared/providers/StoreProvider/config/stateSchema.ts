@@ -8,6 +8,7 @@ import {
 } from '@reduxjs/toolkit';
 
 import { type ArticleDetailsCommentsSchema } from '@/pages/ArticlesDetailsPage';
+import { type ArticlesPageSchema } from '@/pages/ArticlesPage';
 
 import { type AddCommentFormSchema } from '@/features/AddCommentForm';
 import { type LoginSchema } from '@/features/AuthByUsername/model/slice';
@@ -25,6 +26,7 @@ export interface StateSchema {
   articles?: ArticleDetailsSchema;
   articleDetailsComments?: ArticleDetailsCommentsSchema;
   addCommentForm?: AddCommentFormSchema;
+  articlesPage?: ArticlesPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

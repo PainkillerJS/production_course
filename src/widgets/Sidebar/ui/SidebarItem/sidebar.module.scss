@@ -22,3 +22,9 @@
   height: 0;
   margin-bottom: 23px;
 }
+
+.button {
+  &:hover {
+    margin-left: 10px;
+  }
+}
