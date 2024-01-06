@@ -15,7 +15,8 @@ describe('test selector = getArticlesPageIsHasMore', () => {
         entities: {},
         view: ArticleListView.BIG,
         page: 1,
-        isHasMore: true
+        isHasMore: true,
+        _initied: false
       }
     };
 

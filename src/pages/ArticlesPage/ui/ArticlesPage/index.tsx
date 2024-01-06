@@ -12,8 +12,8 @@ import { PageWrapper } from '@/shared/ui/PageWrapper';
 
 import { getArticlesPageIsLoading } from '../../model/selectors/getArticlesPageIsLoading';
 import { getArticlesPageView } from '../../model/selectors/getArticlesPageView';
-import { getArticlesListThunk } from '../../model/services/getArticlesList';
 import { getNextArticlesListThunk } from '../../model/services/getNextArticlesList';
+import { updateInitedArticlesPageThunk } from '../../model/services/updateInitedArticlesPage';
 import { articlesPageAction, articlesPageReducer, getArticlesAdapter } from '../../model/slices';
 
 const reducers: ReducersList = {
@@ -40,16 +40,11 @@ const ArticlesPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(articlesPageAction.initState());
-    dispatch(
-      getArticlesListThunk({
-        page: 1
-      })
-    );
+    dispatch(updateInitedArticlesPageThunk());
   }, [dispatch]);
 
   return (
-    <DynamicModuleLoader reducers={reducers}>
+    <DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount={false}>
       <PageWrapper onScrollEnd={onLoadNextPart}>
         <ArticlesViewSwitcher view={view} onViewClick={onChangeView} />
 

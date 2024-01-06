@@ -15,7 +15,8 @@ describe('test selector = getArticlesPageIsLoading', () => {
         entities: {},
         view: ArticleListView.BIG,
         isHasMore: true,
-        page: 1
+        page: 1,
+        _initied: false
       }
     };
 

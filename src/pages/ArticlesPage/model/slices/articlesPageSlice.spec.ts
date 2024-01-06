@@ -13,7 +13,8 @@ describe('test slice = articlesPageSlice', () => {
       error: undefined,
       isLoading: false,
       page: 1,
-      isHasMore: true
+      isHasMore: true,
+      _initied: false
     };
 
     expect(articlesPageReducer(state, articlesPageAction.setView(ArticleListView.BIG))).toEqual({
@@ -35,7 +36,8 @@ describe('test slice = articlesPageSlice', () => {
       error: undefined,
       isLoading: false,
       page: 1,
-      isHasMore: true
+      isHasMore: true,
+      _initied: false
     };
 
     expect(articlesPageReducer(state, articlesPageAction.setPage(2))).toEqual({

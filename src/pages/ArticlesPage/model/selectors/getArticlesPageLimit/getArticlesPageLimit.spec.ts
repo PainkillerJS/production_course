@@ -16,7 +16,8 @@ describe('test selector = getArticlesPageLimit', () => {
         view: ArticleListView.BIG,
         page: 1,
         isHasMore: true,
-        limit: 9
+        limit: 9,
+        _initied: false
       }
     };
 

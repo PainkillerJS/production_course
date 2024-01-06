@@ -30,7 +30,8 @@ describe('test asyncThunk - getArticlesListThunk', () => {
         limit: 5,
         isLoading: false,
         isHasMore: false,
-        view: ArticleListView.SMALL
+        view: ArticleListView.SMALL,
+        _initied: false
       }
     });
 

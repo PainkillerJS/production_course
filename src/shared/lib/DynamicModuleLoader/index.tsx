@@ -29,8 +29,14 @@ export const DynamicModuleLoader = ({
   const store = useStore() as ReduxStoreWithManager;
 
   useEffect(() => {
+    const mountedReducers = store.reducerManager.getReducerMap();
+
     Object.entries(reducers).forEach(([key, reducer]) => {
-      store.reducerManager.add(key as StateSchemaKey, reducer);
+      const mounted = mountedReducers[key as StateSchemaKey];
+
+      if (!mounted) {
+        store.reducerManager.add(key as StateSchemaKey, reducer);
+      }
     });
 
     return () => {

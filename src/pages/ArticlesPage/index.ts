@@ -1,5 +1,6 @@
 export * from './model/selectors/getArticlesPageError';
 export * from './model/selectors/getArticlesPageIsHasMore';
+export * from './model/selectors/getArticlesPageIsInited';
 export * from './model/selectors/getArticlesPageIsLoading';
 export * from './model/selectors/getArticlesPageLimit';
 export * from './model/selectors/getArticlesPageNum';

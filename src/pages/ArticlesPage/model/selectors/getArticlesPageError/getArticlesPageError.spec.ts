@@ -16,7 +16,8 @@ describe('test selector = getArticlesPageView', () => {
         view: ArticleListView.BIG,
         error: 'test error',
         isHasMore: true,
-        page: 1
+        page: 1,
+        _initied: false
       }
     };
 
