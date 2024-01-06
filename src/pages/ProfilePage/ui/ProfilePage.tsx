@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
+import { PageWrapper } from '@/widgets/PageWrapper';
+
 import {
   getProfileEditedData,
   getProfileError,
@@ -17,7 +19,6 @@ import {
 
 import { type ReducersList, DynamicModuleLoader } from '@/shared/lib/DynamicModuleLoader';
 import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
-import { PageWrapper } from '@/shared/ui/PageWrapper';
 import { Text, TextTheme } from '@/shared/ui/Typography';
 
 import { ProfilePageHeader } from './ProfilePageHeader';

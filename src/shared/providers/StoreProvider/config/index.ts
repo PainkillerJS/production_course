@@ -6,6 +6,8 @@ import {
   configureStore
 } from '@reduxjs/toolkit';
 
+import { safeScrollReducer } from '@/features/SafeScroll';
+
 import { userReducer } from '@/entities/User';
 
 import { $api } from '@/shared/api/api';
@@ -19,7 +21,8 @@ export const createReduxStore = (
 ) => {
   const rootReducer: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
-    user: userReducer
+    user: userReducer,
+    safeScroll: safeScrollReducer
   };
 
   const reducerManager = createReducerManager(rootReducer);

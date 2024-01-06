@@ -12,6 +12,7 @@ import { type ArticlesPageSchema } from '@/pages/ArticlesPage';
 
 import { type AddCommentFormSchema } from '@/features/AddCommentForm';
 import { type LoginSchema } from '@/features/AuthByUsername/model/slice';
+import { type SafeScrollSchema } from '@/features/SafeScroll';
 
 import { type ArticleDetailsSchema } from '@/entities/Article';
 import { type ProfileSchema } from '@/entities/Profile';
@@ -19,6 +20,7 @@ import { type UserState } from '@/entities/User';
 
 export interface StateSchema {
   user: UserState;
+  safeScroll: SafeScrollSchema;
 
   // Асинхроные редюсеры
   login?: LoginSchema;

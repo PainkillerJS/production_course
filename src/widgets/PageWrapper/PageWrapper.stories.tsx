@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { PageWrapper } from '.';
 
 export default {
-  title: 'ui/PageWrapper',
+  title: 'widget/PageWrapper',
   component: PageWrapper,
   argTypes: {
     className: {

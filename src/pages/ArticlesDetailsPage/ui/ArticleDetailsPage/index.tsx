@@ -3,6 +3,8 @@ import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { PageWrapper } from '@/widgets/PageWrapper';
+
 import { AddCommentForm } from '@/features/AddCommentForm';
 
 import { ArticleDetails } from '@/entities/Article';
@@ -14,7 +16,6 @@ import { type ReducersList, DynamicModuleLoader } from '@/shared/lib/DynamicModu
 import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
 import Button, { ThemeButton } from '@/shared/ui/Button/Button';
 import { Heading } from '@/shared/ui/Heading';
-import { PageWrapper } from '@/shared/ui/PageWrapper';
 
 import { getArticleDetailsCommentsIsLoading } from '../../model/selectors/getArticleDetailsCommentsIsLoading';
 import { getCommentsByArticleIdThunk } from '../../model/services/getCommentsByArticleId';

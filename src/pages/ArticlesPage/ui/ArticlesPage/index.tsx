@@ -1,5 +1,7 @@
 import { useCallback, useEffect } from 'react';
 
+import { PageWrapper } from '@/widgets/PageWrapper';
+
 import { ArticlesViewSwitcher } from '@/features/ArticlesViewSwitcher';
 
 import { type ArticleListView } from '@/entities/Article';
@@ -8,7 +10,6 @@ import { ArticleList } from '@/entities/Article/ui/ArticleList';
 import { type ReducersList, DynamicModuleLoader } from '@/shared/lib/DynamicModuleLoader';
 import { setViewFromLocalStorage } from '@/shared/lib/storage/view';
 import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
-import { PageWrapper } from '@/shared/ui/PageWrapper';
 
 import { getArticlesPageIsLoading } from '../../model/selectors/getArticlesPageIsLoading';
 import { getArticlesPageView } from '../../model/selectors/getArticlesPageView';

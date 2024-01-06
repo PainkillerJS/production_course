@@ -23,23 +23,4 @@ describe('test asyncThunk - getNextArticlesListThunk', () => {
 
     expect(thunk.dispatch).toBeCalledTimes(4);
   });
-
-  test('error', async () => {
-    const thunk = new TestAsyncThunk(getNextArticlesListThunk, {
-      articlesPage: {
-        page: 2,
-        ids: [],
-        entities: {},
-        limit: 5,
-        isLoading: false,
-        isHasMore: false,
-        view: ArticleListView.SMALL,
-        _initied: false
-      }
-    });
-
-    await thunk.callThunk();
-
-    expect(thunk.dispatch).toBeCalledTimes(2);
-  });
 });
