@@ -70,7 +70,7 @@ export const PageWrapper = memo(({ className, children, onScrollEnd }: PageWrapp
     >
       {children}
 
-      <div ref={triggerRef} />
+      {onScrollEnd && <div className={styles.trigger} ref={triggerRef} />}
     </section>
   );
 });

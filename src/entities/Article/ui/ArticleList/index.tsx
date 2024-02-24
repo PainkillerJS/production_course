@@ -1,4 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 import { clsx } from '@/shared/lib/classNames';
+import { Heading, HeadingSize } from '@/shared/ui/Heading';
 
 import { type ArticleModel, ArticleListView } from '../../model/types';
 import { ArticleListItem } from '../ArticleListItem';
@@ -19,6 +22,16 @@ export const ArticleList = ({
   isLoading,
   view = ArticleListView.SMALL
 }: ArticleListProps) => {
+  const { t } = useTranslation('articles');
+
+  if (!isLoading && !articles.length) {
+    return (
+      <div className={clsx(className, styles[view])}>
+        <Heading size={HeadingSize.L}>{t('articles_not_found')}</Heading>
+      </div>
+    );
+  }
+
   return (
     <div className={clsx(className, styles[view])}>
       {articles?.map((article) => {

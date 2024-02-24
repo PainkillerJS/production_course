@@ -1,6 +1,6 @@
 import { type DeepPartial } from '@reduxjs/toolkit';
 
-import { ArticleListView } from '@/entities/Article';
+import { ArticleEnumType, ArticleListView, ArticleSortField } from '@/entities/Article';
 
 import { type StateSchema } from '@/shared/providers/StoreProvider/config/stateSchema';
 
@@ -17,7 +17,11 @@ describe('test selector = getArticlesPageLimit', () => {
         page: 1,
         isHasMore: true,
         limit: 9,
-        _initied: false
+        _initied: false,
+        sort: ArticleSortField.CREATED,
+        search: '',
+        order: 'asc',
+        type: ArticleEnumType.ALL
       }
     };
 

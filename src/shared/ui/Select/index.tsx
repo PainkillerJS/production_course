@@ -15,7 +15,7 @@ export interface OptionsType {
   content: string;
 }
 
-interface SelectProps {
+interface SelectProps<T> {
   /**
    * @description варианты select
    */
@@ -31,7 +31,7 @@ interface SelectProps {
   /**
    * @description значение select
    */
-  value?: OptionsType['value'];
+  value?: T;
   /**
    * @description placeholder select
    */
@@ -39,40 +39,50 @@ interface SelectProps {
   /**
    * @description callback для изменения значения
    */
-  onChange?: (value: string) => void;
+  onChange?: (value: T) => void;
   /**
    * @description состояние блокирвки select
    */
   isDisabled?: boolean;
 }
 
-export const Select = memo(
-  ({ className, label, options, value, onChange, placeholder, isDisabled }: SelectProps) => {
-    const onChangeSelect: ChangeEventHandler<HTMLSelectElement> = (event) => {
-      onChange?.(event.target.value);
-    };
+const Select = <T extends string>({
+  className,
+  label,
+  options,
+  value,
+  onChange,
+  placeholder,
+  isDisabled
+}: SelectProps<T>) => {
+  const onChangeSelect: ChangeEventHandler<HTMLSelectElement> = (event) => {
+    onChange?.(event.target.value as T);
+  };
 
-    return (
-      <div
-        data-testid='select'
-        className={clsx(styles.wrapper, className, { [styles.disabled]: isDisabled })}
+  return (
+    <div
+      data-testid='select'
+      className={clsx(styles.wrapper, className, { [styles.disabled]: isDisabled })}
+    >
+      {label && <span className={styles.label}>{`${label} > `}</span>}
+
+      <select
+        className={styles.select}
+        onChange={onChangeSelect}
+        value={value}
+        placeholder={placeholder}
+        disabled={isDisabled}
       >
-        {label && <span className={styles.label}>{`${label} > `}</span>}
+        {options.map(({ content, value }) => (
+          <option value={value} key={value}>
+            {content}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
 
-        <select
-          className={styles.select}
-          onChange={onChangeSelect}
-          value={value}
-          placeholder={placeholder}
-          disabled={isDisabled}
-        >
-          {options.map(({ content, value }) => (
-            <option value={value} key={value}>
-              {content}
-            </option>
-          ))}
-        </select>
-      </div>
-    );
-  }
-);
+const SelectMemo = memo(Select) as typeof Select;
+
+export { SelectMemo as Select };

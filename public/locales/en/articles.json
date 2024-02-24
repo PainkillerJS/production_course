@@ -3,5 +3,17 @@
   "error": "Error after load the article",
   "comments": "Comments",
   "read_next": "Read next...",
-  "back_to_lists": "Back to lists"
+  "back_to_lists": "Back to lists",
+  "sort_by": "Sort by",
+  "search": "Search",
+  "order_by": "Order by",
+  "up": "Up",
+  "down": "Down",
+  "date_created_sort": "Date created",
+  "title_sort": "Title",
+  "views_sort": "Views",
+  "all": "All",
+  "economic": "Economic",
+  "science": "Science",
+  "articles_not_found": "Articles not found"
 }

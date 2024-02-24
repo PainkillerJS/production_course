@@ -1,4 +1,4 @@
-import { ArticleListView } from '@/entities/Article';
+import { ArticleEnumType, ArticleListView, ArticleSortField } from '@/entities/Article';
 
 import { TestAsyncThunk } from '@/shared/config/tests/testAsyncThunk';
 
@@ -15,11 +15,15 @@ describe('test asyncThunk - getNextArticlesListThunk', () => {
         isLoading: false,
         isHasMore: true,
         view: ArticleListView.SMALL,
-        _initied: false
+        _initied: false,
+        sort: ArticleSortField.CREATED,
+        search: '',
+        order: 'asc',
+        type: ArticleEnumType.ALL
       }
     });
 
-    await thunk.callThunk();
+    await thunk.callThunk(new URLSearchParams());
 
     expect(thunk.dispatch).toBeCalledTimes(4);
   });
