@@ -1,8 +1,4 @@
-import { useCallback } from 'react';
-
-import { useNavigate } from 'react-router-dom';
-
-import { AppRoute, routePath } from '@/shared/config/routeConfig/routeConfig';
+import { type HTMLAttributeAnchorTarget } from 'react';
 
 import { type ArticleModel, ArticleListView } from '../../model/types';
 
@@ -13,16 +9,11 @@ interface ArticleListItemProps {
   article: ArticleModel;
   view: ArticleListView;
   className?: string;
+  target?: HTMLAttributeAnchorTarget;
 }
 
-export const ArticleListItem = ({ article, view, className }: ArticleListItemProps) => {
-  const navigate = useNavigate();
-
-  const onOpenArtice = useCallback(() => {
-    navigate(`${routePath[AppRoute.ARTICLES]}/${article.id}`);
-  }, [article.id, navigate]);
-
+export const ArticleListItem = ({ article, view, className, target }: ArticleListItemProps) => {
   const Component = view === ArticleListView.BIG ? BigArticleListItem : SmallArticleListItem;
 
-  return <Component className={className} article={article} onOpenArtice={onOpenArtice} />;
+  return <Component className={className} article={article} target={target ?? '_blank'} />;
 };

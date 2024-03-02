@@ -5,11 +5,12 @@ import { type Reducer } from '@reduxjs/toolkit';
 
 import {
   type ReduxStoreWithManager,
+  type StateSchema,
   type StateSchemaKey
 } from '@/shared/providers/StoreProvider/config/stateSchema';
 
 export type ReducersList = {
-  [name in StateSchemaKey]?: Reducer;
+  [name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[name]>>;
 };
 
 interface DynamicModuleLoaderProps extends PropsWithChildren {

@@ -1,3 +1,5 @@
+import { type HTMLAttributeAnchorTarget } from 'react';
+
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -7,7 +9,9 @@ import {
 } from '@/entities/Article/model/types';
 
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
+import { routePath } from '@/shared/config/routeConfig/routeConfig';
 import { clsx } from '@/shared/lib/classNames';
+import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
 import Button, { ThemeButton } from '@/shared/ui/Button/Button';
 import { Card } from '@/shared/ui/Card';
@@ -21,15 +25,11 @@ import styles from '../../articleListItem.module.scss';
 
 interface BigArticleListItemProps {
   article: ArticleModel;
-  onOpenArtice: () => void;
   className?: string;
+  target?: HTMLAttributeAnchorTarget;
 }
 
-export const BigArticleListItem = ({
-  article,
-  className,
-  onOpenArtice
-}: BigArticleListItemProps) => {
+export const BigArticleListItem = ({ article, className, target }: BigArticleListItemProps) => {
   const { t } = useTranslation('articles');
 
   const textBlock = article.blocks.find(
@@ -55,9 +55,9 @@ export const BigArticleListItem = ({
         {textBlock && <ArticleTextBlock block={textBlock} className={styles.textBlock} />}
 
         <div className={styles.footer}>
-          <Button onClick={onOpenArtice} variant={ThemeButton.OUTLINE}>
-            {t('read_next')}
-          </Button>
+          <AppLink to={`${routePath.articles}/${article.id}`} target={target}>
+            <Button variant={ThemeButton.OUTLINE}>{t('read_next')}</Button>
+          </AppLink>
 
           <Text className={styles.views}>{article.views.toString()}</Text>
           <Icon Svg={EyeIcon} />

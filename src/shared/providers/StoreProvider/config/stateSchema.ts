@@ -7,7 +7,7 @@ import {
   type ReducersMapObject
 } from '@reduxjs/toolkit';
 
-import { type ArticleDetailsCommentsSchema } from '@/pages/ArticlesDetailsPage';
+import { type ArticleDetailsPageSchema } from '@/pages/ArticlesDetailsPage';
 import { type ArticlesPageSchema } from '@/pages/ArticlesPage';
 
 import { type AddCommentFormSchema } from '@/features/AddCommentForm';
@@ -26,9 +26,9 @@ export interface StateSchema {
   login?: LoginSchema;
   profile?: ProfileSchema;
   articles?: ArticleDetailsSchema;
-  articleDetailsComments?: ArticleDetailsCommentsSchema;
   addCommentForm?: AddCommentFormSchema;
   articlesPage?: ArticlesPageSchema;
+  articleDetailsPage?: ArticleDetailsPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

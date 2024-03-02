@@ -8,6 +8,7 @@ import { PageWrapper } from '@/widgets/PageWrapper';
 import { AddCommentForm } from '@/features/AddCommentForm';
 
 import { ArticleDetails } from '@/entities/Article';
+import { ArticleList } from '@/entities/Article/ui/ArticleList';
 import { CommentsList } from '@/entities/Comment';
 import { getUserAuthUsername } from '@/entities/User';
 
@@ -15,17 +16,22 @@ import { AppRoute, routePath } from '@/shared/config/routeConfig/routeConfig';
 import { type ReducersList, DynamicModuleLoader } from '@/shared/lib/DynamicModuleLoader';
 import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
 import Button, { ThemeButton } from '@/shared/ui/Button/Button';
-import { Heading } from '@/shared/ui/Heading';
+import { Heading, HeadingSize } from '@/shared/ui/Heading';
 
 import { getArticleDetailsCommentsIsLoading } from '../../model/selectors/getArticleDetailsCommentsIsLoading';
+import { getArticleDetailsRecomendationsIsLoading } from '../../model/selectors/getArticleDetailsRecomendationsIsLoading';
 import { getCommentsByArticleIdThunk } from '../../model/services/getCommentsByArticleId';
 import { sendCommentForArticle } from '../../model/services/sendCommentForArticle';
-import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slices';
+import { articleDetailsPageReducer } from '../../model/slices';
+import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
+import { getArticleRecomendations } from '../../model/slices/articleDetailsRecomendationsSlice';
+
+import { getArticlesRecommendationsThunk } from './../../model/services/getArticlesRecommendations/index';
 
 import styles from './articleDetailsPage.module.scss';
 
 const initialReducers: ReducersList = {
-  articleDetailsComments: articleDetailsCommentsReducer
+  articleDetailsPage: articleDetailsPageReducer
 };
 
 const ArticleDetailsPage = () => {
@@ -37,6 +43,9 @@ const ArticleDetailsPage = () => {
   const username = useAppSelector(getUserAuthUsername);
   const comments = useAppSelector(getArticleComments.selectAll);
   const isCommentsIsLoading = useAppSelector(getArticleDetailsCommentsIsLoading);
+
+  const recomendations = useAppSelector(getArticleRecomendations.selectAll);
+  const isRecomendationsLoading = useAppSelector(getArticleDetailsRecomendationsIsLoading);
 
   const onSendComment = useCallback(
     (value: string) => {
@@ -51,6 +60,7 @@ const ArticleDetailsPage = () => {
 
   useEffect(() => {
     dispatch(getCommentsByArticleIdThunk(id));
+    dispatch(getArticlesRecommendationsThunk());
   }, [dispatch, id]);
 
   if (!id) {
@@ -66,10 +76,18 @@ const ArticleDetailsPage = () => {
 
         <ArticleDetails id={id} />
 
+        <Heading size={HeadingSize.L} className={styles.commentTitle}>
+          {t('recommends')}
+        </Heading>
+
+        <ArticleList
+          articles={recomendations}
+          isLoading={isRecomendationsLoading}
+          className={styles.recommendations}
+        />
+
         <Heading className={styles.commentTitle}>{t('comments')}</Heading>
-
         {username && <AddCommentForm onSendComment={onSendComment} />}
-
         <CommentsList comments={comments} isLoading={isCommentsIsLoading} />
       </section>
     </DynamicModuleLoader>

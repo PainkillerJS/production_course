@@ -17,6 +17,7 @@ export const StoreDecorator =
     (
       <StoreProvider
         initialState={state}
+        // @ts-expect-error
         asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
       >
         <Story />

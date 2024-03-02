@@ -7,11 +7,19 @@ import { getArticleDetailsCommentsError } from '.';
 describe('test selector = getArticleDetailsCommentsError', () => {
   test('selector should return article details comments loading', () => {
     const state: DeepPartial<StateSchema> = {
-      articleDetailsComments: {
-        isLoading: true,
-        ids: [],
-        entities: {},
-        error: 'test error'
+      articleDetailsPage: {
+        comments: {
+          isLoading: true,
+          ids: [],
+          entities: {},
+          error: 'test error'
+        },
+        recommendations: {
+          isLoading: true,
+          ids: [],
+          entities: {},
+          error: 'test error'
+        }
       }
     };
 

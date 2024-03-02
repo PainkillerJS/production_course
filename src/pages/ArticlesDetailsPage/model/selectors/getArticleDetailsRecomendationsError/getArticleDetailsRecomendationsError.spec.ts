@@ -2,9 +2,9 @@ import { type DeepPartial } from '@reduxjs/toolkit';
 
 import { type StateSchema } from '@/shared/providers/StoreProvider/config/stateSchema';
 
-import { getArticleDetailsCommentsIsLoading } from '.';
+import { getArticleDetailsRecomendationsError } from '.';
 
-describe('test selector = getArticleDetailsCommentsIsLoading', () => {
+describe('test selector = getArticleDetailsRecomendationsError', () => {
   test('selector should return article details comments loading', () => {
     const state: DeepPartial<StateSchema> = {
       articleDetailsPage: {
@@ -23,6 +23,6 @@ describe('test selector = getArticleDetailsCommentsIsLoading', () => {
       }
     };
 
-    expect(getArticleDetailsCommentsIsLoading(state as StateSchema)).toBe(true);
+    expect(getArticleDetailsRecomendationsError(state as StateSchema)).toBe('test error');
   });
 });

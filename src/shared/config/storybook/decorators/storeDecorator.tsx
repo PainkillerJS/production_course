@@ -9,6 +9,8 @@ export const StoreDecorator =
   (state?: DeepPartial<StateSchema>, asyncReducers?: ReducersList): Decorator =>
   (Story) => {
     return (
+      // @ts-expect-error
+
       <StoreProvider initialState={state} asyncReducers={asyncReducers}>
         <Story />
       </StoreProvider>
