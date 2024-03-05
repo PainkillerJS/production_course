@@ -6,6 +6,7 @@ import styles from './heading.module.scss';
 
 export enum TextHeadingTheme {
   PRIMARY = 'primary',
+  INVERTED = 'inverted',
   ERROR = 'error'
 }
 

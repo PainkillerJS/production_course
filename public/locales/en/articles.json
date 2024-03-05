@@ -16,5 +16,8 @@
   "economic": "Economic",
   "science": "Science",
   "articles_not_found": "Articles not found",
-  "recommends": "Recommends"
+  "recommends": "Recommends",
+  "change_article": "Change article",
+  "edit_article": "Edit article",
+  "create_article": "Create new article"
 }

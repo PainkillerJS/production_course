@@ -6,5 +6,6 @@
   "about": "About",
   "profile": "Profile",
   "logout": "Logout",
-  "articles": "Articles"
+  "articles": "Articles",
+  "create_article": "Create new article"
 }

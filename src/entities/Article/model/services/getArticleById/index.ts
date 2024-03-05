@@ -9,7 +9,11 @@ export const getArticleByIdThunk = createAsyncThunk<ArticleModel, string, ThunkC
   'articleDetails/getArticleById',
   async (id, { rejectWithValue, extra }) => {
     try {
-      const response = await extra.api.get<ArticleModel>(`/articles/${id}`);
+      const response = await extra.api.get<ArticleModel>(`/articles/${id}`, {
+        params: {
+          _expand: 'user'
+        }
+      });
 
       return response.data;
     } catch (e) {

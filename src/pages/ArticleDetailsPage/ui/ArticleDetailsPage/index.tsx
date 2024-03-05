@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { PageWrapper } from '@/widgets/PageWrapper';
 
@@ -12,10 +12,8 @@ import { ArticleList } from '@/entities/Article/ui/ArticleList';
 import { CommentsList } from '@/entities/Comment';
 import { getUserAuthUsername } from '@/entities/User';
 
-import { AppRoute, routePath } from '@/shared/config/routeConfig/routeConfig';
 import { type ReducersList, DynamicModuleLoader } from '@/shared/lib/DynamicModuleLoader';
 import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
-import Button, { ThemeButton } from '@/shared/ui/Button/Button';
 import { Heading, HeadingSize } from '@/shared/ui/Heading';
 
 import { getArticleDetailsCommentsIsLoading } from '../../model/selectors/getArticleDetailsCommentsIsLoading';
@@ -25,6 +23,7 @@ import { sendCommentForArticle } from '../../model/services/sendCommentForArticl
 import { articleDetailsPageReducer } from '../../model/slices';
 import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
 import { getArticleRecomendations } from '../../model/slices/articleDetailsRecomendationsSlice';
+import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHeader';
 
 import { getArticlesRecommendationsThunk } from './../../model/services/getArticlesRecommendations/index';
 
@@ -38,7 +37,6 @@ const ArticleDetailsPage = () => {
   const { t } = useTranslation('articles');
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
 
   const username = useAppSelector(getUserAuthUsername);
   const comments = useAppSelector(getArticleComments.selectAll);
@@ -54,10 +52,6 @@ const ArticleDetailsPage = () => {
     [dispatch]
   );
 
-  const onBackToList = useCallback(() => {
-    navigate(routePath[AppRoute.ARTICLES]);
-  }, [navigate]);
-
   useEffect(() => {
     dispatch(getCommentsByArticleIdThunk(id));
     dispatch(getArticlesRecommendationsThunk());
@@ -70,9 +64,7 @@ const ArticleDetailsPage = () => {
   return (
     <DynamicModuleLoader reducers={initialReducers}>
       <section className={styles.articleDetailsPage}>
-        <Button onClick={onBackToList} variant={ThemeButton.OUTLINE}>
-          {t('back_to_lists')}
-        </Button>
+        <ArticleDetailsHeader />
 
         <ArticleDetails id={id} />
 

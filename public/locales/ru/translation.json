@@ -6,5 +6,6 @@
   "about": "О нас",
   "logout": "Выйти",
   "profile": "Профиль",
-  "articles": "Статьи"
+  "articles": "Статьи",
+  "create_article": "Создать новую статью"
 }

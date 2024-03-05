@@ -16,5 +16,8 @@
   "economic": "Экономика",
   "science": "Наука",
   "articles_not_found": "Статьи не найдены",
-  "Рекомендуемое": "Recommends"
+  "recommends": "Рекомендуемое",
+  "change_article": "Редактировать",
+  "edit_article": "Редактировать статьтью",
+  "create_article": "Создать новую статью"
 }

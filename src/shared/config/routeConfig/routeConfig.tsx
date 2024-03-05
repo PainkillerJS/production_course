@@ -3,7 +3,8 @@ import { type SVGProps, type VFC } from 'react';
 import { type RouteProps } from 'react-router-dom';
 
 import { AboutPageAsync } from '@/pages/AboutPage';
-import { ArticlesDetailsPage } from '@/pages/ArticlesDetailsPage';
+import { ArticlesDetailsPage } from '@/pages/ArticleDetailsPage';
+import { ArticleEditPage } from '@/pages/ArticleEditPage';
 import { ArticlesPage } from '@/pages/ArticlesPage';
 import { MainPageAsync } from '@/pages/MainPage';
 import { NotFountPage } from '@/pages/NotFoundPage';
@@ -14,6 +15,8 @@ export enum AppRoute {
   ABOUT = 'about',
   PROFILE = 'profile',
   ARTICLES = 'articles',
+  ARTICLES_CREATE = 'articles_create',
+  ARTICLES_EDIT = 'articles_edit',
   NOT_FOUND = 'not_found'
 }
 
@@ -34,6 +37,8 @@ export const routePath: Record<AppRoute, string> = {
   [AppRoute.ABOUT]: '/about',
   [AppRoute.PROFILE]: '/profile',
   [AppRoute.ARTICLES]: '/articles',
+  [AppRoute.ARTICLES_CREATE]: '/articles/new',
+  [AppRoute.ARTICLES_EDIT]: '/articles/:id/edit',
   [AppRoute.NOT_FOUND]: '*'
 };
 
@@ -45,10 +50,6 @@ export const routeConfig: RouteConfigType[] = [
   {
     path: routePath[AppRoute.ABOUT],
     element: <AboutPageAsync />
-  },
-  {
-    path: routePath[AppRoute.NOT_FOUND],
-    element: <NotFountPage />
   },
   {
     path: `${routePath[AppRoute.PROFILE]}/:id`,
@@ -64,5 +65,19 @@ export const routeConfig: RouteConfigType[] = [
     path: `${routePath[AppRoute.ARTICLES]}/:id`,
     element: <ArticlesDetailsPage />,
     isAuthOnly: true
+  },
+  {
+    path: `${routePath[AppRoute.ARTICLES_CREATE]}`,
+    element: <ArticleEditPage />,
+    isAuthOnly: true
+  },
+  {
+    path: `${routePath[AppRoute.ARTICLES_EDIT]}`,
+    element: <ArticleEditPage />,
+    isAuthOnly: true
+  },
+  {
+    path: routePath[AppRoute.NOT_FOUND],
+    element: <NotFountPage />
   }
 ];
