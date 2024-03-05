@@ -7,7 +7,7 @@ import {
   type ReducersMapObject
 } from '@reduxjs/toolkit';
 
-import { type ArticleDetailsPageSchema } from '@/pages/ArticlesDetailsPage';
+import { type ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage';
 import { type ArticlesPageSchema } from '@/pages/ArticlesPage';
 
 import { type AddCommentFormSchema } from '@/features/AddCommentForm';

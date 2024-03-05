@@ -22,7 +22,13 @@ export const buildWebpackConfig = ({
       clean: true,
       publicPath: '/'
     },
-    plugins: buildPlugins({ html: paths.html, isDev, project }),
+    plugins: buildPlugins({
+      html: paths.html,
+      isDev,
+      project,
+      locales: paths.locales,
+      buildLocales: paths.buildLocales
+    }),
     module: {
       rules: buildLoaders({ isDev })
     },
