@@ -51,7 +51,6 @@
     "@types/react-dom": "^18.2.7",
     "@types/react-i18next": "^8.1.0",
     "@types/react-router-dom": "^5.3.3",
-    "@types/react-virtualized": "^9.21.21",
     "@types/webpack": "^5.28.1",
     "@types/webpack-bundle-analyzer": "^4.4.1",
     "@types/webpack-dev-server": "^4.7.2",
@@ -134,7 +133,8 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^13.0.3",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.14.2"
+    "react-router-dom": "^6.14.2",
+    "react-virtuoso": "^4.7.6"
   },
   "_moduleAliases": {
     "@/app": "src/app",

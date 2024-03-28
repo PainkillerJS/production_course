@@ -81,12 +81,13 @@ export const ArticlesFilters = memo(({ className }: ArticlesFiltersProps) => {
 
   return (
     <div className={clsx(className)}>
-      <div className={styles.sortWrapper}>
+      <div className={styles.filterPanel}>
         <ArticlesSort
           order={order}
           onChangeOrder={onChangeOrder}
           sort={sort}
           onChangeSort={onChangeSort}
+          className={styles.sortWrapper}
         />
 
         <ArticlesViewSwitcher onViewClick={onChangeView} view={view} />

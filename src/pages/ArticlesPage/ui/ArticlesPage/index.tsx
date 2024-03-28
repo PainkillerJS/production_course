@@ -8,6 +8,7 @@ import { ArticlesFilters } from '@/features/ArticlesFilters';
 
 import { ArticleList } from '@/entities/Article/ui/ArticleList';
 
+import { ARTICLES_LIST_ID } from '@/shared/config/ids';
 import { type ReducersList, DynamicModuleLoader } from '@/shared/lib/DynamicModuleLoader';
 import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
 
@@ -42,7 +43,7 @@ const ArticlesPage = () => {
 
   return (
     <DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount={false}>
-      <PageWrapper onScrollEnd={onLoadNextPart}>
+      <PageWrapper id={ARTICLES_LIST_ID}>
         <ArticlesFilters />
 
         <ArticleList
@@ -50,6 +51,7 @@ const ArticlesPage = () => {
           view={view}
           isLoading={isLoading}
           className={styles.list}
+          onLoadNextPart={onLoadNextPart}
         />
       </PageWrapper>
     </DynamicModuleLoader>

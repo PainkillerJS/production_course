@@ -7,7 +7,7 @@ import { Skeleton } from '@/shared/ui/Skeleton';
 import styles from '../../articleListItem.module.scss';
 
 interface ArticleListItemSkeletonProps {
-  view: ArticleListView;
+  view?: ArticleListView;
   className?: string;
 }
 
