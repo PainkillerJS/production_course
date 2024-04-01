@@ -26,7 +26,7 @@ module.exports = {
     sourceType: 'module',
     project: ['./tsconfig.json']
   },
-  plugins: ['react', 'simple-import-sort', 'prettier', 'react-hooks'],
+  plugins: ['react', 'simple-import-sort', 'prettier', 'react-hooks', 'painkillerjs-plugin'],
   ignorePatterns: ['*eslint*', '*prettier*'],
   rules: {
     '@typescript-eslint/semi': 0,
@@ -52,6 +52,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [0, { devDependencies: true }],
     '@typescript-eslint/no-non-null-assertion': 0,
     '@typescript-eslint/no-invalid-void-type': 0,
+    'painkillerjs-plugin/path-checker': 2,
     'import/order': 0,
     'import/no-cycle': 0,
     'import/extensions': [

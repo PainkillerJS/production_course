@@ -8,10 +8,7 @@ const config: Config = {
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
   moduleDirectories: ['node_modules'],
   modulePaths: ['<rootDir>src'],
-  testMatch: [
-    // Обнаружил разницу между МАК ОС и ВИНДОУС!!!
-    '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'
-  ],
+  testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
   setupFilesAfterEnv: ['<rootDir>config/jest/setupTest.ts'],
   rootDir: '../../',
   moduleNameMapper: {

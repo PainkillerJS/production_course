@@ -7244,6 +7244,13 @@ eslint-plugin-jsx-a11y@^6.5.1:
     resolve "^1.22.2"
     semver "^7.5.3"
 
+eslint-plugin-painkillerjs-plugin@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-painkillerjs-plugin/-/eslint-plugin-painkillerjs-plugin-1.0.0.tgz#94c6f9324515610d68df8e3d025b567d64350f66"
+  integrity sha512-lMZ9j0SLjkeLuSxnhH/yvH+kxE8hfIYyktKM1G/sHt2myXWj1OpnoGjRMSUzM+tH5RbHQUQb3J878iyeqb4Usw==
+  dependencies:
+    requireindex "^1.2.0"
+
 eslint-plugin-prettier@^4.0.0:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-4.2.1.tgz#651cbb88b1dab98bfd42f017a12fa6b2d993f94b"
@@ -11929,7 +11936,7 @@ require-from-string@^2.0.2:
   resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
   integrity sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
 
-requireindex@^1.1.0:
+requireindex@^1.1.0, requireindex@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.2.0.tgz#3463cdb22ee151902635aa6c9535d4de9c2ef1ef"
   integrity sha512-L9jEkOi3ASd9PYit2cwRfyppc9NoABujTP8/5gFcbERmo5jUoAKovIC3fsF17pkTnGsrByysqX+Kxd2OTNI1ww==
