@@ -33,10 +33,6 @@ interface SelectProps<T> {
    */
   value?: T;
   /**
-   * @description placeholder select
-   */
-  placeholder?: string;
-  /**
    * @description callback для изменения значения
    */
   onChange?: (value: T) => void;
@@ -52,7 +48,6 @@ const Select = <T extends string>({
   options,
   value,
   onChange,
-  placeholder,
   isDisabled
 }: SelectProps<T>) => {
   const onChangeSelect: ChangeEventHandler<HTMLSelectElement> = (event) => {
@@ -70,7 +65,6 @@ const Select = <T extends string>({
         className={styles.select}
         onChange={onChangeSelect}
         value={value}
-        placeholder={placeholder}
         disabled={isDisabled}
       >
         {options.map(({ content, value }) => (

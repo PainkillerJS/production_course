@@ -38,7 +38,6 @@ export const SelectStory: StorySelectType = {
         value: 'test 2',
         content: 'test 2'
       }
-    ],
-    placeholder: 'test placeholder'
+    ]
   }
 };
