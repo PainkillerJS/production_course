@@ -97,7 +97,7 @@
     "lint-staged": "^14.0.1",
     "mini-css-extract-plugin": "^2.7.6",
     "module-alias": "^2.2.3",
-    "prettier": "2.7.1",
+    "prettier": "^3.2.5",
     "react-refresh": "^0.14.0",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.65.1",
