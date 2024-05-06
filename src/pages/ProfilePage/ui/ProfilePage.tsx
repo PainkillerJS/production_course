@@ -19,6 +19,7 @@ import {
 
 import { type ReducersList, DynamicModuleLoader } from '@/shared/lib/DynamicModuleLoader';
 import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
+import { Flex } from '@/shared/ui/Stack/Flex';
 import { Text, TextTheme } from '@/shared/ui/Typography';
 
 import { ProfilePageHeader } from './ProfilePageHeader';
@@ -55,20 +56,22 @@ const ProfilePage = () => {
   return (
     <DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount>
       <PageWrapper>
-        <ProfilePageHeader />
+        <Flex direction='column' gap='16' isMax>
+          <ProfilePageHeader />
 
-        {validateErrors?.map((err) => (
-          <Text key={err} variant={TextTheme.ERROR}>
-            {validateErrorTranslates[err]}
-          </Text>
-        ))}
+          {validateErrors?.map((err) => (
+            <Text key={err} variant={TextTheme.ERROR}>
+              {validateErrorTranslates[err]}
+            </Text>
+          ))}
 
-        <ProfileCard
-          data={editedData}
-          isLoading={isLoading}
-          error={error}
-          isReadonly={isReadonly}
-        />
+          <ProfileCard
+            data={editedData}
+            isLoading={isLoading}
+            error={error}
+            isReadonly={isReadonly}
+          />
+        </Flex>
       </PageWrapper>
     </DynamicModuleLoader>
   );

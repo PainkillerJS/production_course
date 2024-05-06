@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider
 import { Avatar } from '@/shared/ui/Avatar';
 import { Heading, HeadingSize } from '@/shared/ui/Heading';
 import { Icon } from '@/shared/ui/Icon';
+import { Flex } from '@/shared/ui/Stack/Flex';
 import { Text, TextSize, TextTheme } from '@/shared/ui/Typography';
 
 import { getArticleDetailsData } from '../../model/selectors/getArticleDetailsData';
@@ -77,27 +78,29 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
       <>
         {data && (
           <>
-            <div className={styles.avatarWrapper}>
+            <Flex direction='row' justify='center' isMax>
               <Avatar
                 size={200}
                 srcImg={data.img}
                 className={styles.avatar}
                 alt={`${data.title} img`}
               />
-            </div>
+            </Flex>
 
-            <Heading size={HeadingSize.L}>{data.title}</Heading>
-            <Text size={TextSize.L}>{data.subtitle}</Text>
+            <Flex direction='column' gap='4' isMax>
+              <Heading size={HeadingSize.L}>{data.title}</Heading>
+              <Text size={TextSize.L}>{data.subtitle}</Text>
 
-            <div className={styles.articleInfo}>
-              <Icon Svg={EyeIcon} className={styles.icon} />
-              <Text>{data.views}</Text>
-            </div>
+              <Flex direction='row' gap='8'>
+                <Icon Svg={EyeIcon} className={styles.icon} />
+                <Text>{data.views}</Text>
+              </Flex>
 
-            <div className={styles.articleInfo}>
-              <Icon Svg={CaledarIcon} className={styles.icon} />
-              <Text>{data.createdAt}</Text>
-            </div>
+              <Flex direction='row' gap='8'>
+                <Icon Svg={CaledarIcon} className={styles.icon} />
+                <Text>{data.createdAt}</Text>
+              </Flex>
+            </Flex>
 
             {data.blocks.map(renderBlock)}
           </>
@@ -108,7 +111,9 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>
-      <div className={clsx(className, styles.articleDetails)}>{content}</div>
+      <Flex direction='column' gap='16' className={clsx(className, styles.articleDetails)}>
+        {content}
+      </Flex>
     </DynamicModuleLoader>
   );
 });

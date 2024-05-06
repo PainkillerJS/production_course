@@ -5,6 +5,7 @@ import { Code } from '.';
 export default {
   title: 'ui/Code',
   component: Code,
+  tags: ['autodocs'],
   argTypes: {
     text: {
       control: 'text',

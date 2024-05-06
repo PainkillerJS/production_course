@@ -5,6 +5,7 @@ import { Tabs } from '.';
 
 export default {
   title: 'ui/Tabs',
+  tags: ['autodocs'],
   component: Tabs,
   argTypes: {
     className: {

@@ -5,6 +5,7 @@ import { Heading, HeadingSize, TextHeadingTheme } from '.';
 export default {
   title: 'ui/Heading',
   component: Heading,
+  tags: ['autodocs'],
   argTypes: {
     children: {
       control: 'text',

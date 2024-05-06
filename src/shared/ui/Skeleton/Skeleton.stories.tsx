@@ -5,6 +5,7 @@ import { Skeleton } from '.';
 export default {
   title: 'ui/Skeleton',
   component: Skeleton,
+  tags: ['autodocs'],
   argTypes: {
     className: {
       control: 'text',

@@ -5,6 +5,7 @@ import AppLink from './AppLink';
 export default {
   title: 'ui/AppLink',
   component: AppLink,
+  tags: ['autodocs'],
   argTypes: {
     children: {
       control: 'text'

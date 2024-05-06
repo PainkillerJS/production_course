@@ -8,10 +8,9 @@ import { getArticleDetailsData } from '@/entities/Article';
 import { AppRoute, routePath } from '@/shared/config/routeConfig/routeConfig';
 import { useAppSelector } from '@/shared/providers/StoreProvider';
 import Button, { ThemeButton } from '@/shared/ui/Button/Button';
+import { Flex } from '@/shared/ui/Stack/Flex';
 
 import { getCanEditArticle } from '../../model/selectors/getCanEditArticle';
-
-import styles from './articleDetailsHeader.module.scss';
 
 export const ArticleDetailsHeader = () => {
   const { t } = useTranslation('articles');
@@ -31,16 +30,16 @@ export const ArticleDetailsHeader = () => {
   }, [article?.id, navigate]);
 
   return (
-    <div className={styles.articleDetailsHeader}>
+    <Flex direction='row' justify='between' isMax>
       <Button onClick={onBackToList} variant={ThemeButton.OUTLINE}>
         {t('back_to_lists')}
       </Button>
 
       {isEditAccess && (
-        <Button className={styles.editBtn} onClick={onEditArticle} variant={ThemeButton.OUTLINE}>
+        <Button onClick={onEditArticle} variant={ThemeButton.OUTLINE}>
           {t('change_article')}
         </Button>
       )}
-    </div>
+    </Flex>
   );
 };

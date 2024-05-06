@@ -4,6 +4,7 @@ import { routePath } from '@/shared/config/routeConfig/routeConfig';
 import { clsx } from '@/shared/lib/classNames';
 import { AppLink } from '@/shared/ui/AppLink';
 import { Avatar } from '@/shared/ui/Avatar';
+import { Flex } from '@/shared/ui/Stack/Flex';
 import { Text } from '@/shared/ui/Typography';
 
 import { type CommentModel } from '../../model/types';
@@ -26,7 +27,7 @@ export const CommentCard = memo(({ className, comment, isLoading }: CommentCardP
   }
 
   return (
-    <div className={clsx(className, styles.commentCard)}>
+    <Flex direction='column' gap='8' className={clsx(className, styles.commentCard)} isMax>
       <AppLink to={`${routePath.profile}/${comment.user.id}`} className={styles.header}>
         {user.avatar && (
           <Avatar srcImg={user.avatar} size={30} alt={`${user.username ?? ''} avatar`} />
@@ -36,6 +37,6 @@ export const CommentCard = memo(({ className, comment, isLoading }: CommentCardP
       </AppLink>
 
       <Text className={styles.text}>{text}</Text>
-    </div>
+    </Flex>
   );
 });

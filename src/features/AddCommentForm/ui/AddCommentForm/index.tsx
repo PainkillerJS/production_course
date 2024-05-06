@@ -7,6 +7,7 @@ import { type ReducersList, DynamicModuleLoader } from '@/shared/lib/DynamicModu
 import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
 import Button, { ThemeButton } from '@/shared/ui/Button/Button';
 import { Input } from '@/shared/ui/Input';
+import { Flex } from '@/shared/ui/Stack/Flex';
 
 import { getAddCommentFormText } from '../../model/selectors/getAddCommentFormText';
 import { addCommentFormAction, addCommentFormReducer } from '../../model/slice';
@@ -42,7 +43,12 @@ const AddCommentForm = memo(({ className, onSendComment }: AddCommentFormProps) 
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={clsx(className, styles.addCommentForm)}>
+      <Flex
+        direction='row'
+        justify='between'
+        className={clsx(className, styles.addCommentForm)}
+        isMax
+      >
         <Input
           placeholder={t('write_comment')}
           value={text}
@@ -53,7 +59,7 @@ const AddCommentForm = memo(({ className, onSendComment }: AddCommentFormProps) 
         <Button onClick={onSendHandler} variant={ThemeButton.OUTLINE}>
           {t('send')}
         </Button>
-      </div>
+      </Flex>
     </DynamicModuleLoader>
   );
 });

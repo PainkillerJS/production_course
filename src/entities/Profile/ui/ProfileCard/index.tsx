@@ -11,6 +11,7 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { Heading, TextHeadingTheme } from '@/shared/ui/Heading';
 import { Input } from '@/shared/ui/Input';
 import Loader from '@/shared/ui/Loader';
+import { Flex } from '@/shared/ui/Stack/Flex';
 
 import { type ProfileType, profileActions } from '../..';
 
@@ -92,28 +93,33 @@ export const ProfileCard = ({
 
   if (isLoading) {
     return (
-      <div className={clsx(className, styles.loading)}>
+      <Flex direction='row' justify='center' className={clsx(className, styles.loading)} isMax>
         <Loader />
-      </div>
+      </Flex>
     );
   }
 
   if (error) {
     return (
-      <div>
+      <Flex direction='row' justify='center' isMax>
         <Heading variant={TextHeadingTheme.ERROR} className={styles.error}>
           {error}
         </Heading>
-      </div>
+      </Flex>
     );
   }
 
   return (
-    <div className={clsx(className, styles.profileCard, { [styles.editing]: !isReadonly })}>
+    <Flex
+      gap='8'
+      direction='column'
+      className={clsx(className, styles.profileCard, { [styles.editing]: !isReadonly })}
+      isMax
+    >
       {data.avatar && (
-        <div className={styles.avatarWrapper}>
+        <Flex justify='center' direction='row' isMax>
           <Avatar srcImg={data.avatar} alt='avatar' />
-        </div>
+        </Flex>
       )}
 
       <Input
@@ -180,6 +186,6 @@ export const ProfileCard = ({
         isReadonly={isReadonly}
         className={styles.input}
       />
-    </div>
+    </Flex>
   );
 };

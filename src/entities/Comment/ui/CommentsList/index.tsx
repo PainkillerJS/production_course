@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import { clsx } from '@/shared/lib/classNames';
+import { Flex } from '@/shared/ui/Stack/Flex';
 import { Text } from '@/shared/ui/Typography';
 
 import { type CommentModel } from '../../model/types';
@@ -18,7 +18,7 @@ export const CommentsList = memo(({ comments, className, isLoading }: CommentLis
   const { t } = useTranslation('comments');
 
   return (
-    <div className={clsx(className)}>
+    <Flex direction='column' gap='16' className={className}>
       {comments?.length ? (
         comments.map((comment) => (
           <CommentCard isLoading={isLoading} key={comment.id} comment={comment} />
@@ -26,6 +26,6 @@ export const CommentsList = memo(({ comments, className, isLoading }: CommentLis
       ) : (
         <Text>{t('no_comments')}</Text>
       )}
-    </div>
+    </Flex>
   );
 });

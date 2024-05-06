@@ -7,6 +7,7 @@ import { Avatar } from '.';
 export default {
   title: 'ui/Avatar',
   component: Avatar,
+  tags: ['autodocs'],
   argTypes: {
     size: {
       control: 'number',

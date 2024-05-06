@@ -5,6 +5,7 @@ import { Modal } from '.';
 export default {
   title: 'widget/Modal',
   component: Modal,
+  tags: ['autodocs'],
   args: {
     children: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, vero.'
   },

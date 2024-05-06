@@ -11,6 +11,7 @@ import { ArticleList } from '@/entities/Article/ui/ArticleList';
 import { ARTICLES_LIST_ID } from '@/shared/config/ids';
 import { type ReducersList, DynamicModuleLoader } from '@/shared/lib/DynamicModuleLoader';
 import { useAppDispatch, useAppSelector } from '@/shared/providers/StoreProvider';
+import { Flex } from '@/shared/ui/Stack/Flex';
 
 import { getArticlesPageIsLoading } from '../../model/selectors/getArticlesPageIsLoading';
 import { getArticlesPageView } from '../../model/selectors/getArticlesPageView';
@@ -44,15 +45,17 @@ const ArticlesPage = () => {
   return (
     <DynamicModuleLoader reducers={reducers} isRemoveAfterUnmount={false}>
       <PageWrapper id={ARTICLES_LIST_ID}>
-        <ArticlesFilters />
+        <Flex direction='column' gap='16' isMax>
+          <ArticlesFilters />
 
-        <ArticleList
-          articles={articles}
-          view={view}
-          isLoading={isLoading}
-          className={styles.list}
-          onLoadNextPart={onLoadNextPart}
-        />
+          <ArticleList
+            articles={articles}
+            view={view}
+            isLoading={isLoading}
+            className={styles.list}
+            onLoadNextPart={onLoadNextPart}
+          />
+        </Flex>
       </PageWrapper>
     </DynamicModuleLoader>
   );

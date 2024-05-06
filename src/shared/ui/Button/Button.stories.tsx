@@ -5,6 +5,7 @@ import Button, { SizeFontButton, SizeSquaredButton, ThemeButton } from './Button
 export default {
   title: 'ui/Button',
   component: Button,
+  tags: ['autodocs'],
   argTypes: {
     children: {
       control: 'text',

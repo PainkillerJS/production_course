@@ -23,6 +23,7 @@ type StorySelectType = StoryObj<typeof Select>;
 
 export const SelectStory: StorySelectType = {
   render: (props) => <Select {...props} />,
+  tags: ['autodocs'],
   args: {
     label: 'test',
     options: [

@@ -5,6 +5,7 @@ import { Input } from '.';
 export default {
   title: 'ui/Input',
   component: Input,
+  tags: ['autodocs'],
   argTypes: {
     placeholder: {
       control: 'text'

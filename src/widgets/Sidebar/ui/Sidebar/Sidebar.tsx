@@ -8,6 +8,7 @@ import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { clsx } from '@/shared/lib/classNames';
 import { useAppSelector } from '@/shared/providers/StoreProvider';
 import Button, { SizeSquaredButton, ThemeButton } from '@/shared/ui/Button/Button';
+import { Flex } from '@/shared/ui/Stack/Flex';
 
 import { getItemsSidebar } from '../../model/selectors/getItemsSidebar';
 import { SidebarItem } from '../SidebarItem';
@@ -46,11 +47,11 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         {isCollapsed ? '>' : '<'}
       </Button>
 
-      <div data-testid='links' className={styles.links}>
+      <Flex testid='links' gap='8' direction='column' className={styles.links}>
         {itemsSidebar.map((item) => (
           <SidebarItem key={item.name} {...item} t={t} isCollapsed={isCollapsed} />
         ))}
-      </div>
+      </Flex>
 
       <div className={styles.switchers}>
         <ThemeSwitcher />

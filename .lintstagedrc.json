@@ -1,4 +1,4 @@
 {
-  "**/*.{tsx,ts}": ["yarn lint:fix"],
-  "**/*.{scss,css}": ["yarn stylelint:fix"]
+  "**/*.{tsx,ts}": ["pnpm lint:fix"],
+  "**/*.{scss,css}": ["pnpm stylelint:fix"]
 }

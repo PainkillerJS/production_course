@@ -5,6 +5,7 @@ import { Card } from '.';
 export default {
   title: 'ui/Card',
   component: Card,
+  tags: ['autodocs'],
   argTypes: {
     children: {
       control: 'text',

@@ -5,6 +5,7 @@ import { Text, TextSize, TextTheme } from '.';
 export default {
   title: 'ui/Text',
   component: Text,
+  tags: ['autodocs'],
   argTypes: {
     children: {
       control: 'text',

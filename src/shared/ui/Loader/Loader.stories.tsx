@@ -4,6 +4,7 @@ import Loader from '.';
 
 export default {
   title: 'ui/Loader',
+  tags: ['autodocs'],
   component: Loader
 } as Meta<typeof Loader>;
 

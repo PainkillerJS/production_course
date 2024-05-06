@@ -9,6 +9,7 @@ import LoginForm from './LoginForm';
 export default {
   title: 'features/LoginForm',
   component: LoginForm,
+  tags: ['autodocs'],
   argTypes: {}
 } as Meta<typeof LoginForm>;
 
