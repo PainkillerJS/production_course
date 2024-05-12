@@ -7,5 +7,7 @@
   "profile": "Profile",
   "logout": "Logout",
   "articles": "Articles",
-  "create_article": "Create new article"
+  "create_article": "Create new article",
+  "select_currency": "Select currency",
+  "select_contries": "Select contries"
 }

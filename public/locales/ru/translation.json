@@ -7,5 +7,7 @@
   "logout": "Выйти",
   "profile": "Профиль",
   "articles": "Статьи",
-  "create_article": "Создать новую статью"
+  "create_article": "Создать новую статью",
+  "select_currency": "Выберите валюту",
+  "select_contries": "Выберите страну"
 }

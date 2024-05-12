@@ -1,6 +1,8 @@
 import { memo } from 'react';
 
-import { Select } from '@/shared/ui/Select';
+import { useTranslation } from 'react-i18next';
+
+import { ListBox } from '@/shared/ui/ListBox';
 
 import { type CurrencyEnum } from '../../model/types';
 
@@ -8,27 +10,28 @@ import { optionsCurrency } from './config';
 
 interface CurrencySelectProps {
   className?: string;
-  label?: string;
   value?: CurrencyEnum;
   onChange?: (value: CurrencyEnum) => void;
   isReadonly?: boolean;
 }
 
 export const CurrencySelect = memo(
-  ({ className, label, value, onChange, isReadonly }: CurrencySelectProps) => {
+  ({ className, value, onChange, isReadonly }: CurrencySelectProps) => {
+    const { t } = useTranslation();
+
     const onChangeHandle = (value: string) => {
       onChange?.(value as CurrencyEnum);
     };
 
     return (
-      <Select
-        className={className}
-        options={optionsCurrency}
-        label={label}
-        value={value}
+      <ListBox
         onChange={onChangeHandle}
-        isDisabled={isReadonly}
-      ></Select>
+        className={className}
+        initialValue={t('select_currency')}
+        isReadonly={isReadonly}
+        value={value}
+        items={optionsCurrency}
+      />
     );
   }
 );

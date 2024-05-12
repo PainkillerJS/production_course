@@ -1,6 +1,8 @@
 import { memo } from 'react';
 
-import { Select } from '@/shared/ui/Select';
+import { useTranslation } from 'react-i18next';
+
+import { ListBox } from '@/shared/ui/ListBox';
 
 import { type CountryEnum } from '../model/types';
 
@@ -8,27 +10,29 @@ import { optionsContries } from './config';
 
 interface ContriesSelectProps {
   className?: string;
-  label?: string;
   value?: CountryEnum;
   onChange?: (value: CountryEnum) => void;
   isReadonly?: boolean;
 }
 
 export const ContriesSelect = memo(
-  ({ className, label, value, onChange, isReadonly }: ContriesSelectProps) => {
+  ({ className, value, onChange, isReadonly }: ContriesSelectProps) => {
+    const { t } = useTranslation();
+
     const onChangeHandle = (value: string) => {
       onChange?.(value as CountryEnum);
     };
 
     return (
-      <Select
+      <ListBox
         className={className}
-        options={optionsContries}
-        label={label}
-        value={value}
         onChange={onChangeHandle}
-        isDisabled={isReadonly}
-      ></Select>
+        value={value}
+        initialValue={t('select_contries')}
+        isReadonly={isReadonly}
+        items={optionsContries}
+        direction='top'
+      />
     );
   }
 );
