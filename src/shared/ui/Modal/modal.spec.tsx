@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { fireEvent, screen } from '@testing-library/react';
 
 import { componentRender } from '@/shared/config/tests/componentRender/ComponentRender';
@@ -10,11 +11,11 @@ describe('testing Modal component', () => {
   test('Modal open', () => {
     componentRender(<Modal isOpen>{testingText}</Modal>);
 
-    expect(screen.getByTestId('modal')).toHaveClass('opened');
+    expect(screen.getByTestId('modal')).toHaveClass(/opened/);
   });
 
   test('Modal`s state is change after fn of close', () => {
-    const handleClose = jest.fn();
+    const handleClose = vi.fn();
 
     const { getByTestId } = componentRender(
       <Modal isOpen onClose={handleClose}>
@@ -24,11 +25,11 @@ describe('testing Modal component', () => {
 
     const childrenOverlay = getByTestId('modal').children[0];
 
-    expect(getByTestId('modal')).toHaveClass('opened');
+    expect(getByTestId('modal')).toHaveClass(/opened/);
 
     fireEvent.click(childrenOverlay);
 
-    expect(getByTestId('modal')).toHaveClass('closing');
+    expect(getByTestId('modal')).toHaveClass(/closing/);
   });
 
   test('Modal`s lazy loading', () => {

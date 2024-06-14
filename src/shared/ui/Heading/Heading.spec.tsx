@@ -20,20 +20,20 @@ describe('The test heading component', () => {
   test('The heading is change variant', () => {
     const { rerender, getByText } = componentRender(<Heading>Lorem ipsum dolor sit amet.</Heading>);
 
-    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass('primary');
+    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass(/primary/);
 
     rerender(<Heading variant={TextHeadingTheme.ERROR}>Lorem ipsum dolor sit amet.</Heading>);
 
-    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass('error');
+    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass(/error/);
   });
 
   test('The heading is change size', () => {
     const { rerender, getByText } = componentRender(<Heading>Lorem ipsum dolor sit amet.</Heading>);
 
-    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass('size_m');
+    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass(/size_m/);
 
     rerender(<Heading size={HeadingSize.L}>Lorem ipsum dolor sit amet.</Heading>);
 
-    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass('size_l');
+    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass(/size_l/);
   });
 });

@@ -4,7 +4,7 @@ import { componentRender } from '@/shared/config/tests/componentRender/Component
 
 import { Sidebar } from './Sidebar';
 
-jest.mock('../../model/selectors/getItemsSidebar', () => {
+vi.mock('../../model/selectors/getItemsSidebar', () => {
   return {
     getItemsSidebar: () => [
       { path: 'test path', name: 'test name' },
@@ -27,7 +27,7 @@ describe('test sidebar', () => {
 
     fireEvent.click(toggleButton);
 
-    expect(screen.getByTestId('sidebar')).toHaveClass('collapsed');
+    expect(screen.getByTestId('sidebar')).toHaveClass(/collapsed/);
   });
 
   test('The sidebar links wrapper renders', () => {

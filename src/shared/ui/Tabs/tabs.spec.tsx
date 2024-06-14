@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { fireEvent } from '@testing-library/react';
 
 import { componentRender } from '@/shared/config/tests/componentRender/ComponentRender';
@@ -21,7 +22,7 @@ const testTabs: TabItem[] = [
 
 describe('test component = Tabs', () => {
   test('The Tabs render', () => {
-    const onClickMock = jest.fn();
+    const onClickMock = vi.fn();
 
     const { getByTestId } = componentRender(
       <Tabs tabs={testTabs} value={testTabs[0].value} onClickTab={onClickMock} />
@@ -31,7 +32,7 @@ describe('test component = Tabs', () => {
   });
 
   test('The children of tabs render', () => {
-    const onClickMock = jest.fn();
+    const onClickMock = vi.fn();
 
     const { getByTestId } = componentRender(
       <Tabs tabs={testTabs} value={testTabs[0].value} onClickTab={onClickMock} />
@@ -43,7 +44,7 @@ describe('test component = Tabs', () => {
   });
 
   test('The click of tabs', () => {
-    const onClickMock = jest.fn();
+    const onClickMock = vi.fn();
 
     const { getByTestId } = componentRender(
       <Tabs tabs={testTabs} value={testTabs[0].value} onClickTab={onClickMock} />

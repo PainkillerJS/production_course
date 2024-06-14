@@ -46,6 +46,6 @@ describe('test component = Select', () => {
 
     expect(getByTestId('select')).not.toHaveClass('disabled');
     rerender(<Select options={testOptions} label='test label' isDisabled />);
-    expect(getByTestId('select')).toHaveClass('disabled');
+    expect(getByTestId('select')).toHaveClass(/disabled/);
   });
 });

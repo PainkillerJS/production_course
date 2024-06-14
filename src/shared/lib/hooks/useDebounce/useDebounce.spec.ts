@@ -1,10 +1,11 @@
+import { vi } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
 import { useDebounce } from '.';
 
 describe('test hook: useDebounce', () => {
   test('test', async () => {
-    const testCallback = jest.fn();
+    const testCallback = vi.fn();
     const delay = 500;
 
     const { waitFor, rerender } = renderHook(() => useDebounce(testCallback, delay));

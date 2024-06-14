@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { fireEvent, screen } from '@testing-library/react';
 
 import { componentRender } from '@/shared/config/tests/componentRender/ComponentRender';
@@ -14,31 +15,32 @@ describe('Testing Button', () => {
   test('The button has a classname "clear"', () => {
     componentRender(<Button>TEST</Button>);
 
-    expect(screen.getByText('TEST')).toHaveClass(ThemeButton.CLEAR);
+    expect(screen.getByText('TEST')).toHaveClass(new RegExp(ThemeButton.CLEAR));
   });
 
   test('The button has a classname "outline"', () => {
     componentRender(<Button variant={ThemeButton.OUTLINE}>TEST</Button>);
 
-    expect(screen.getByText('TEST')).toHaveClass(ThemeButton.OUTLINE);
+    expect(screen.getByText('TEST')).toHaveClass(new RegExp(ThemeButton.OUTLINE));
   });
 
   test('The button has a classname "size_font_m"', () => {
     componentRender(<Button>TEST</Button>);
 
-    expect(screen.getByText('TEST')).toHaveClass(SizeFontButton.M);
+    expect(screen.getByText('TEST')).toHaveClass(new RegExp(SizeFontButton.M));
   });
 
   test('The button has a classname "size_font_l"', () => {
     componentRender(<Button sizeFont={SizeFontButton.L}>TEST</Button>);
 
-    expect(screen.getByText('TEST')).toHaveClass(SizeFontButton.L);
+    expect(screen.getByText('TEST')).toHaveClass(new RegExp(SizeFontButton.L));
   });
 
   test('The button has a classname "square.m"', () => {
     componentRender(<Button isSquare>TEST</Button>);
 
-    expect(screen.getByText('TEST')).toHaveClass(`square ${SizeSquaredButton.M}`);
+    expect(screen.getByText('TEST')).toHaveClass(/square/);
+    expect(screen.getByText('TEST')).toHaveClass(new RegExp(SizeSquaredButton.M));
   });
 
   test('The button does`t has a classname "square.m" without isSquared with value true', () => {
@@ -54,7 +56,8 @@ describe('Testing Button', () => {
       </Button>
     );
 
-    expect(screen.getByText('TEST')).toHaveClass(`square ${SizeSquaredButton.L}`);
+    expect(screen.getByText('TEST')).toHaveClass(/square/);
+    expect(screen.getByText('TEST')).toHaveClass(new RegExp(SizeSquaredButton.L));
   });
 
   test('The button is disabled"', () => {
@@ -62,7 +65,7 @@ describe('Testing Button', () => {
 
     expect(screen.getByText('TEST')).not.toHaveClass('disabled');
 
-    const onClickTest = jest.fn();
+    const onClickTest = vi.fn();
 
     rerender(
       <Button onClick={onClickTest} disabled>

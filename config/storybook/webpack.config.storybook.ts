@@ -24,8 +24,7 @@ export const webpackConfig = async (config: Configuration): Promise<Configuratio
 
   config?.plugins?.push(
     new DefinePlugin({
-      __IS_DEV__: true,
-      __PROJECT__: 'storybook'
+      __IS_DEV__: true
     }),
     new Dotenv({
       path: '.env.dev'

@@ -20,20 +20,20 @@ describe('The test typography component', () => {
   test('The typography is change variant', () => {
     const { rerender, getByText } = componentRender(<Text>Lorem ipsum dolor sit amet.</Text>);
 
-    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass('primary');
+    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass(/primary/);
 
     rerender(<Text variant={TextTheme.ERROR}>Lorem ipsum dolor sit amet.</Text>);
 
-    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass('error');
+    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass(/error/);
   });
 
   test('The typography is change size', () => {
     const { rerender, getByText } = componentRender(<Text>Lorem ipsum dolor sit amet.</Text>);
 
-    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass('size_m');
+    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass(/size_m/);
 
     rerender(<Text size={TextSize.L}>Lorem ipsum dolor sit amet.</Text>);
 
-    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass('size_l');
+    expect(getByText('Lorem ipsum dolor sit amet.')).toHaveClass(/size_l/);
   });
 });

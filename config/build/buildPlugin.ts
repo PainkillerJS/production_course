@@ -33,8 +33,7 @@ export const buildPlugins = ({
       React: 'react'
     }),
     new webpack.DefinePlugin({
-      __IS_DEV__: isDev,
-      __PROJECT__: project
+      __IS_DEV__: isDev
     }),
     new CleanWebpackPlugin(),
     new Dotenv({

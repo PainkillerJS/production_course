@@ -52,6 +52,6 @@ describe('testing input', () => {
     rerender(<Input isReadonly />);
 
     expect(getByTestId('input')).toHaveAttribute('readonly');
-    expect(getByTestId('input').parentNode?.parentNode).toHaveClass('readonly');
+    expect(getByTestId('input').parentNode?.parentNode).toHaveClass(/readonly/);
   });
 });

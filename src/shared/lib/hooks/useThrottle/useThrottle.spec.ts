@@ -1,10 +1,11 @@
+import { vi } from 'vitest';
 import { renderHook } from '@testing-library/react-hooks';
 
 import { useThrottle } from '.';
 
 describe('test hook: useThrottle', () => {
   test('test', async () => {
-    const testCallback = jest.fn();
+    const testCallback = vi.fn();
     const delay = 500;
 
     const { waitFor } = renderHook(() => useThrottle(testCallback, delay));

@@ -12,6 +12,7 @@
     "jsx": "react-jsx",
     "strict": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "types": ["vitest/globals", "@testing-library/jest-dom/vitest"],
     "paths": {
       "@/*": ["./src/*"]
     }
