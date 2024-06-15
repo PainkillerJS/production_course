@@ -264,9 +264,6 @@ importers:
       html-webpack-plugin:
         specifier: ^5.5.3
         version: 5.6.0(webpack@5.91.0(@swc/core@1.4.13)(esbuild@0.18.20)(webpack-cli@5.1.4(webpack-bundle-analyzer@4.10.1)(webpack-dev-server@4.15.2)(webpack@5.91.0)))
-      husky:
-        specifier: ^7.0.0
-        version: 7.0.4
       identity-obj-proxy:
         specifier: ^3.0.0
         version: 3.0.0
@@ -5679,11 +5676,6 @@ packages:
   human-signals@5.0.0:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
-
-  husky@7.0.4:
-    resolution: {integrity: sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==}
-    engines: {node: '>=12'}
-    hasBin: true
 
   i18next-browser-languagedetector@7.2.1:
     resolution: {integrity: sha512-h/pM34bcH6tbz8WgGXcmWauNpQupCGr25XPp9cZwZInR9XHSjIFDYp1SIok7zSPsTOMxdvuLyu86V+g2Kycnfw==}
@@ -15850,8 +15842,6 @@ snapshots:
   human-signals@4.3.1: {}
 
   human-signals@5.0.0: {}
-
-  husky@7.0.4: {}
 
   i18next-browser-languagedetector@7.2.1:
     dependencies:

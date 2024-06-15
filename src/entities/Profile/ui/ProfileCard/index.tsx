@@ -175,12 +175,10 @@ export const ProfileCard = ({
         isReadonly={isReadonly}
         className={styles.input}
         value={data.country}
-        label={t('contry')}
         onChange={onChangeCountry}
       />
 
       <CurrencySelect
-        label={t('currency')}
         value={data.currency}
         onChange={onChangeCurrency}
         isReadonly={isReadonly}

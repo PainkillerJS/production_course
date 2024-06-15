@@ -1,4 +1,4 @@
-import axios, { type AxiosStatic } from 'axios';
+import axios from 'axios';
 import { type MockedFunction, vi } from 'vitest';
 import { type AsyncThunkAction, type DeepPartial } from '@reduxjs/toolkit';
 
@@ -10,12 +10,12 @@ type ActionCreatorType<Return, Arg, RejectedValue> = (
 
 vi.mock('axios');
 
-const mockedAxios = vi.mocked(axios);
+const mockedAxios = vi.mocked(axios, true);
 
 export class TestAsyncThunk<Return, Arg, RejectedValue> {
   public readonly dispatch: MockedFunction<any>;
   public readonly getState: () => StateSchema;
-  public readonly api: MockedFunction<AxiosStatic>;
+  public readonly api: typeof mockedAxios;
   public readonly navigate: MockedFunction<any>;
 
   constructor(

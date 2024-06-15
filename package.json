@@ -1,11 +1,11 @@
 {
   "name": "course-production",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "license": "MIT",
   "author": "PainkillerJS",
   "main": "src/index.tsx",
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "git config core.hooksPath .git-hooks || echo 'Not in a git repo'",
     "dev": "concurrently \"pnpm start:dev\" \"pnpm start:dev:server\"",
     "start:dev": "npx webpack serve --env port=3000",
     "start:dev:server": "node ./json-server/index.js",
@@ -92,7 +92,6 @@
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "html-webpack-plugin": "^5.5.3",
-    "husky": "^7.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.6.2",
     "jest-environment-jsdom": "^29.6.2",
